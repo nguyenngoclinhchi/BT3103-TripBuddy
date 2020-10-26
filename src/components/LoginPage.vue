@@ -4,9 +4,7 @@
         <div class="logo" style="padding:5%;  border-radius: 1rem 1rem 0 0;">
             <img src="../../public/logo.png" style="height:300px;width:550px;padding-bottom:5px">
         </div>
-        <div style="text-align:center">
-            <h1 style="color:DARKCYAN; font-size:3vh; padding:5%;">LOG IN</h1>
-        </div>
+        <h1 style="color:DARKCYAN; font-size:3vh; text-align:center">LOG IN</h1>
         <form @submit.prevent='submitForm'>
         <!-- Email field -->
         <md-field :class="validate('email')">
@@ -15,9 +13,9 @@
             <!-- Checking validity of email -->
             <span v-if="!$v.email.required && !$v.email.$dirty" class="text-danger">Valid email required!</span> 
             <span v-if="!$v.email.email && !$v.email.$dirty" class="text-danger">Valid email required!</span>
+        </md-field>
         <md-field :class="validate('password')">
         <!-- Password field -->
-        <md-field>
             <label>Password:</label>
             <md-input v-model="password" type="password"></md-input>
             <!-- Checking validity of password -->
@@ -74,5 +72,22 @@
     } 
 </script>
 
-<style scoped> 
+<style scoped>
+h1 {
+  margin-bottom: 0;
+}
+body {
+  background-size: cover;
+  background-position:fixed;
+  height: 120vh
+}
+.button {
+  font-family: Gill Sans;
+  border-radius: 4px;
+  border: none;
+  text-align: center;
+  margin: 0;
+  transition: all 0.5s;
+  cursor: pointer;
+} 
 </style>
