@@ -3,7 +3,6 @@
         <section>
             <div class = "col1">
                 <router-link to = "/">
-                    <!--                    <a><img src = "../../public/logo_words.png" style = "height:25px;width:130px;padding-bottom:5px" alt = "logo"/></a>-->
                     <h3>TRIP BUDDY</h3>
                 </router-link>
                 <ul class = "inline">
@@ -29,7 +28,6 @@
                         <button @click = "logout()"
                                 style = " border: none; color: white; background-color: white; cursor: pointer">
                             <img src = "../../public/log-out.svg" alt = "logout">
-                            <!-- <img alt = "logout" src = "../../public/logout.png" style = "height:25px;width:25px;padding-bottom:5px"/>-->
                         </button>
                     </li>
                 </ul>

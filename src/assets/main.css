@@ -22,31 +22,31 @@ html {
 }
 
 h1, h2, h3, h4, h5, p {
-    margin: 0 0 0.5rem;
+    margin: 8px;
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
 }
 
 h2 {
-    font-size: 1.8rem;
+    font-size: 2.0rem;
 }
 
 h3 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
 }
 
 h4 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
 }
 
 h5 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 p {
-    font-size: 16px;
+    font-size: 13px;
     line-height: 1.5;
 }
 
@@ -98,8 +98,8 @@ section {
     background: #fff;
     width: 150px;
     text-align: center;
-    margin: 40vh auto 0;
-    padding: 40px 0;
+    margin: 30vh auto 0;
+    padding: 30px 0;
     border-radius: 3px;
     box-shadow: 0 0 20px 0 rgba(52, 73, 94, 0.5);
 }
@@ -121,7 +121,7 @@ section {
     color: #fff;
     padding: 0.8rem 1rem;
     min-width: 150px;
-    font-size: 16px;
+    font-size: 13px;
     border-radius: 3px;
     cursor: pointer;
 }
@@ -150,6 +150,7 @@ section {
 
 .inline li {
     display: inline-block;
+    font-size: 16px;
 }
 
 .clear {
@@ -158,15 +159,16 @@ section {
 
 form label {
     display: block;
-    font-size: 16px;
-    margin-bottom: 0.5rem;
+    font-size: 15px;
+    margin-top: 0.8rem;
+    margin-bottom: 0.2rem;
 }
 
 form input {
     display: block;
     width: 100%;
-    margin-bottom: 1rem;
-    font-size: 16px;
+    margin-bottom: 0.3rem;
+    font-size: 13px;
     padding: 10px;
     outline: 0;
     border: 1px solid #e6ecf0;
@@ -256,13 +258,13 @@ header ul li a {
 
 #login .col2 {
     height: 100vh;
-    padding-top: 10vh;
+    padding-top: 1vh;
 }
 
 @media screen and (max-width: 742px) {
     #login .col1, #login .col2 {
         height: auto;
-        padding-top: 20vh;
+        padding-top: 1vh;
     }
 }
 
@@ -278,7 +280,7 @@ header ul li a {
 
 #login .col1 p {
     max-width: 490px;
-    margin-top: 2rem;
+    margin-top: 0.8rem;
     line-height: 1.8;
 }
 
@@ -288,17 +290,17 @@ header ul li a {
 }
 
 #login .signup-form {
-    padding-top: 20vh;
+    padding-top: 0.5vh;
 }
 
 @media screen and (max-width: 742px) {
     #login .signup-form {
-        padding-top: 10vh;
+        padding-top: 1vh;
     }
 }
 
 #login .col2 h1 {
-    margin-bottom: 2rem;
+    margin-bottom: 0.8rem;
 }
 
 #login .col2 form {
@@ -410,7 +412,7 @@ header ul li a {
 }
 
 #dashboard .create-post .button {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     width: 100%;
     z-index: 5;
     border-radius: 0 0 3px 3px;
@@ -609,5 +611,5 @@ header ul li a {
 }
 
 #settings .button {
-    margin-top: 2rem;
+    margin-top: 0.8rem;
 }

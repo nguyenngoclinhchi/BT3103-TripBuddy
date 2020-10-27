@@ -9,7 +9,6 @@
                    gradual lifting of travel restrictions in some countries. Through a thorough assessment of government
                    policy responses based on the context of each country, the web application aims to give
                    recommendations to users depending on the safety of the destination country and the user profile.</p>
-            
             </div>
             <div :class = "{ 'signup-form': !showLoginForm }" class = "col2">
                 <form @submit.prevent v-if = "showLoginForm">
@@ -22,7 +21,10 @@
                     </div>
                     <div>
                         <label for = "password1">Password</label>
-                        <input id = "password1" placeholder = "******" type = "password" v-model.trim = "loginForm.password"/>
+                        <label>
+                            <input id = "password1" autocomplete = "off" placeholder = "Password" type = "password"
+                                   v-model = "loginForm.password"/>
+                        </label>
                     </div>
                     <button @click = "login()" class = "button">Log In</button>
                     <div class = "extras">
@@ -31,7 +33,7 @@
                     </div>
                 </form>
                 <form @submit.prevent v-else>
-                    <h1>Let's get Started</h1>
+                    <h1 style="text-align: center">Let's get Started</h1>
                     <div>
                         <label for = "name">Name</label>
                         <input id = "name" placeholder = "Full Name" type = "text" v-model.trim = "signupForm.name"/>
@@ -46,9 +48,27 @@
                     </div>
                     <div>
                         <label for = "password2">Password</label>
-                        <input id = "password2" placeholder = "min 6 characters" type = "password" v-model.trim = "signupForm.password"/>
+                        <password v-bind:passed_password = "signupForm.password"></password>
+                        <label>
+                            <input id = "password2" autocomplete = "off" placeholder = "Password" type = "password"
+                                   v-model = "signupForm.password" @input = "checkPasswordRegister"/>
+                        </label>
+                        <label for = "password2_confirm">
+                            Confirm Password
+                        </label><input id = "password2_confirm" autocomplete = "off" placeholder = "Password" type = "password"
+                                   v-model = "signupForm.confirm_password" @input = "checkPasswordConfirm"/>
                     </div>
-                    <button @click = "signup()" class = "button">Sign Up</button>
+                    <div>
+                        <p style="text-align: center" v-if="!this.signupForm.confirm_password_match">Password do not match</p>
+                    </div>
+                    <button @click = "signup()" class = "button"
+                            :disabled = "
+                            !signupForm.password_strength ||
+                            signupForm.name === '' ||
+                            signupForm.country ==='' ||
+                            signupForm.email === '' ||
+                            !signupForm.confirm_password_match">Sign Up
+                    </button>
                     <div class = "extras">
                         <a @click = "toggleForm()">Back to Log In</a>
                     </div>
@@ -60,25 +80,29 @@
 
 <script>
 	import PasswordReset from '@/components/PasswordReset'
-	
+	import Password from "@/components/Password";
 	export default {
 		components: {
+			Password,
 			PasswordReset
 		},
 		data() {
 			return {
 				loginForm: {
 					email: '',
-					password: ''
+					password: '',
 				},
 				signupForm: {
 					name: '',
 					country: '',
 					email: '',
-					password: ''
+					password: '',
+                    confirm_password: '',
+					password_strength: '',
+					confirm_password_match: false
 				},
 				showLoginForm: true,
-				showPasswordReset: false
+				showPasswordReset: false,
 			}
 		},
 		methods: {
@@ -101,7 +125,22 @@
 					name: this.signupForm.name,
 					country: this.signupForm.country
 				})
-			}
+			},
+			checkPasswordRegister() {
+				let password_length = this.signupForm.password.length;
+				const format = /[ !@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/;
+				let contains_eight_characters = password_length > 8;
+				let contains_number = /\d/.test(this.signupForm.password);
+				let contains_uppercase = /[A-Z]/.test(this.signupForm.password);
+				let contains_special_character = format.test(this.signupForm.password);
+				this.signupForm.password_strength = contains_eight_characters === true &&
+					contains_special_character === true &&
+					contains_uppercase === true &&
+					contains_number === true;
+			},
+			checkPasswordConfirm() {
+				this.signupForm.confirm_password_match = this.signupForm.password === this.signupForm.confirm_password
+            }
 		}
 	}
 </script>

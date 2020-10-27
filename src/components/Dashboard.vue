@@ -1,6 +1,18 @@
 <template>
     <div>
         <h1>Welcome {{ userProfile.name }} to Trip Buddy Dashboard</h1>
+        <section>
+            <div class="col1">
+                <div class = "profile">
+                    <h5>This is component 1</h5>
+                </div>
+            </div>
+            <div class="col1">
+                <div class = "profile">
+                    <h5>This is component 2</h5>
+                </div>
+            </div>
+        </section>
         <section class = "container">
             <div class = "left-half">
                 <article>

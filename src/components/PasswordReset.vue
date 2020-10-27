@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <div>
-            <div @click = "$emit('close')">close</div>
+    <div class = "modal">
+        <div class = "modal-content">
+            <div @click = "$emit('close')" class = "close">close</div>
             <h3>Reset Password</h3>
             <div v-if = "!showSuccess">
                 <p>Enter your email to reset your password</p>
@@ -10,8 +10,8 @@
                         <input placeholder = "you@email.com" type = "email" v-model.trim = "email"/>
                     </label>
                 </form>
-                <p v-if = "errorMsg !== ''">{{ errorMsg }}</p>
-                <button @click = "resetPassword()">Reset</button>
+                <p class = "error" v-if = "errorMsg !== ''">{{ errorMsg }}</p>
+                <button @click = "resetPassword()" class = "button">Reset</button>
             </div>
             <p v-else>Success! Check your email for a reset link.</p>
         </div>

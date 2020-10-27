@@ -6,11 +6,11 @@
         <section>
             <div class = "col1">
                 <div class = "profile">
-                    <h5>Welcome {{ userProfile.name }}</h5>
-                    <p>{{ userProfile.country }}</p>
+                    <h5 style="text-align: center">Welcome {{ userProfile.name }}</h5>
+                    <p style="text-align: center">{{ userProfile.country }}</p>
                     <br>
                     <div class = "create-post">
-                        <h5>Create a post</h5>
+                        <h5 style="text-align: center">Create a post</h5>
                         <form @submit.prevent>
                             <label for = "country_travelled">Country travelled</label>
                             <input id = "country_travelled" type = "text" v-model.trim = "post.countryTravelled"/>
@@ -29,6 +29,7 @@
                 <div v-if = "posts.length">
                     <div :key = "post.id" class = "post" v-for = "post in posts">
                         <h5>{{ post.userName }}</h5>
+                        <p>has travelled to {{ post.countryTravelled }}</p>
                         <span>{{ post.createdOn | formatDate }}</span>
                         <p>{{ post.content | trimLength }}</p>
                         <ul>
@@ -99,7 +100,10 @@
 		},
 		methods: {
 			createPost() {
-				this.$store.dispatch('createPost', {content: this.post.content})
+				this.$store.dispatch('createPost', {
+					content: this.post.content,
+                    countryTravelled:this.post.countryTravelled
+				})
 				this.post.content = ''
 			},
 			toggleCommentModal(post) {

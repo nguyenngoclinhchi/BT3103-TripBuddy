@@ -5,13 +5,17 @@ import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 import Vuelidate from 'vuelidate'
 import Navigation from './components/Navigation.vue'
-import router from "./router";
+import Toast from "vue-toastification";
+import router from "./router"
 import store from './store'
 import {auth} from './firebase'
+import compositionApi from "@vue/composition-api";
 
 
-Vue.use(VueMaterial)
-Vue.use(Vuelidate)
+Vue.use(VueMaterial);
+Vue.use(Vuelidate);
+Vue.use(Toast);
+Vue.use(compositionApi);
 
 Vue.config.productionTip = false
 Vue.component('navBar', Navigation)
@@ -25,7 +29,6 @@ auth.onAuthStateChanged(user => {
 			render: h => h(App)
 		}).$mount('#app')
 	}
-	
 	if (user) {
 		store.dispatch('fetchUserProfile', user)
 	}

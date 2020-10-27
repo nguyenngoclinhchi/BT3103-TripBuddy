@@ -19,7 +19,8 @@ fb.postsCollection.orderBy('createdOn', 'desc').onSnapshot(snapshot => {
 const store = new Vuex.Store({
 	state: {
 		userProfile: {},
-		posts: []
+		posts: [],
+		user: null,
 	},
 	mutations: {
 		setUserProfile(state, val) {
@@ -30,25 +31,55 @@ const store = new Vuex.Store({
 		},
 		setPosts(state, val) {
 			state.posts = val
-		}
+		},
+		SET_USER: state => {
+			state.user = fb.auth.currentUser;
+		},
+	},
+	getters: {
+		getUser: state => state.user,
 	},
 	actions: {
+		setUser: context => {
+			context.commit("SET_USER");
+		},
 		async login({dispatch}, form) {
 			try {
 				// sign user in
 				const {user} = await fb.auth.signInWithEmailAndPassword(form.email, form.password)
 				// fetch user profile and set in state
 				dispatch('fetchUserProfile', user)
-				return ""
+				fb.auth.onAuthStateChanged(newUser => {
+					if (newUser) {
+						if (newUser.emailVerified === true) {
+							console.log('login success');
+						} else {
+							console.log("user did not verify email")
+						}
+					} else {
+						console.log('not logged in');
+					}
+				})
 			} catch (err) {
 				alert(err.message)
 			}
 		},
-		
 		async signup({dispatch}, form) {
 			try {
 				// sign user up
 				const {user} = await fb.auth.createUserWithEmailAndPassword(form.email, form.password)
+				fb.auth.onAuthStateChanged(firebaseUser => {
+					if (firebaseUser) {
+						firebaseUser.sendEmailVerification().then(function () {
+							console.log('send Verification');
+							alert("You need to confirm verify email before logging in")
+						}, function (error) {
+							console.log('not send Verification', error);
+						});
+					} else {
+						console.log('not logged in');
+					}
+				})
 				// create user object in userCollections
 				await fb.usersCollection.doc(user.uid).set({
 					name: form.name,
@@ -56,7 +87,6 @@ const store = new Vuex.Store({
 				})
 				// fetch user profile and set in state
 				dispatch('fetchUserProfile', user)
-				alert("Congrats form.name has become new member in Trip Buddy family")
 			} catch (err) {
 				alert(err.message)
 			}
@@ -67,7 +97,6 @@ const store = new Vuex.Store({
 				const userProfile = await fb.usersCollection.doc(user.uid).get()
 				// set user profile in state
 				commit('setUserProfile', userProfile.data())
-				// change route to dashboard
 				if (router.currentRoute.path === '/login') {
 					await router.push('/')
 				}
@@ -93,6 +122,7 @@ const store = new Vuex.Store({
 			await fb.postsCollection.add({
 				createdOn: new Date(),
 				content: post.content,
+				countryTravelled: post.countryTravelled,
 				userId: fb.auth.currentUser.uid,
 				userName: state.userProfile.name,
 				comments: 0,
@@ -129,9 +159,7 @@ const store = new Vuex.Store({
 				name: user.name,
 				country: user.country
 			})
-			
 			dispatch('fetchUserProfile', {uid: userId})
-			
 			// update all posts by user
 			const postDocs = await fb.postsCollection.where('userId', '==', userId).get()
 			postDocs.forEach(doc => {
@@ -139,7 +167,6 @@ const store = new Vuex.Store({
 					userName: user.name
 				})
 			})
-			
 			// update all comments by user
 			const commentDocs = await fb.commentsCollection.where('userId', '==', userId).get()
 			commentDocs.forEach(doc => {
