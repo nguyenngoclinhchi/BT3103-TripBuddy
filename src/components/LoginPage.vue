@@ -1,93 +1,107 @@
 <template>
-  <div style="background-color: white;">
-    <div style="padding-right:15%; padding-left:15%; padding-bottom:15%;">
-        <div class="logo" style="padding:5%;  border-radius: 1rem 1rem 0 0;">
-            <img src="../../public/logo.png" style="height:300px;width:550px;padding-bottom:5px">
-        </div>
-        <h1 style="color:DARKCYAN; font-size:3vh; text-align:center">LOG IN</h1>
-        <form @submit.prevent='submitForm'>
-        <!-- Email field -->
-        <md-field :class="validate('email')">
-            <label>Email:</label>
-            <md-input v-model="email"></md-input>
-            <!-- Checking validity of email -->
-            <span v-if="!$v.email.required && !$v.email.$dirty" class="text-danger">Valid email required!</span> 
-            <span v-if="!$v.email.email && !$v.email.$dirty" class="text-danger">Valid email required!</span>
-        </md-field>
-        <md-field :class="validate('password')">
-        <!-- Password field -->
-            <label>Password:</label>
-            <md-input v-model="password" type="password"></md-input>
-            <!-- Checking validity of password -->
-            <span v-if="!$v.password.required && !$v.password.$dirty" class="text-danger">Password required!</span>
-            <span v-if="!$v.password.minLength && !$v.email.$dirty" class="text-danger">Password is too short; Should be at least {{$v.password.$params.minLength.min}}</span>
-        </md-field>
-        <input type="submit" class="btn-primary mt-2">
-        </form>
+    <div id = "login">
+        <PasswordReset @close = "togglePasswordReset()" v-if = "showPasswordReset"></PasswordReset>
+        <section>
+            <div class = "col1">
+                <h1>Trip Buddy</h1>
+                <p>TripBuddy is a travel advisory application that provides potential travellers with all the necessary
+                   and latest information needed to plan for their travels during the COVID-19 pandemic following the
+                   gradual lifting of travel restrictions in some countries. Through a thorough assessment of government
+                   policy responses based on the context of each country, the web application aims to give
+                   recommendations to users depending on the safety of the destination country and the user profile.</p>
+            
+            </div>
+            <div :class = "{ 'signup-form': !showLoginForm }" class = "col2">
+                <form @submit.prevent v-if = "showLoginForm">
+                    <div class = "logo" style = "padding:5%">
+                        <img alt = "logo" src = "../../public/logo.svg" style = "height:300px;width:550px;padding-bottom:5px">
+                    </div>
+                    <div>
+                        <label for = "email1">Email</label>
+                        <input id = "email1" placeholder = "you@email.com" type = "text" v-model.trim = "loginForm.email"/>
+                    </div>
+                    <div>
+                        <label for = "password1">Password</label>
+                        <input id = "password1" placeholder = "******" type = "password" v-model.trim = "loginForm.password"/>
+                    </div>
+                    <button @click = "login()" class = "button">Log In</button>
+                    <div class = "extras">
+                        <a @click = "togglePasswordReset()">Forgot Password</a>
+                        <a @click = "toggleForm()">Create an Account</a>
+                    </div>
+                </form>
+                <form @submit.prevent v-else>
+                    <h1>Let's get Started</h1>
+                    <div>
+                        <label for = "name">Name</label>
+                        <input id = "name" placeholder = "Full Name" type = "text" v-model.trim = "signupForm.name"/>
+                    </div>
+                    <div>
+                        <label for = "country">Country</label>
+                        <input id = "country" placeholder = "Country" type = "text" v-model.trim = "signupForm.country"/>
+                    </div>
+                    <div>
+                        <label for = "email2">Email</label>
+                        <input id = "email2" placeholder = "you@email.com" type = "text" v-model.trim = "signupForm.email"/>
+                    </div>
+                    <div>
+                        <label for = "password2">Password</label>
+                        <input id = "password2" placeholder = "min 6 characters" type = "password" v-model.trim = "signupForm.password"/>
+                    </div>
+                    <button @click = "signup()" class = "button">Sign Up</button>
+                    <div class = "extras">
+                        <a @click = "toggleForm()">Back to Log In</a>
+                    </div>
+                </form>
+            </div>
+        </section>
     </div>
-  </div>
 </template>
 
 <script>
-    import { validationMixin } from "vuelidate";
-    import { required, minLength, email } from "vuelidate/lib/validators";
-    export default {
-        name: "LoginPage",
-        components: {},
-        data: function() {
-            return {
-                email: '',
-                password: ''
-            }
-        },
-        mixins: [validationMixin],
-        validations: {
-            email: {
-                required,
-                email
-            },
-            password: {
-                required,
-                minLength: minLength(4)
-            }
-        },
-        methods: {
-            validate(field) { 
-                const x = this.$v[field];
-                if (x) {
-                    return{
-                        "md-invalid": field.$invalid && field.$dirty
-                        // if email already entered, marked as invalid
-                    }
-                }
-            },
-            submitForm() {
-                this.$v.$touch();
-                if(!this.$v.$invalid) {
-                    console.log(`Email: ${this.email}, Password: ${this.password}`)
-
-                }
-            }
-        } 
-    } 
+	import PasswordReset from '@/components/PasswordReset'
+	
+	export default {
+		components: {
+			PasswordReset
+		},
+		data() {
+			return {
+				loginForm: {
+					email: '',
+					password: ''
+				},
+				signupForm: {
+					name: '',
+					country: '',
+					email: '',
+					password: ''
+				},
+				showLoginForm: true,
+				showPasswordReset: false
+			}
+		},
+		methods: {
+			toggleForm() {
+				this.showLoginForm = !this.showLoginForm
+			},
+			togglePasswordReset() {
+				this.showPasswordReset = !this.showPasswordReset
+			},
+			login() {
+				this.$store.dispatch('login', {
+					email: this.loginForm.email,
+					password: this.loginForm.password
+				})
+			},
+			signup() {
+				this.$store.dispatch('signup', {
+					email: this.signupForm.email,
+					password: this.signupForm.password,
+					name: this.signupForm.name,
+					country: this.signupForm.country
+				})
+			}
+		}
+	}
 </script>
-
-<style scoped>
-h1 {
-  margin-bottom: 0;
-}
-body {
-  background-size: cover;
-  background-position:fixed;
-  height: 120vh
-}
-.button {
-  font-family: Gill Sans;
-  border-radius: 4px;
-  border: none;
-  text-align: center;
-  margin: 0;
-  transition: all 0.5s;
-  cursor: pointer;
-} 
-</style>

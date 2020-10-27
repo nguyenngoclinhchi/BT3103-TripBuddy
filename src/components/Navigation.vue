@@ -1,54 +1,53 @@
 <template>
-    <div class="topnav">
-        <a><img src="../../public/logo_words.png" style="height:25px;width:130px;padding-bottom:5px" /></a>
-        <a class="home" href="home">Home</a>
-        <a class="about" href="#/about">About our app</a>
-        <a class="dashboard" href="#/dashboard">Dashboard</a>
-        <a class="statistics" href="#/statistics">Explore statistics</a>
-        <a class="logout" href="#/login">
-            <img src="../../public/logout.png" style="height:25px;width:25px;padding-bottom:5px" />
-        </a>
-    </div>
+    <header>
+        <section>
+            <div class = "col1">
+                <router-link to = "/">
+                    <!--                    <a><img src = "../../public/logo_words.png" style = "height:25px;width:130px;padding-bottom:5px" alt = "logo"/></a>-->
+                    <h3>TRIP BUDDY</h3>
+                </router-link>
+                <ul class = "inline">
+                    <li>
+                        <router-link to = "/">Home</router-link>
+                    </li>
+                    <li>
+                        <router-link to = "/about">About our app</router-link>
+                    </li>
+                    <li>
+                        <router-link to = "/dashboard">Dashboard</router-link>
+                    </li>
+                    <li>
+                        <router-link to = "/statistics">Explore statistics</router-link>
+                    </li>
+                    <li>
+                        <router-link to = "/comments">Dashboard Comments</router-link>
+                    </li>
+                    <li>
+                        <router-link to = "/settings">Settings</router-link>
+                    </li>
+                    <li>
+                        <button @click = "logout()"
+                                style = " border: none; color: white; background-color: white; cursor: pointer">
+                            <img src = "../../public/log-out.svg" alt = "logout">
+                            <!-- <img alt = "logout" src = "../../public/logout.png" style = "height:25px;width:25px;padding-bottom:5px"/>-->
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </header>
 </template>
 <script>
-
-export default {
-  name: "Navigation",
-  components: {
-  },
-  data: function() {
-    return {
-    };
-  }
-}
+	export default {
+		name: "Navigation",
+		components: {},
+		data: function () {
+			return {};
+		},
+		methods: {
+			logout() {
+				this.$store.dispatch('logout')
+			}
+		}
+	}
 </script>
-
-<style>
-body {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
-    Ubuntu, Droid Sans, Helvetica Neue, sans-serif !important;
-}
-.topnav {
-  overflow: hidden;
-  background-color:white;
-}
-
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #4CAF50;
-  color: white;
-}
-</style>

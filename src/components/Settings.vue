@@ -1,0 +1,50 @@
+<template>
+    <section id = "settings">
+        <div class = "col1">
+            <transition name = "fade">
+                <p class = "success" v-if = "showSuccess">profile updated</p>
+            </transition>
+            <form @submit.prevent>
+                <label for = "name">Name</label>
+                <input :placeholder = "userProfile.name" id = "name" type = "text" v-model.trim = "name"/>
+                <label for = "country">Country</label>
+                <input :placeholder = "userProfile.country" id = "country" type = "text" v-model.trim = "country"/>
+                <button @click = "updateProfile()" class = "button">Update Profile</button>
+            </form>
+        </div>
+    </section>
+</template>
+
+<script>
+	import {mapState} from 'vuex'
+	
+	export default {
+		data() {
+			return {
+				name: '',
+				country: '',
+				showSuccess: false
+			}
+		},
+		computed: {
+			...mapState(['userProfile'])
+		},
+		methods: {
+			updateProfile() {
+				this.$store.dispatch('updateProfile', {
+					name: this.name !== '' ? this.name : this.userProfile.name,
+					country: this.country !== '' ? this.country : this.userProfile.country
+				})
+				
+				this.name = ''
+				this.country = ''
+				
+				this.showSuccess = true
+				
+				setTimeout(() => {
+					this.showSuccess = false
+				}, 2000)
+			}
+		}
+	}
+</script>
