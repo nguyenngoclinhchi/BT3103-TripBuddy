@@ -1,70 +1,71 @@
 <template>
-    <div id="body">
+    <div>
         <h1>Welcome {{ userProfile.name }} to Trip Buddy Dashboard</h1>
-        <br>
-        <Form align ="right"> </Form>
-        <md-field>
-            <label> Country </label>
-            <md-select v-model="selectedOption" @md-selected="updateData(selectedOption)">
-                <md-option v-for ="country in country_options" v-bind:key="country" :value="country">  {{country}} </md-option>
-            </md-select>
-        </md-field>
-        <br>
-        <div class = "chart">
-            <canvas id = "radarChart"></canvas>
+        <div id="body">
+            <h4>Last Refreshed: {{date}}</h4>
+            <br>
+            <Form align ="right"> </Form>
+            <md-field>
+                <label> Country </label>
+                <md-select v-model="selectedOption" @md-selected="updateData(selectedOption)">
+                    <md-option v-for ="country in country_options" v-bind:key="country" :value="country">  {{country}} </md-option>
+                </md-select>
+            </md-field>
+            <br>
+            <div class = "chart">
+                <canvas id = "radarChart"></canvas>
+            </div>
+            <div class = "indic" style = "background-color:white; padding:10px; border-radius: 17px"> 
+                <p align ="left" style="font-size:120%;"> <b> <u> Stringency Index </u> </b> </p>
+                <p align ="left"> records the strictness of ‘lockdown style’ policies that primarily restrict people’s behaviour </p>
+                <p align ="left" style="font-size:120%;"> <b> <u> Government Repsonse Index </u> </b> </p>
+                <p align ="left"> records how the response of governments has varied over all indicators in the database, becoming stronger or weaker over the course of the outbreak </p>
+                <p align ="left" style="font-size:120%;"> <b> <u> Containment & Health Index </u> </b> </p>
+                <p align ="left"> combines ‘lockdown’ restrictions and closures with measures such as testing policy and contact tracing, short term investment in healthcare, as well investments in vaccine </p>
+            </div>
+            <div class = "H">
+                    <p style="font-size:180%"> <b> Health System Policies </b> </p> 
+                    <table id="H_indicators">
+                        <thead>
+                            <tr>
+                            <th>Code</th>
+                            <th>Description</th>
+                            <th>Value</th>
+                            <th>Policy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for ="row in this.H_indicators" v-bind:key ="row">
+                                <td>{{row.code}}</td>
+                                <td>{{row.descr}}</td>
+                                <td>{{row.value}}</td>
+                                <td>{{row.policy}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+            <div class = "C">
+                    <p style="font-size:180%"> <b> Containment and Closure Policies </b> </p>
+                    <table id="C_indicators">
+                        <thead>
+                            <tr>
+                            <th>Code</th>
+                            <th>Description</th>
+                            <th>Value</th>
+                            <th>Policy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for ="row in this.C_indicators" v-bind:key ="row">
+                                <td>{{row.code}}</td>
+                                <td>{{row.descr}}</td>
+                                <td>{{row.value}}</td>
+                                <td>{{row.policy}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
         </div>
-        <div class = "indic" style = "background-color:white; padding:10px; border-radius: 17px"> 
-            <p align ="left" style="font-size:120%;"> <b> <u> Stringency Index </u> </b> </p>
-            <p align ="left"> records the strictness of ‘lockdown style’ policies that primarily restrict people’s behaviour </p>
-            <p align ="left" style="font-size:120%;"> <b> <u> Government Repsonse Index </u> </b> </p>
-            <p align ="left"> records how the response of governments has varied over all indicators in the database, becoming stronger or weaker over the course of the outbreak </p>
-            <p align ="left" style="font-size:120%;"> <b> <u> Containment & Health Index </u> </b> </p>
-            <p align ="left"> combines ‘lockdown’ restrictions and closures with measures such as testing policy and contact tracing, short term investment in healthcare, as well investments in vaccine </p>
-        </div>
-       
-        <div class = "H">
-                <p style="font-size:180%"> <b> Health System Policies </b> </p> 
-                <table id="H_indicators">
-                    <thead>
-                        <tr>
-                        <th>Code</th>
-                        <th>Description</th>
-                        <th>Value</th>
-                        <th>Policy</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for ="row in this.H_indicators" v-bind:key ="row">
-                            <td>{{row.code}}</td>
-                            <td>{{row.descr}}</td>
-                            <td>{{row.value}}</td>
-                            <td>{{row.policy}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-           </div>
-           <div class = "C">
-                <p style="font-size:180%"> <b> Containment and Closure Policies </b> </p>
-                <table id="C_indicators">
-                    <thead>
-                        <tr>
-                        <th>Code</th>
-                        <th>Description</th>
-                        <th>Value</th>
-                        <th>Policy</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for ="row in this.C_indicators" v-bind:key ="row">
-                            <td>{{row.code}}</td>
-                            <td>{{row.descr}}</td>
-                            <td>{{row.value}}</td>
-                            <td>{{row.policy}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-           </div>
-           
     </div>
 </template>
 
@@ -80,6 +81,7 @@
 
         data() {
             return {
+                date: 'today',
                 country_options: [],
                 selectedOption: '[AFG] Afghanistan',
                 radarChartData: radarChartData,
@@ -98,6 +100,29 @@
         },
         
         methods: {
+
+            date_function: function () {
+                var currentDate = new Date();
+                //console.log(currentDate);
+
+                currentDate.setDate(currentDate.getDate()-5);
+        
+                var formatted_date = currentDate.toJSON().slice(0,10);
+                console.log(formatted_date);
+                return formatted_date;
+            
+            },
+
+            next_date: function() {
+                var currentDate = new Date();
+                //console.log(currentDate);
+
+                currentDate.setDate(currentDate.getDate()-4);
+        
+                var formatted_date = currentDate.toJSON().slice(0,10);
+                console.log(formatted_date);
+                return formatted_date;
+            },
         
             createChart: function(chartId, chartData) {
                 const ctx = document.getElementById(chartId);
@@ -110,7 +135,8 @@
             },
 
             updateData: function(countryCode) {
-                var url = 'https://datasource.kapsarc.org/api/records/1.0/search/?dataset=oxford-covid-19-government-response-tracker&rows=10000&disjunctive.countryname=true&disjunctive.indicator=true&refine.indicator=Containment+Health+Index.&refine.indicator=Government+Response+Index.&refine.indicator=Stringency+Index.&q=date:%5B2020-10-20T16:00:00Z+TO+2020-10-21T15:59:59Z%5D&timezone=Asia/Shanghai&lang=en'
+                var url = 'https://datasource.kapsarc.org/api/records/1.0/search/?dataset=oxford-covid-19-government-response-tracker&rows=10000&disjunctive.countryname=true&disjunctive.indicator=true&refine.indicator=Containment+Health+Index.&refine.indicator=Government+Response+Index.&refine.indicator=Stringency+Index.&q=date:%5B'+this.date_function()+'T16:00:00Z+TO+'+this.next_date()+'T15:59:59Z%5D&timezone=Asia/Shanghai&lang=en'
+                //var url = 'https://datasource.kapsarc.org/api/records/1.0/search/?dataset=oxford-covid-19-government-response-tracker&rows=10000&disjunctive.countryname=true&disjunctive.indicator=true&refine.indicator=Containment+Health+Index.&refine.indicator=Government+Response+Index.&refine.indicator=Stringency+Index.&q=date:%5B2020-10-20T16:00:00Z+TO+2020-10-21T15:59:59Z%5D&timezone=Asia/Shanghai&lang=en'
                 console.log("called")
                 let name = countryCode.substr(6)
                 var containment = 'Containment Health Index.'
@@ -202,6 +228,7 @@
         
         mounted() {
             this.createChart("radarChart", this.radarChartData);
+            this.date = this.date_function()
             // console.log(this.myChart.data.datasets[0].label)
             // console.log(this.myChart.data.datasets[0].data)
         }
@@ -213,6 +240,10 @@
     body {
         font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
         Ubuntu, Droid Sans, Helvetica Neue, sans-serif !important;
+    }
+
+    h4 {
+        padding-left: 10px;
     }
 
     .chart{
@@ -240,7 +271,9 @@
 
     #body {
         background-color: #E6ECF0;
-        min-height: 100vh;
+        min-height: 190vh;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     table {
