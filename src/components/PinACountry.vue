@@ -2,7 +2,7 @@
     <div id = "statistics_form">
         <section>
             <md-button @click = "pinACountry(); $bvToast.show('my-toast')" class = "md-raised md-accent">
-                Pin it!
+                Pin a country!
             </md-button>
             <b-toast id = "my-toast" variant = "warning" solid @click="validPinnedCountry = false">
                 <template #toast-title>
@@ -52,10 +52,13 @@
 					})
                     this.status = "SUCCESS"
                     this.textMessage = this.selectedCountry + " has been added to your customized pinned list of countries."
-				} else {
+				} else if (this.selectedCountry !== '') {
 					this.status = "FAIL"
 					this.textMessage = this.selectedCountry + " has NOT been added to your customized pinned " +
                         "list of countries because this target country is already in the pinned list OR its name is not in pre-defined list."
+                } else {
+					this.status = "FAIL"
+					this.textMessage = "The target country is not defined"
                 }
 			}
 		},

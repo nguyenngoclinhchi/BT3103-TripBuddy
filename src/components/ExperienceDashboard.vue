@@ -4,17 +4,38 @@
             <CommentModal :post = "selectedPost" @close = "toggleCommentModal()"
                           v-if = "showCommentModal"></CommentModal>
         </transition>
-        <section style = "padding: 10px">
-            <md-autocomplete v-model = "selectedOption"
+        <section>
+            <md-autocomplete v-model = "selectedCountryOption"
                              :md-options = "country_options_dropdown"
-                             id = "countryDropdownList">
-                <label>Country</label>
+                             id = "countryDropdownList" style="margin-right: 20px">
+                <label>Search with Country</label>
             </md-autocomplete>
             <md-field>
-                <label>Post Experience Content</label>
-                <md-input v-model="selectedPostContent"></md-input>
+                <label>Search with Post Content</label>
+                <md-input v-model = "selectedPostContent"></md-input>
             </md-field>
-            <pin-a-country :selected-country = "selectedOption"></pin-a-country>
+            <pin-a-country :selected-country = "selectedCountryOption" style="margin-top: 10px"></pin-a-country>
+        </section>
+        <section>
+            <div>
+                <label style="margin-top: 15px">SORT BY ELEMENT</label>
+            </div>
+            <div>
+                <b-form-group style="padding: 0 8px; margin-top: 10px">
+                    <b-form-checkbox-group v-model = "selected" :options = "optionsSortingElement"
+                                           name = "buttons-1" buttons button-variant="info" size="sm"
+                    ></b-form-checkbox-group>
+                </b-form-group>
+            </div>
+            <div>
+                <label style="margin-top: 15px; margin-left: 30px; margin-right: 10px">SORTING ORDER</label>
+            </div>
+            <div>
+                <md-radio v-model="radio" value="descending">DESC</md-radio>
+            </div>
+            <div>
+                <md-radio v-model="radio" value="increasing">INC</md-radio>
+            </div>
         </section>
         <section>
             <div class = "col1">
@@ -27,16 +48,17 @@
             </div>
             <div class = "col2">
                 <div>
-                    <div v-if = "getUpdatedPostsList.length === 0 && getTextMessage !== ''" class = "post">
+                    <div v-if = "getCountryUpdatedPostsList.length === 0 && getTextMessage !== ''" class = "post">
                         <p class = "no-results">
                             <em>{{getTextMessage}}</em>
                         </p>
                     </div>
-                    <div :key = "post.id" class = "post" v-for = "post in getUpdatedPostsList">
+                    <div :key = "post.id" class = "post" v-for = "post in getCountryUpdatedPostsList">
                         <h5>{{ post.userName }}</h5>
-                        <p>has travelled to {{ post.countryTravelled }} on the date
-                           {{post.dateTravelled | formatDateTravelled}}</p>
+                        <p>has travelled to <em>{{ post.countryTravelled }}</em> from <em>{{post.dateTravelled | formatDateTravelled}}</em>
+                               to <em>{{post.dateTravelledTo | formatDateTravelled}}</em></p>
                         <span>posted {{ post.createdOn | formatDate }}</span>
+                        <br>
                         <p>{{ post.content | trimLength }}</p>
                         <ul>
                             <li><a @click = "toggleCommentModal(post)">comments {{ post.comments }}</a></li>
@@ -90,8 +112,8 @@
 		},
 		data() {
 			return {
-				selectedOption: '',
-                selectedPostContent: '',
+				selectedCountryOption: '',
+				selectedPostContent: '',
 				showCommentModal: false,
 				selectedPost: {},
 				showPostModal: false,
@@ -101,32 +123,42 @@
 				searchCounter: 0,
 				textMessage: '',
 				searchClicked: false,
-				historySelectedOption: ''
+				historySelectedOption: '',
+				selected: ['createdOn'],
+				optionsSortingElement: [
+					{text: 'CreatedAt', value: 'createdOn'},
+					{text: 'Likes', value: 'likes'},
+					{text: 'Rating', value: 'rating'},
+				],
+                radio: 'descending'
 			}
 		},
 		computed: {
 			...mapState(['userProfile', 'posts', 'country_options_dropdown']),
-			getUpdatedPostsList() {
-				if (this.selectedOption === '') {
-					return this.posts
-				} else {
-					const criteria = this.selectedOption.toLowerCase()
-					return this.posts.filter(opt => opt.countryTravelled.toLowerCase().indexOf(criteria) > -1)
-				}
+			getCountryUpdatedPostsList() {
+				let criteriaCountry = this.selectedCountryOption.toLowerCase()
+				let criteriaContent = this.selectedPostContent.toLowerCase()
+				let updatedPostList = this.posts
+				updatedPostList = (criteriaCountry === '') ? updatedPostList :
+					this.posts.filter(opt => opt.countryTravelled.toLowerCase().indexOf(criteriaCountry) > -1)
+				updatedPostList = (criteriaContent === '') ? updatedPostList :
+					this.posts.filter(opt => opt.content.toLowerCase().indexOf(criteriaContent) > -1)
+				return updatedPostList
 			},
 			getTextMessage() {
 				if (this.posts.length === 0) {
 					return "There is no post has been made so far. Be the first one to share!"
-				} else if (this.getUpdatedPostsList.length === 0) {
-					return "There is no post matching with " + this.selectedOption
-                }
+				} else if (this.getCountryUpdatedPostsList.length === 0) {
+					let detectedCountrySearch = (this.selectedCountryOption === '') ? '' : ' --- COUNTRY: ' + this.selectedCountryOption
+					let detectedContentSearch = (this.selectedPostContent === '') ? '' : ' --- CONTENT: ' + this.selectedPostContent
+					return "There is no post matching with" + detectedCountrySearch + detectedContentSearch
+				}
 				return ""
 			}
 		},
 		methods: {
 			toggleCommentModal(post) {
 				this.showCommentModal = !this.showCommentModal
-				// if opening modal set selectedPost, else clear
 				if (this.showCommentModal) {
 					this.selectedPost = post
 				} else {
@@ -168,8 +200,8 @@
 						console.log("Get results: ", this.currentPosts)
 						if (this.currentPosts.length > 0) {
 							this.textMessage = "There are " + this.currentPosts.length + " posts found"
-						} else if (this.currentPosts.length === 0 && this.selectedOption !== '') {
-							this.textMessage = "There are currently no posts about " + this.selectedOption
+						} else if (this.currentPosts.length === 0 && this.selectedCountryOption !== '') {
+							this.textMessage = "There are currently no posts about " + this.selectedCountryOption
 						}
 						return this.currentPosts.length > 0;
 					}

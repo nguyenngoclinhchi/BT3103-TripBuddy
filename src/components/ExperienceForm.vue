@@ -80,7 +80,7 @@
                             <md-textarea v-model.trim = "post.content" md-autogrow md-counter="200"></md-textarea>
                         </md-field>
                         <label> Does any of the traveller have existing medical condition?</label>
-                        <md-switch v-model = "post.medical" value = "medical"> Yes</md-switch>
+                        <md-switch v-model = "post.medical">Yes</md-switch>
                         <div>
                             <label>Overall public health situation</label>
                             <b-input-group name = "rating_1">
@@ -165,11 +165,11 @@
 					content: '',
 					dateTravelled: new Date(),
 					dateTravelledTo: new Date(),
-					numAdult: 1,
-					numChild: 0,
-					numElder: 0,
+					numAdult: "1",
+					numChild: "0",
+					numElder: "0",
 					purpose: '',
-					medical: '',
+					medical: false,
 					rating_value_1: 0,
 					rating_value_2: 0,
 					rating_value_3: 0,

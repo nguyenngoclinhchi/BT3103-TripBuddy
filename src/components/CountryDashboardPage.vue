@@ -81,7 +81,6 @@
 
 <script>
 	import {mapState} from "vuex";
-	import worldCode from "../all.json";
 	import axios from 'axios';
 	import Chart from 'chart.js';
 	import radarChartData from "../radar.js";
@@ -123,7 +122,7 @@
 				this.myChart = new Chart(ctx, {
 					type: chartData.type,
 					data: chartData.data,
-					options: chartData.options
+					optionsSortingElement: chartData.options
 				});
 			},
 			updateData: function (countryCode) {
