@@ -19,7 +19,7 @@
                 <b-card-header header-tag = "header" class = "p-1" role = "tab">
                     <b-button block v-b-toggle.accordion-2 variant = "info"
                               style = "font-size: 13px" @click = "
-                              nationality = (nationality != null && nationality.length > 0)? nationality : userProfile.nationality">
+                              nationality = (nationality != null)? nationality : userProfile.nationality">
                         Update Nationality
                     </b-button>
                 </b-card-header>
@@ -71,7 +71,7 @@
                 <b-card-header header-tag = "header" class = "p-1" role = "tab">
                     <b-button block v-b-toggle.accordion-3 variant = "info"
                               style = "font-size: 13px" @click = "
-                              value = (value != null && value.length > 0)? value : userProfile.country_interested">
+                              value = (value != null)? value : userProfile.country_interested">
                         Update customized pinned interesting countries
                     </b-button>
                 </b-card-header>
@@ -134,7 +134,7 @@
                         <small class = "text-muted mr-2">1 seconds ago</small>
                     </div>
                 </template>
-                The user profile has been updated
+                The user profile has been updated. {{extraMessage}}
             </b-toast>
             <!--            <md-button-->
             <!--                    @click = "updateProfile()" class = "md-raised md-primary"-->
@@ -153,21 +153,30 @@
 			return {
 				name: '',
 				showSuccess: false,
-				nationality: [],
-				value: [],
+				nationality: null,
+				value: null,
 				options: this.$store.state.country_options_dropdown,
 				optionsNationality: this.$store.state.country_options_dropdown,
 				search: '',
 				searchNationality: '',
+				extraMessage: ''
 			}
 		},
 		methods: {
 			updateProfile() {
 				console.log("updating Profile!!!")
+				if (this.nationality.length === 0) {
+					this.extraMessage += " Nationality is required when updating Profile, so it is reset back to old value."
+				}
+				if (this.value.length === 0) {
+					this.extraMessage += " List of pinned country is required when updating Profile, so it is reset back to old value."
+					
+				}
                 let updatedValueName = this.name !== '' ? this.name : this.userProfile.name
                 let updatedValueNationality = this.nationality.length > 0 ? this.nationality[0] : this.userProfile.nationality
                 let updatedInterestedCountry = this.value.length > 0 ? this.value : this.userProfile.country_interested
 				this.$store.dispatch('updateProfile', {
+					email: this.userProfile.email,
 					name: updatedValueName,
 					nationality: updatedValueNationality,
 					country_interested: updatedInterestedCountry
@@ -197,12 +206,12 @@
 				console.log("UPDATE IS CALLED!")
                 console.log("Previous value", this.value)
                 console.log("Previous nationality", this.nationality)
-				if (this.value === null || this.value.length === 0) {
+				if (this.value === null) {
 					console.log("After value", this.value)
 					this.value = this.userProfile.country_interested
 					console.log("value:", this.value)
 				}
-				if (this.nationality === null || this.value.length === 0) {
+				if (this.nationality === null) {
 					console.log("After nationality", this.nationality)
 					this.nationality = []
 					this.nationality.push(this.userProfile.nationality)
@@ -238,9 +247,11 @@
 				return ''
 			},
 			criteria() {
+				console.log("criteria")
 				return this.search.trim().toLowerCase()
 			},
 			availableOptions() {
+				console.log("availableOptions")
 				const criteria = this.criteria
 				const options = this.options.filter(opt => this.value.indexOf(opt) === -1)
 				if (criteria) {
@@ -249,6 +260,7 @@
 				return options
 			},
 			searchDesc() {
+				console.log("searchDesc")
 				this.updateValues()
 				if (this.criteria && this.availableOptions.length === 0) {
 					return 'There are no tags matching your search criteria'

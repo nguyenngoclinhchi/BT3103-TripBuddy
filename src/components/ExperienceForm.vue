@@ -75,10 +75,10 @@
                                 <md-option value = "others"> Others</md-option>
                             </md-select>
                         </md-field>
-                        <form @submit.prevent>
-                            <label for = "content">What is your experience in the trip?</label>
-                            <textarea id = "content" type = "text" v-model.trim = "post.content"></textarea>
-                        </form>
+                        <md-field>
+                            <label>What is your experience in the trip?</label>
+                            <md-textarea v-model.trim = "post.content" md-autogrow md-counter="200"></md-textarea>
+                        </md-field>
                         <label> Does any of the traveller have existing medical condition?</label>
                         <md-switch v-model = "post.medical" value = "medical"> Yes</md-switch>
                         <div>

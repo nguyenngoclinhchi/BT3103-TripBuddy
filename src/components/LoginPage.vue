@@ -28,7 +28,8 @@
                         </label>
                     </div>
                     <md-button
-                            @click = "login()" class = "md-raised md-primary">Log In</md-button>
+                            @click = "login()" class = "md-raised md-primary">Log In
+                    </md-button>
                     <div class = "extras">
                         <a @click = "togglePasswordReset()">Forgot Password</a>
                         <a @click = "toggleForm()">Create an Account</a>
@@ -85,6 +86,9 @@
                                       style = "margin: 0; padding: 0">
                             <b-form-tags v-model = "value" no-outer-focus class = "mb-2">
                                 <template v-slot = "{ tags, disabled, addTag, removeTag }">
+                                    <p v-if = "value.length === 0">
+                                        There should be at least 1 pinned country in your profile
+                                    </p>
                                     <ul v-if = "tags.length > 0" class = "list-inline d-inline-block mb-2">
                                         <li v-for = "tag in tags" :key = "tag" class = "list-inline-item">
                                             <b-form-tag
@@ -132,17 +136,20 @@
                     </div>
                     <section>
                         <div class = "col3">
-                            <label for = "password2">Password</label>
+                            <br><em>Password requirement</em>
                             <password v-bind:passed_password = "signupForm.password"></password>
-                            <input @input = "checkPasswordRegister" autocomplete = "off" id = "password2" placeholder = "Password"
-                                   type = "password" v-model = "signupForm.password"/>
                         </div>
                         <div class = "col3">
-                            <label for = "password2_confirm">
-                                Confirm Password
-                            </label>
-                            <input @input = "checkPasswordConfirm" autocomplete = "off" id = "password2_confirm" placeholder = "Password"
-                                   type = "password" v-model = "signupForm.confirm_password"/>
+                            <md-field>
+                                <label>Password</label>
+                                <md-input @input = "checkPasswordRegister" v-model = "signupForm.password"
+                                          style = "padding: 0" type = "password"></md-input>
+                            </md-field>
+                            <md-field>
+                                <label>Confirm password</label>
+                                <md-input @input = "checkPasswordConfirm" v-model = "signupForm.confirm_password"
+                                          style = "padding: 0" type = "password"></md-input>
+                            </md-field>
                             <p style = "text-align: center"
                                v-if = "!signupForm.confirm_password_match && signupForm.password.length > 0">
                                 Password do not match</p>
@@ -150,15 +157,18 @@
                     </section>
                     <md-button
                             v-if = "!signupForm.contains_six_characters || signupForm.name === '' ||
-                            signupForm.country ==='' || signupForm.email === '' || !signupForm.confirm_password_match"
+                            signupForm.nationality === '' || signupForm.email === '' || !signupForm.confirm_password_match ||
+                            value.length === 0"
                             class = "md-raised md-primary" disabled>
                         Submit
                     </md-button>
                     <md-button
                             v-else
-                            @click = "signup()" class = "md-raised md-primary"> Submit</md-button>
+                            @click = "signup()" class = "md-raised md-primary"> Submit
+                    </md-button>
                     <md-button
-                            @click = "resetForm()" class = "md-raised md-accent"> Reset Form</md-button>
+                            @click = "resetForm()" class = "md-raised md-accent"> Reset Form
+                    </md-button>
                     <div class = "extras">
                         <a @click = "resetForm(); toggleForm()">Back to Log In</a>
                     </div>

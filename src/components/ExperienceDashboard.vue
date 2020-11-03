@@ -10,6 +10,10 @@
                              id = "countryDropdownList">
                 <label>Country</label>
             </md-autocomplete>
+            <md-field>
+                <label>Post Experience Content</label>
+                <md-input v-model="selectedPostContent"></md-input>
+            </md-field>
             <pin-a-country :selected-country = "selectedOption"></pin-a-country>
         </section>
         <section>
@@ -87,6 +91,7 @@
 		data() {
 			return {
 				selectedOption: '',
+                selectedPostContent: '',
 				showCommentModal: false,
 				selectedPost: {},
 				showPostModal: false,

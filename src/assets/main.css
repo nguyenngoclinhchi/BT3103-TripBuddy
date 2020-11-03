@@ -391,6 +391,10 @@ header ul li a {
     flex: 0 0 30%;
 }
 
+#dashboard .col2 {
+    padding: 0 20px 50px 20px;
+}
+
 @media screen and (max-width: 1300px) {
     #dashboard .col1 {
         flex: 0 0 40%;

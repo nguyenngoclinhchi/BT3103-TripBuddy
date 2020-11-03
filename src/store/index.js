@@ -70,6 +70,7 @@ const store = new Vuex.Store({
 				alert(err.message)
 			}
 		},
+		// eslint-disable-next-line no-unused-vars
 		async signup({dispatch}, form) {
 			try {
 				// sign user up
@@ -90,6 +91,7 @@ const store = new Vuex.Store({
 				})
 				// create user object in userCollections
 				await fb.usersCollection.doc(user.uid).set({
+					email: form.email,
 					name: form.name,
 					nationality: form.nationality,
 					country_interested: form.country_interested
@@ -113,6 +115,7 @@ const store = new Vuex.Store({
 		async fetchUserProfile({commit}, user) {
 			try {
 				console.log("Fetching user profile")
+				console.log("user", user)
 				// fetch user profile
 				const userProfile = await fb.usersCollection.doc(user.uid).get()
 				// set user profile in state
@@ -190,6 +193,7 @@ const store = new Vuex.Store({
 			// update user object
 			// eslint-disable-next-line no-unused-vars
 			const userRef = await fb.usersCollection.doc(userId).update({
+				email: user.email,
 				name: user.name,
 				nationality: user.nationality,
 				country_interested: user.country_interested
