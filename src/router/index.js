@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Dashboard from '../components/Dashboard.vue'
+import Dashboard from '../components/CountryDashboardPage.vue'
 import {auth} from '@/firebase'
 import MainPage from "@/components/MainPage";
-import Statistics from "@/components/Statistics";
+import Statistics from "@/components/GlobalDashboardPage";
 import About from "@/components/About";
-import DashboardComment from "@/components/DashboardComment";
+import DashboardComment from "@/components/ExperienceDashboard";
 
 Vue.use(VueRouter)
 

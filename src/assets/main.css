@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css');
 
 body {
     margin: 0;
     color: #34495E;
     background: #E6ECF0;
+    min-height: 150vh;
 }
 
 html {
@@ -64,7 +66,7 @@ a:hover {
 
 section {
     display: flex;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
@@ -74,10 +76,15 @@ section {
     }
 }
 
+.my-scrolling-class .dropdown-menu {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
 .col1, .col2 {
     flex-grow: 1;
     flex-basis: 0;
-    padding: 0.2rem;
+    padding: 0.1rem 0.1rem;
 }
 
 [v-cloak] {
@@ -99,7 +106,7 @@ section {
     width: 150px;
     text-align: center;
     margin: 30vh auto 0;
-    padding: 30px 0;
+    padding: 10px 0;
     border-radius: 3px;
     box-shadow: 0 0 20px 0 rgba(52, 73, 94, 0.5);
 }
@@ -119,11 +126,12 @@ section {
     border: 0;
     outline: 0;
     color: #fff;
-    padding: 0.8rem 1rem;
+    padding: 0.5rem 1rem;
     min-width: 150px;
     font-size: 13px;
     border-radius: 3px;
     cursor: pointer;
+    margin-left: 10px;
 }
 
 .button:hover {
@@ -144,24 +152,22 @@ section {
 
 .inline {
     margin: 10px;
-    padding: 10px;
+    padding: 5px 10px;
     list-style: none;
 }
 
 .inline li {
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .clear {
     clear: both;
 }
 
-form label {
+label {
     display: block;
     font-size: 15px;
-    margin-top: 0.8rem;
-    margin-bottom: 0.2rem;
 }
 
 form input {
@@ -169,7 +175,7 @@ form input {
     width: 100%;
     margin-bottom: 0.3rem;
     font-size: 13px;
-    padding: 10px;
+    padding: 5px 10px;
     outline: 0;
     border: 1px solid #e6ecf0;
     border-radius: 3px;
@@ -185,7 +191,7 @@ form textarea {
     outline: 0;
     height: 100px;
     width: 100%;
-    padding: 10px;
+    padding: 5px 10px;
     font-size: 16px;
 }
 
@@ -210,7 +216,7 @@ header {
 
 header h3 {
     display: inline-block;
-    margin: 30px;
+    margin: 10px;
 }
 
 header ul {
@@ -219,13 +225,12 @@ header ul {
 }
 
 header ul li {
-    margin-top: 4px;
     margin-left: 6px;
 }
 
 header ul li a {
     display: block;
-    padding: 5px;
+    padding: 1px 2px;
 }
 
 @media screen and (max-width: 742px) {
@@ -241,7 +246,7 @@ header ul li a {
 }
 
 #login {
-    background: linear-gradient(to right, #30A0EE 0%, #30A0EE 50%, #fff 50%, #fff 100%);
+    background: linear-gradient(to right, #0c5460 0%, #0c5460 50%, #fff 50%, #fff 100%);
 }
 
 @media screen and (max-width: 742px) {
@@ -253,12 +258,16 @@ header ul li a {
 
 #login .col1 {
     height: 100vh;
-    padding-top: 30vh;
+    padding-top: 3vh;
 }
 
 #login .col2 {
     height: 100vh;
-    padding-top: 1vh;
+    padding-top: 2vh;
+}
+
+#login .col3 {
+    width: 40vh;
 }
 
 @media screen and (max-width: 742px) {
@@ -299,12 +308,8 @@ header ul li a {
     }
 }
 
-#login .col2 h1 {
-    margin-bottom: 0.8rem;
-}
-
 #login .col2 form {
-    max-width: 450px;
+    max-width: 550px;
     margin: 0 auto;
 }
 
@@ -378,15 +383,15 @@ header ul li a {
     width: 100%;
 }
 
-#dashboard section {
-    padding: 2rem 0;
+#dashboard {
+    padding: 10px;
 }
 
 #dashboard .col1 {
     flex: 0 0 30%;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1300px) {
     #dashboard .col1 {
         flex: 0 0 40%;
     }
@@ -486,10 +491,8 @@ header ul li a {
 }
 
 #dashboard .no-results {
-    border: 1px solid #e6ecf0;
-    background: #fff;
     text-align: center;
-    padding: 100px 1rem;
+    padding: 0;
 }
 
 #dashboard .c-modal {
@@ -553,6 +556,7 @@ header ul li a {
     top: 5px;
     right: 10px;
     padding: 5px;
+    font-size: 15px;
 }
 
 #dashboard .p-modal .p-container .post {
@@ -591,18 +595,19 @@ header ul li a {
 }
 
 #settings {
-    padding: 2rem 0;
+    padding: 10px 0;
 }
 
 #settings .col1 {
-    max-width: 600px;
-    margin: 5vh auto 0;
+    max-width: 500px;
+    min-height: auto;
+    margin: 0 auto 0;
     background: #fff;
-    padding: 2rem;
+    padding: 0.5rem;
 }
 
 #settings form {
-    margin-top: 3rem;
+    margin-top: 20px;
 }
 
 #settings .success {
@@ -612,4 +617,282 @@ header ul li a {
 
 #settings .button {
     margin-top: 0.8rem;
+}
+
+.scrolling-class {
+    max-height: 1000px;
+    overflow-y: auto;
+}
+
+#mainContent {
+    background-color: white;
+}
+
+#aboutCOVID {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    background-image: url('https://stories.uh.edu/covid-19/assets/ag2dSlL11z/covidbackground05-2560x1440.jpeg');
+    background-size: cover;
+    color: #BF0000;
+}
+
+#aboutApp {
+    display: block;
+    position: relative;
+    color: rgb(255, 255, 255)
+}
+
+#aboutApp::after {
+    content: "";
+    background-image: url('https://media.cntraveler.com/photos/5ecfbc8a0877597c10c84052/16:9/w_2560%2Cc_limit/Travel-GettyImages-482761951.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #da554b;
+    background-blend-mode: multiply;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+#aboutCOVID p {
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+#aboutApp p {
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+#mainContent h5 {
+    padding: 0 150px;
+}
+
+#mainContent .name {
+    font-weight: bold;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#mainContent .rowName {
+    /*background: linear-gradient(white, #efb3ab, #ec9488);*/
+    padding: 0 100px 100px;
+}
+
+#mainContent .columnName {
+    float: left;
+    width: 24%;
+    margin: 5px;
+}
+
+@media screen and (max-width: 650px) {
+    .columnName {
+        width: 100%;
+        display: block;
+    }
+}
+
+#mainContent .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background: white;
+}
+
+#mainContent .column p {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 0;
+}
+
+#mainContent .container {
+    height: 200px;
+}
+
+#mainContent .container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+#statistics_form .section {
+    padding: 20px;
+}
+
+#statistics_dashboard .chart {
+    width: 60%;
+    margin-right: 5%;
+    float: left;
+}
+
+#statistics_dashboard .indic {
+    width: 33%;
+    float: left;
+}
+
+#statistics_dashboard .H {
+    width: 45%;
+    margin-right: 5%;
+    float: left;
+}
+
+#statistics_dashboard .C {
+    width: 45%;
+    float: left;
+}
+
+.body {
+    min-height: 110vh;
+    max-width: 100vh;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#statistics_dashboard table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    border-collapse: collapse;
+    border: 3px solid #ffffff;
+}
+
+#statistics_dashboard table th {
+    text-transform: uppercase;
+    text-align: center;
+    background: #000000;
+    color: #FFF;
+    padding: 8px;
+    min-width: 30px;
+}
+
+#statistics_dashboard table td {
+    text-align: left;
+    padding: 8px;
+}
+
+#statistics_dashboard table td:last-child {
+    border-right: none;
+}
+
+#statistics_dashboard table tbody tr:nth-child(2n) td {
+    background: #dddddc;
+}
+
+#statistics_dashboard .container {
+    max-width: 1300px;
+    margin: auto;
+    padding: 10px;
+}
+
+#statistics_map section {
+    padding: 20px;
+    margin: auto;
+    max-width: 1000px;
+}
+
+#statistics_map .container {
+    max-width: 1300px;
+    margin: auto;
+}
+
+#login .countries_container {
+    overflow: auto; /* Optionally you can also use overflow: scroll; */
+}
+
+#password *, *:before, *:after {
+    box-sizing: inherit;
+}
+
+#password ul {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#password li {
+    color: #525f7f;
+    position: relative;
+}
+
+#password li:before {
+    content: "";
+    width: 0;
+    height: 2px;
+    background: #2ecc71;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    display: block;
+    transition: all .6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#password {
+    position: relative;
+}
+
+#password input[type="password"] {
+    display: block;
+    color: rgba(136, 152, 170, 1);
+    font-weight: 300;
+    width: 100%;
+    height: calc(2.75rem + 2px);
+    padding: 2px;
+    border-radius: .25rem;
+    background-color: #fff;
+    transition: border-color .4s ease;
+    border: 1px solid #cad1d7;
+    outline: 0;
+}
+
+#password input[type="password"]:focus {
+    border-color: rgba(50, 151, 211, .45);
+}
+
+#password .is_valid {
+    color: rgba(136, 152, 170, 0.8);
+}
+
+#password .is_valid:before {
+    width: 100%;
+}
+
+#password .checkmark_container {
+    border-radius: 50%;
+    background: #2ecc71;
+    width: 30px;
+    height: 30px;
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity .4s ease;
+}
+
+#password .show_checkmark {
+    visibility: visible;
+    opacity: 1;
+}
+
+#password .checkmark {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: white;
+    stroke-width: 15;
+    stroke-linecap: round;
+    stroke-dasharray: 180;
+    stroke-dashoffset: 180;
+}
+
+#password .checked {
+    animation: draw 0.5s ease forwards;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
 }

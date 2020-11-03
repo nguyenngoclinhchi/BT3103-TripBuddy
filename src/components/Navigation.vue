@@ -1,51 +1,91 @@
 <template>
     <header>
-        <section>
-            <div class = "col1">
-                <router-link to = "/">
-                    <h3>TRIP BUDDY</h3>
-                </router-link>
-                <ul class = "inline">
-                    <li>
-                        <router-link to = "/">Home</router-link>
-                    </li>
-                    <li>
-                        <router-link to = "/about">About our app</router-link>
-                    </li>
-                    <li>
-                        <router-link to = "/dashboard">Dashboard</router-link>
-                    </li>
-                    <li>
-                        <router-link to = "/statistics">Explore statistics</router-link>
-                    </li>
-                    <li>
-                        <router-link to = "/comments">Dashboard Comments</router-link>
-                    </li>
-                    <li>
-                        <router-link to = "/settings">Settings</router-link>
-                    </li>
-                    <li>
-                        <button @click = "logout()"
-                                style = " border: none; color: white; background-color: white; cursor: pointer">
-                            <img src = "../../public/log-out.svg" alt = "logout">
-                        </button>
-                    </li>
-                </ul>
+        <div class = "col1" style = "padding: 0;">
+            <div>
+                <b-navbar toggleable = "lg" type = "dark" variant = "info">
+                    <div @click="current_page = 'Home page'">
+                        <router-link to = "/">
+                            <h3 style = "color: white">TRIP BUDDY</h3>
+                        </router-link>
+                    </div>
+                    <b-navbar-nav>
+                        <b-nav-item v-if = "current_page != null">Welcome to {{this.current_page}}</b-nav-item>
+                    </b-navbar-nav>
+                    <b-navbar-toggle target = "nav-collapse"></b-navbar-toggle>
+                    <b-collapse id = "nav-collapse" is-nav>
+                        <b-navbar-nav class = "ml-auto">
+                            <b-nav-item-dropdown right style = "font-size: 18px">
+                                <template #button-content>
+                                    <em style = "color: white">Discover</em>
+                                </template>
+                                <b-dropdown-item style = "font-size: 15px" @click = "current_page = detect_current_page()">
+                                    <router-link to = "/">Home</router-link>
+                                </b-dropdown-item>
+                                <b-dropdown-item style = "font-size: 15px" @click = "current_page = detect_current_page()">
+                                    <router-link to = "/about">About our app</router-link>
+                                </b-dropdown-item>
+                                <b-dropdown-item style = "font-size: 15px" @click = "current_page = detect_current_page()">
+                                    <router-link to = "/statistics">Global Dashboard</router-link>
+                                </b-dropdown-item>
+                                <b-dropdown-item style = "font-size: 15px" @click = "current_page = detect_current_page()">
+                                    <router-link to = "/dashboard">Country Dashboard</router-link>
+                                </b-dropdown-item>
+                                <b-dropdown-item style = "font-size: 15px" @click = "current_page = detect_current_page()">
+                                    <router-link to = "/comments">Experience Dashboard</router-link>
+                                </b-dropdown-item>
+                            </b-nav-item-dropdown>
+                            <b-nav-item-dropdown right style = "font-size: 18px">
+                                <template #button-content>
+                                    <em style = "color: white">User</em>
+                                </template>
+                                <b-dropdown-item style = "font-size: 15px" @click = "current_page = detect_current_page()">
+                                    <router-link to = "/settings">Profile Settings</router-link>
+                                </b-dropdown-item>
+                                <b-dropdown-item style = "font-size: 15px" @click = "logout()">
+                                    Sign Out
+                                </b-dropdown-item>
+                            </b-nav-item-dropdown>
+                        </b-navbar-nav>
+                    </b-collapse>
+                </b-navbar>
             </div>
-        </section>
+        </div>
     </header>
 </template>
 <script>
+	import router from '../router/index';
+	
 	export default {
 		name: "Navigation",
 		components: {},
 		data: function () {
-			return {};
+			return {
+				current_page: ''
+			};
 		},
 		methods: {
 			logout() {
 				this.$store.dispatch('logout')
+			},
+			detect_current_page() {
+				if (router.currentRoute.path === '/') {
+					return "Home page"
+				} else if (router.currentRoute.path === '/about') {
+					return "About page"
+				} else if (router.currentRoute.path === '/dashboard') {
+					return "Country dashboard"
+				} else if (router.currentRoute.path === '/statistics') {
+					return "Global Dashboard"
+				} else if (router.currentRoute.path === '/comments') {
+					return "Experience Dashboard"
+				} else if (router.currentRoute.path === '/settings') {
+					return "Profile Settings"
+                }
+				return null
 			}
+		},
+		created() {
+			this.current_page = this.detect_current_page()
 		}
 	}
 </script>
