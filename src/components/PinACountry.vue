@@ -4,7 +4,7 @@
             <md-button @click = "pinACountry(); $bvToast.show('my-toast')" class = "md-raised md-accent">
                 Pin it!
             </md-button>
-            <b-toast id = "my-toast" variant = "warning" solid>
+            <b-toast id = "my-toast" variant = "warning" solid @click="validPinnedCountry = false">
                 <template #toast-title>
                     <div class = "d-flex flex-grow-1 align-items-baseline">
                         <b-img blank blank-color = "#ff5555" class = "mr-2" width = "12" height = "12"></b-img>
@@ -12,7 +12,10 @@
                         <small class = "text-muted mr-2">1 seconds ago</small>
                     </div>
                 </template>
-                <p>{{textMessage}}</p>
+                <p>
+                    {{textMessage}}<br>
+                    To edit full pinned country list, please proceed to <router-link to = "/settings">Settings page</router-link>
+                </p>
             </b-toast>
         </section>
     </div>
@@ -24,9 +27,8 @@
 	export default {
 		data() {
 			return {
-				textMessage: "<strong>" + this.selectedCountry + "</strong>" +
-					" has been added to your customized pinned list of countries." +
-					" To edit this full list, please proceed to <router-link to = \"/settings\">Settings page</router-link>"
+				validPinnedCountry: false,
+				textMessage: ''
 			}
 		},
 		props: {
@@ -36,8 +38,10 @@
 		},
 		methods: {
 			pinACountry() {
+				console.log("validPinnedCountry: ", this.validPinnedCountry)
 				let currentInterestedCountry = this.$store.state.userProfile.country_interested;
-				if (currentInterestedCountry.includes(this.selectedCountry) <= -1
+				console.log("currentInterestedCountry: ", currentInterestedCountry)
+				if (!currentInterestedCountry.includes(this.selectedCountry)
 					&& this.country_options_dropdown.includes(this.selectedCountry)) {
 					currentInterestedCountry.push(this.selectedCountry)
 					this.$store.dispatch('updateProfile', {
@@ -45,11 +49,11 @@
 						nationality: this.userProfile.nationality,
 						country_interested: currentInterestedCountry
 					})
-					return true
-				}
-				this.textMessage = "The target country" + "<strong>" + this.selectedCountry + "</strong>" +
-					"is not added to the list as it is not included in pre-defined country list"
-				return false
+                    this.textMessage = "SUCCESS: " + this.selectedCountry + " has been added to your customized pinned list of countries."
+				} else {
+					this.textMessage = "FAIL: " + this.selectedCountry + " has NOT been added to your customized pinned " +
+                        "list of countries because this target country is already in the pinned list or its name is not in pre-defined list."
+                }
 			}
 		},
 		created() {

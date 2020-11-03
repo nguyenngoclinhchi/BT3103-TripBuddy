@@ -10,10 +10,6 @@
                              id = "countryDropdownList">
                 <label>Country</label>
             </md-autocomplete>
-<!--            <md-button @click = "searchClicked = true; updateData(selectedOption)" class = "md-raised md-primary"-->
-<!--                       id = "searchCountryButton">-->
-<!--                Search-->
-<!--            </md-button>-->
             <pin-a-country :selected-country = "selectedOption"></pin-a-country>
         </section>
         <section>
