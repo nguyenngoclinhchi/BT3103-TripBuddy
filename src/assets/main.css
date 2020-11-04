@@ -418,14 +418,15 @@ header ul li a {
 }
 
 #dashboard .col1 {
-    flex: 0 0 30%;
+    flex: 0 0 40%;
 }
 
-#dashboard .col2 {
-    padding: 0 20px 50px 20px;
+#dashboard section {
+    margin: auto;
+    max-width: 1100px;
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 800px) {
     #dashboard .col1 {
         flex: 0 0 40%;
     }
@@ -582,7 +583,7 @@ header ul li a {
 
 #dashboard .p-modal .p-container {
     position: fixed;
-    max-width: 600px;
+    max-width: 1000px;
     top: 2vh;
     bottom: 2vh;
     left: 0;
@@ -833,7 +834,7 @@ header ul li a {
 #statistics_map section {
     padding: 20px;
     margin: auto;
-    max-width: 1000px;
+    max-width: 1200px;
 }
 
 #statistics_map .container {

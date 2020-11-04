@@ -1,8 +1,8 @@
 <template>
     <div id = "statistics_form">
         <section>
-            <md-button @click = "active = true" class = "md-raised md-primary md-button-custom">
-                Share a experience
+            <md-button @click = "active = true" class = "md-raised md-accent md-button-custom">
+                Create a post
             </md-button>
             <md-dialog :md-active.sync = "active">
                 <md-dialog-title>
@@ -75,7 +75,7 @@
                             </md-select>
                         </md-field>
                         <md-field>
-                            <label>What is your experience in the trip?</label>
+                            <label>What was your experience in the trip?</label>
                             <md-textarea v-model.trim = "post.content" md-autogrow md-counter = "1000"></md-textarea>
                         </md-field>
                         <label> Does any of the traveller have existing medical condition?</label>
@@ -140,6 +140,21 @@
                                 </b-form-rating>
                             </b-input-group>
                         </div>
+                        <div>
+                            <label>Recommendation to travel</label>
+                            <b-input-group>
+                                <b-form-rating v-model = "post.rating_value_5"
+                                               show-value
+                                               show-value-max
+                                               icon-empty = "heart"
+                                               icon-half = "heart-half"
+                                               icon-full = "heart-fill"
+                                               icon-clear = "slash-circle"
+                                               show-clear
+                                               variant = "danger">
+                                </b-form-rating>
+                            </b-input-group>
+                        </div>
                     </div>
                 </md-dialog-content>
                 <md-dialog-actions>
@@ -173,6 +188,7 @@
 					rating_value_2: 0,
 					rating_value_3: 0,
 					rating_value_4: 0,
+					rating_value_5: 0,
 					countryTravelled: ''
 				},
 				active: false,
@@ -200,6 +216,7 @@
 					rating_value_2: this.post.rating_value_2,
 					rating_value_3: this.post.rating_value_3,
 					rating_value_4: this.post.rating_value_4,
+					rating_value_5: this.post.rating_value_5
 				})
 				this.resetForm()
 			},
@@ -218,6 +235,9 @@
 				} else {
 					if (this.post.dateTravelled > this.post.dateTravelledTo) {
 						alert("The end date of your trip should not be smaller than your start date")
+					} else if (this.post.numAdult + this.post.numChild + this.post.numElder === 0) {
+						this.active = true;
+						alert("There should be at least one person travelling")
 					} else {
 						console.log("Creating a post")
 						this.createPost();

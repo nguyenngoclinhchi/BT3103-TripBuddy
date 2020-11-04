@@ -7,14 +7,22 @@
         <section>
             <div class = "col1">
                 <div class = "profile">
-                    <h5 style = "text-align: center">Welcome {{ userProfile.name }}</h5>
-                    <p style = "text-align: center">{{ userProfile.nationality }}</p>
+                    <section class = "controls">
+                        <div class = "md-button-custom" style = "display: inline-block; margin: 0; padding: 0">
+                            <h5 style = "text-align: center">Welcome {{ userProfile.name }}</h5>
+                            <p style = "text-align: center">{{ userProfile.nationality }}</p>
+                        </div>
+                        <experience-form></experience-form>
+                    </section>
+                    <p class = "no-results">
+                        <em style="color: #1abc9c">{{getTextMessage}}</em>
+                    </p>
+                    <progress-bar :selectedPosts = "getCountryUpdatedPostsList"></progress-bar>
                 </div>
                 <div class = "accordion" role = "tablist">
                     <b-card no-body class = "mb-1">
                         <b-card-header header-tag = "header" class = "p-1" role = "tab">
-                            <b-button block v-b-toggle.accordion-1 variant = "info" style = "font-size: 13px"
-                                      @click = "updateInterestCountry">
+                            <b-button block v-b-toggle.accordion-1 variant = "info" style = "font-size: 13px">
                                 SHORTCUT FILTER posts with PINNED COUNTRY list
                             </b-button>
                         </b-card-header>
@@ -22,10 +30,12 @@
                             <p style = "text-align: center">
                                 Choose only posts with ONLY specific country in the PINNED list</p>
                             <b-form-group style = "padding: 0 8px">
-                                <md-chip class = "md-accent" v-for = "chip in value" :key = "chip" md-clickable style = "margin: 5px" @click = "selectedCountryOption = chip">
+                                <md-chip class = "md-accent" v-for = "chip in updateInterestCountry" :key = "chip"
+                                         md-clickable style = "margin: 5px" @click = "selectedCountryOption = chip">
                                     {{chip}}
                                 </md-chip>
-                                <md-chip class = "md-info" md-clickable style = "margin: 5px" @click = "selectedCountryOption = ''">
+                                <md-chip class = "md-info" md-clickable style = "margin: 5px"
+                                         @click = "selectedCountryOption = ''">
                                     Reset to all countries
                                 </md-chip>
                             </b-form-group>
@@ -49,34 +59,25 @@
                                     <md-input v-model = "selectedPostContent" class = "controls"></md-input>
                                 </md-field>
                                 <pin-a-country :selected-country = "selectedCountryOption"></pin-a-country>
-                                <label>SORT BY ELEMENT</label>
-                                <md-radio v-model = "selectedSortingElement" value = "createdOn" class = "md-primary">
-                                    CreatedTime
-                                </md-radio>
-                                <md-radio v-model = "selectedSortingElement" value = "likes" class = "md-primary">
-                                    Likes
-                                </md-radio>
-                                <md-radio v-model = "selectedSortingElement" value = "rating" class = "md-primary">
-                                    Rating
-                                </md-radio>
-                                <label>SORTING ORDER</label>
-                                <md-radio v-model = "radio" value = "descending">DESC</md-radio>
-                                <md-radio v-model = "radio" value = "increasing">INC</md-radio>
-                            </b-card-body>
-                        </b-collapse>
-                    </b-card>
-                </div>
-                <div class = "accordion" role = "tablist">
-                    <b-card no-body class = "mb-1">
-                        <b-card-header header-tag = "header" class = "p-1" role = "tab">
-                            <b-button block v-b-toggle.accordion-3 variant = "info" style = "font-size: 13px">
-                                CREATE Post
-                            </b-button>
-                        </b-card-header>
-                        <b-collapse id = "accordion-3" accordion = "my-accordion" role = "tabpanel">
-                            <b-card-body>
-                                <h6 style = "text-align: center">Let's create a personalized advisory</h6>
-                                <experience-form></experience-form>
+                                <label style = "padding-top: 10px">SORT BY ELEMENT</label>
+                                <section class = "controls" style = "justify-content: left">
+                                    <md-radio v-model = "selectedSortingElement" value = "createdOn" class = "md-primary">
+                                        CreatedTime
+                                    </md-radio>
+                                    <md-radio v-model = "selectedSortingElement" value = "likes" class = "md-primary">
+                                        Likes
+                                    </md-radio>
+                                    <md-radio v-model = "selectedSortingElement" value = "ratings" class = "md-primary">
+                                        Overall Satisfaction
+                                    </md-radio>
+                                </section>
+                                <label style = "padding-top: 10px">SORTING ORDER</label>
+                                <section class = "controls" style = "justify-content: left">
+                                    <md-radio v-model = "selectedSortingOrder" value = "descending">Descending
+                                    </md-radio>
+                                    <md-radio v-model = "selectedSortingOrder" value = "increasing">Increasing
+                                    </md-radio>
+                                </section>
                             </b-card-body>
                         </b-collapse>
                     </b-card>
@@ -84,19 +85,14 @@
             </div>
             <div class = "col2">
                 <div>
-                    <div v-if = "getCountryUpdatedPostsList.length === 0 && getTextMessage !== ''" class = "post">
-                        <p class = "no-results">
-                            <em>{{getTextMessage}}</em>
-                        </p>
-                    </div>
                     <div :key = "post.id" class = "post" v-for = "post in getCountryUpdatedPostsList">
-                        <section class="controls rating">
-                            <label for="rating-inline" style="padding: 0; margin: 10px">Recommend to Travel</label>
-                            <b-form-rating id="rating-inline"
-                                           variant="info"
+                        <section class = "controls rating">
+                            <label for = "rating-inline" style = "padding: 0; margin: 10px">Overall Satisfaction</label>
+                            <b-form-rating id = "rating-inline"
+                                           variant = "info"
                                            readonly no-border inline
-                                           :value="post.rating_value_4"
-                                           style="padding: 10px"></b-form-rating>
+                                           :value = "post.rating_value_5"
+                                           style = "padding: 10px"></b-form-rating>
                         </section>
                         <h5>{{ post.userName }}</h5>
                         <b-form-group>
@@ -110,8 +106,11 @@
                                 <em><u>Travelled to</u></em> {{post.countryTravelled}}
                             </md-chip>
                             <md-chip size = "sm" class = "md-light" md-static style = "margin: 5px">
-                                <em><u>Period</u></em>
-                                {{post.dateTravelled|formatDateTravelled}}-{{post.dateTravelledTo|formatDateTravelled}}
+                                <em><u>Purpose</u></em> {{post.purpose}}
+                            </md-chip>
+                            <md-chip size = "sm" class = "md-light" md-static style = "margin: 5px">
+                                <em><u>Period</u></em> {{post.dateTravelled|formatDateTravelled}}
+                                                       to {{post.dateTravelledTo|formatDateTravelled}}
                             </md-chip>
                         </b-form-group>
                         <span>posted {{ post.createdOn | formatDate }}</span>
@@ -131,14 +130,14 @@
             <div class = "p-modal" v-if = "showPostModal">
                 <div class = "p-container">
                     <a @click = "closePostModal()" class = "close">close</a>
-                    <div class = "post" style="margin-bottom: 0">
-                        <section class="controls rating">
-                            <label for="rating-inline" style="padding: 0; margin: 10px">Recommend to Travel</label>
-                            <b-form-rating id="rating-inline"
-                                           variant="info"
+                    <div class = "post" style = "margin-bottom: 0">
+                        <section class = "controls rating">
+                            <label for = "rating-inline" style = "padding: 0; margin: 10px">Overall Satisfaction</label>
+                            <b-form-rating id = "rating-inline"
+                                           variant = "info"
                                            readonly no-border inline
-                                           :value="fullPost.rating_value_4"
-                                           style="padding: 10px"></b-form-rating>
+                                           :value = "fullPost.rating_value_5"
+                                           style = "padding: 10px"></b-form-rating>
                         </section>
                         <h5>{{ fullPost.userName }}</h5>
                         <b-form-group>
@@ -152,13 +151,55 @@
                                 <em><u>Travelled to</u></em> {{fullPost.countryTravelled}}
                             </md-chip>
                             <md-chip size = "sm" class = "md-light" md-static style = "margin: 5px">
-                                <em><u>Period</u></em>
-                                {{fullPost.dateTravelled|formatDateTravelled}}-{{fullPost.dateTravelledTo|formatDateTravelled}}
+                                <em><u>Purpose</u></em> {{fullPost.purpose}}
+                            </md-chip>
+                            <md-chip size = "sm" class = "md-light" md-static style = "margin: 5px">
+                                <em><u>Period</u></em> {{fullPost.dateTravelled|formatDateTravelled}}
+                                                       to {{fullPost.dateTravelledTo|formatDateTravelled}}
+                            </md-chip>
+                            <md-chip v-if = "getTravelledPeople(fullPost) !== ''" size = "sm" class = "md-light"
+                                     md-static style = "margin: 5px">
+                                <em><u>Travellers</u></em> {{getTravelledPeople(fullPost)}}
+                            </md-chip>
+                            <md-chip size = "sm" class = "md-light" md-static style = "margin: 5px">
+                                <em><u>Having existing medical condition</u></em> {{fullPost.medical}}
                             </md-chip>
                         </b-form-group>
                         <span>posted {{ fullPost.createdOn | formatDate }}</span>
+                        <section class = "controls" style = "justify-content: left">
+                            <p>Overall public health situation</p>
+                            <b-form-rating id = "rating-inline"
+                                           variant = "warning"
+                                           readonly no-border inline
+                                           :value = "fullPost.rating_value_1"
+                                           style = "padding: 10px"></b-form-rating>
+                        </section>
+                        <section class = "controls" style = "justify-content: left">
+                            <p>Observing of safety measures by the public</p>
+                            <b-form-rating id = "rating-inline"
+                                           variant = "warning"
+                                           readonly no-border inline
+                                           :value = "fullPost.rating_value_2"
+                                           style = "padding: 10px"></b-form-rating>
+                        </section>
+                        <section class = "controls" style = "justify-content: left">
+                            <p>Contact tracing</p>
+                            <b-form-rating id = "rating-inline"
+                                           variant = "warning"
+                                           readonly no-border inline
+                                           :value = "fullPost.rating_value_3"
+                                           style = "padding: 10px"></b-form-rating>
+                        </section>
+                        <section class = "controls" style = "justify-content: left">
+                            <p>Overall Satisfaction</p>
+                            <b-form-rating id = "rating-inline"
+                                           variant = "warning"
+                                           readonly no-border inline
+                                           :value = "fullPost.rating_value_5"
+                                           style = "padding: 10px"></b-form-rating>
+                        </section>
                         <br>
-                        <p>{{ fullPost.content | trimLength }}</p>
+                        <p><strong>{{ fullPost.content}}</strong></p>
                         <ul>
                             <li><a>comments {{ fullPost.comments }}</a></li>
                             <li><a>likes {{ fullPost.likes }}</a></li>
@@ -178,20 +219,20 @@
 </template>
 
 <script>
-	import {commentsCollection, postsCollection} from '@/firebase'
+	import {commentsCollection} from '@/firebase'
 	import {mapState} from 'vuex'
 	import moment from 'moment'
 	import CommentModal from '@/components/CommentModal'
 	import PinACountry from "@/components/PinACountry";
 	import ExperienceForm from "@/components/ExperienceForm";
-	// import CardSample from "@/components/CardSample";
+	import ProgressBar from "@/components/RatingSummary"
 	
 	export default {
 		components: {
 			CommentModal,
 			PinACountry,
 			ExperienceForm,
-			// CardSample,
+			ProgressBar
 		},
 		data() {
 			return {
@@ -208,8 +249,7 @@
 				searchClicked: false,
 				historySelectedOption: '',
 				selectedSortingElement: 'createdOn',
-				radio: 'descending',
-				selected: ['createdOn'],
+				selectedSortingOrder: 'descending',
 				optionsSortingElement: null,
 				value: null,
 			}
@@ -224,25 +264,49 @@
 					this.posts.filter(opt => opt.countryTravelled.toLowerCase().indexOf(criteriaCountry) > -1)
 				updatedPostList = (criteriaContent === '') ? updatedPostList :
 					this.posts.filter(opt => opt.content.toLowerCase().indexOf(criteriaContent) > -1)
+                updatedPostList = this.getCountrySortedPostsList(updatedPostList)
 				return updatedPostList
 			},
 			getTextMessage() {
+				let detectedCountrySearch = (this.selectedCountryOption === '') ? '' : ' (COUNTRY: '
+					+ this.selectedCountryOption + ')'
+				let detectedContentSearch = (this.selectedPostContent === '') ? '' : ' (CONTENT: '
+					+ this.selectedPostContent + ')'
 				if (this.posts.length === 0) {
 					return "There is no post has been made so far. Be the first one to share!"
 				} else if (this.getCountryUpdatedPostsList.length === 0) {
-					let detectedCountrySearch = (this.selectedCountryOption === '') ? '' : ' --- COUNTRY: ' + this.selectedCountryOption
-					let detectedContentSearch = (this.selectedPostContent === '') ? '' : ' --- CONTENT: ' + this.selectedPostContent
 					return "There is no post matching with" + detectedCountrySearch + detectedContentSearch
 				} else if (this.selectedCountryOption !== '' || this.selectedPostContent !== '') {
-					return "Search for post matching with "
+					return "Search for post matching with " + detectedCountrySearch + detectedContentSearch
 				}
-				return ""
+				return "Showing all the posts"
 			},
 			updateInterestCountry() {
 				return this.updateValue()
 			}
 		},
 		methods: {
+			getCountrySortedPostsList(updatedPostList) {
+				let criteria = this.selectedSortingElement
+				let order = this.selectedSortingOrder
+				if (criteria === "createdOn") {
+					updatedPostList.sort(function (a, b) {
+						return b.createdOn - a.createdOn;
+					})
+				} else if (criteria === "likes") {
+					updatedPostList.sort(function (a, b) {
+						return b.likes - a.likes;
+					})
+				} else if (criteria === "ratings") {
+					updatedPostList.sort(function (a, b) {
+						return b.rating_value_5 - a.rating_value_5;
+					})
+				}
+				if (order === "increasing") {
+					return updatedPostList.reverse()
+                }
+				return updatedPostList
+			},
 			toggleCommentModal(post) {
 				this.showCommentModal = !this.showCommentModal
 				if (this.showCommentModal) {
@@ -272,33 +336,22 @@
 				this.postComments = []
 				this.showPostModal = false
 			},
-			async updateData(countryCode) {
-				this.searchClicked = false
-				try {
-					if (this.country_options_dropdown.includes(countryCode)) {
-						this.currentPosts = []
-						const docs = await postsCollection.where('countryTravelled', '==', countryCode).get()
-						docs.forEach(doc => {
-							let post = doc.data()
-							post.id = doc.id
-							this.currentPosts.push(post)
-						})
-						console.log("Get results: ", this.currentPosts)
-						if (this.currentPosts.length > 0) {
-							this.textMessage = "There are " + this.currentPosts.length + " posts found"
-						} else if (this.currentPosts.length === 0 && this.selectedCountryOption !== '') {
-							this.textMessage = "There are currently no posts about " + this.selectedCountryOption
-						}
-						return this.currentPosts.length > 0;
-					}
-					return false
-				} catch (e) {
-					console.log(e.message)
-				}
-			},
 			updateValue() {
 				this.value = (this.value != null) ? this.value : this.userProfile.country_interested
 				return this.value
+			},
+			getTravelledPeople(selectedFullPost) {
+				let summaryString = ''
+				if (selectedFullPost.numAdult > 0) {
+					summaryString += " " + selectedFullPost.numAdult + " adult(s)"
+				}
+				if (selectedFullPost.numChild > 0) {
+					summaryString += " " + selectedFullPost.numChild + " child(s)"
+				}
+				if (selectedFullPost.numElder > 0) {
+					summaryString += " " + selectedFullPost.numElder + " elderly(s)"
+				}
+				return summaryString
 			}
 		},
 		filters: {
@@ -321,7 +374,7 @@
 					return val
 				}
 				return `${val.substring(0, 200)}...`
-			}
+			},
 		},
 		created() {
 			this.currentPosts = this.posts

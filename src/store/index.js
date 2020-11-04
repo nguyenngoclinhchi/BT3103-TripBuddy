@@ -164,6 +164,7 @@ const store = new Vuex.Store({
 				rating_value_2: post.rating_value_2,
 				rating_value_3: post.rating_value_3,
 				rating_value_4: post.rating_value_4,
+				rating_value_5: post.rating_value_5,
 			})
 		},
 		// eslint-disable-next-line no-unused-vars

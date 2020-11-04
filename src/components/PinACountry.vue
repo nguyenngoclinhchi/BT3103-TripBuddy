@@ -46,6 +46,7 @@
 					&& this.country_options_dropdown.includes(this.selectedCountry)) {
 					currentInterestedCountry.push(this.selectedCountry)
 					this.$store.dispatch('updateProfile', {
+						email: this.userProfile.email,
 						name: this.userProfile.name,
 						nationality: this.userProfile.nationality,
 						country_interested: currentInterestedCountry
