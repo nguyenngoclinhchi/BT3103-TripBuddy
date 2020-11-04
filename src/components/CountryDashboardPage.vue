@@ -3,17 +3,25 @@
         <div class = "container">
             <h6>Last Refreshed: {{date}}</h6>
             <div>
-                <section class="controls">
-                    <md-autocomplete v-model="selectedOption" :md-options="country_options_dropdown">
+                <section class = "controls">
+                    <md-autocomplete v-model = "selectedOption" :md-options = "country_options_dropdown">
                         <label>Country</label>
                     </md-autocomplete>
                     <md-button @click = "updateData(selectedOption)" class = "md-raised md-primary"
-                               style="padding: 9px; display: block; overflow: hidden">
+                               style = "padding: 9px; display: block; overflow: hidden">
                         Search
                     </md-button>
-                    <pin-a-country :selected-country="selectedOption"></pin-a-country>
+                    <pin-a-country :selected-country = "selectedOption"></pin-a-country>
                 </section>
-                <br>
+                <p>
+                    Using shortcut search with PINNED country list by clicking in the country tag</p>
+                <b-form-group style = "padding: 0 8px">
+                    <md-chip class = "md-accent" v-for = "chip in userProfile.country_interested" :key = "chip"
+                             md-clickable style = "margin: 5px"
+                             @click = "selectedOption = chip; updateData(selectedOption)">
+                        {{chip}}
+                    </md-chip>
+                </b-form-group>
                 <section>
                     <div class = "chart controls">
                         <canvas id = "radarChart"></canvas>
@@ -31,11 +39,12 @@
                             <p style = "font-size:120%;"><b> <u> Containment & Health Index </u> </b></p>
                             <p>
                                 combines ‘lockdown’ restrictions and closures with measures such as testing policy and
-                                contact tracing, short term investment in healthcare, as well investments in vaccine </p>
+                                contact tracing, short term investment in healthcare, as well investments in
+                                vaccine </p>
                         </div>
                     </div>
                 </section>
-                <section style="min-height: 70vh">
+                <section style = "min-height: 70vh">
                     <div class = "H">
                         <h5 style = "text-align: center"><b> Health System Policies </b></h5>
                         <table id = "H_indicators">

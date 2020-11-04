@@ -14,17 +14,20 @@
                     <b-card no-body class = "mb-1">
                         <b-card-header header-tag = "header" class = "p-1" role = "tab">
                             <b-button block v-b-toggle.accordion-1 variant = "info" style = "font-size: 13px"
-                            @click="value = (value != null)? value : userProfile.country_interested">
+                                      @click = "updateInterestCountry">
                                 SHORTCUT FILTER posts with PINNED COUNTRY list
                             </b-button>
                         </b-card-header>
                         <b-collapse id = "accordion-1" visible accordion = "my-accordion" role = "tabpanel">
-                            <p style="text-align: center">Choose only posts with ONLY specific country in the PINNED list</p>
+                            <p style = "text-align: center">
+                                Choose only posts with ONLY specific country in the PINNED list</p>
                             <b-form-group style = "padding: 0 8px">
-                                <b-form-checkbox-group v-model = "selected" :options = "optionsSortingElement"
-                                                       class="controls" stacked name = "buttons-1"
-                                                       buttons button-variant = "light" size = "sm">
-                                </b-form-checkbox-group>
+                                <md-chip class = "md-accent" v-for = "chip in value" :key = "chip" md-clickable style = "margin: 5px" @click = "selectedCountryOption = chip">
+                                    {{chip}}
+                                </md-chip>
+                                <md-chip class = "md-info" md-clickable style = "margin: 5px" @click = "selectedCountryOption = ''">
+                                    Reset to all countries
+                                </md-chip>
                             </b-form-group>
                         </b-collapse>
                     </b-card>
@@ -87,10 +90,30 @@
                         </p>
                     </div>
                     <div :key = "post.id" class = "post" v-for = "post in getCountryUpdatedPostsList">
+                        <section class="controls rating">
+                            <label for="rating-inline" style="padding: 0; margin: 10px">Recommend to Travel</label>
+                            <b-form-rating id="rating-inline"
+                                           variant="info"
+                                           readonly no-border inline
+                                           :value="post.rating_value_4"
+                                           style="padding: 10px"></b-form-rating>
+                        </section>
                         <h5>{{ post.userName }}</h5>
-                        <p>has travelled to <em>{{ post.countryTravelled }}</em> from <em>{{post.dateTravelled |
-                                                                                          formatDateTravelled}}</em>
-                           to <em>{{post.dateTravelledTo | formatDateTravelled}}</em></p>
+                        <b-form-group>
+                            <md-chip size = "sm" class = "md-info" md-static style = "margin: 5px">
+                                <em><u>Email</u></em> {{userProfile.email}}
+                            </md-chip>
+                            <md-chip size = "sm" class = "md-info" md-static style = "margin: 5px">
+                                <em><u>Nationality</u></em> {{userProfile.nationality}}
+                            </md-chip>
+                            <md-chip size = "sm" class = "md-info" md-static style = "margin: 5px">
+                                <em><u>Travelled to</u></em> {{post.countryTravelled}}
+                            </md-chip>
+                            <md-chip size = "sm" class = "md-light" md-static style = "margin: 5px">
+                                <em><u>Period</u></em>
+                                {{post.dateTravelled|formatDateTravelled}}-{{post.dateTravelledTo|formatDateTravelled}}
+                            </md-chip>
+                        </b-form-group>
                         <span>posted {{ post.createdOn | formatDate }}</span>
                         <br>
                         <p>{{ post.content | trimLength }}</p>
@@ -108,10 +131,34 @@
             <div class = "p-modal" v-if = "showPostModal">
                 <div class = "p-container">
                     <a @click = "closePostModal()" class = "close">close</a>
-                    <div class = "post">
+                    <div class = "post" style="margin-bottom: 0">
+                        <section class="controls rating">
+                            <label for="rating-inline" style="padding: 0; margin: 10px">Recommend to Travel</label>
+                            <b-form-rating id="rating-inline"
+                                           variant="info"
+                                           readonly no-border inline
+                                           :value="fullPost.rating_value_4"
+                                           style="padding: 10px"></b-form-rating>
+                        </section>
                         <h5>{{ fullPost.userName }}</h5>
-                        <span>{{ fullPost.createdOn | formatDate }}</span>
-                        <p>{{ fullPost.content }}</p>
+                        <b-form-group>
+                            <md-chip size = "sm" class = "md-info" md-static style = "margin: 5px">
+                                <em><u>Email</u></em> {{userProfile.email}}
+                            </md-chip>
+                            <md-chip size = "sm" class = "md-info" md-static style = "margin: 5px">
+                                <em><u>Nationality</u></em> {{userProfile.nationality}}
+                            </md-chip>
+                            <md-chip size = "sm" class = "md-info" md-static style = "margin: 5px">
+                                <em><u>Travelled to</u></em> {{fullPost.countryTravelled}}
+                            </md-chip>
+                            <md-chip size = "sm" class = "md-light" md-static style = "margin: 5px">
+                                <em><u>Period</u></em>
+                                {{fullPost.dateTravelled|formatDateTravelled}}-{{fullPost.dateTravelledTo|formatDateTravelled}}
+                            </md-chip>
+                        </b-form-group>
+                        <span>posted {{ fullPost.createdOn | formatDate }}</span>
+                        <br>
+                        <p>{{ fullPost.content | trimLength }}</p>
                         <ul>
                             <li><a>comments {{ fullPost.comments }}</a></li>
                             <li><a>likes {{ fullPost.likes }}</a></li>
@@ -138,13 +185,13 @@
 	import PinACountry from "@/components/PinACountry";
 	import ExperienceForm from "@/components/ExperienceForm";
 	// import CardSample from "@/components/CardSample";
-
+	
 	export default {
 		components: {
 			CommentModal,
 			PinACountry,
 			ExperienceForm,
-            // CardSample,
+			// CardSample,
 		},
 		data() {
 			return {
@@ -164,7 +211,7 @@
 				radio: 'descending',
 				selected: ['createdOn'],
 				optionsSortingElement: null,
-                value: null,
+				value: null,
 			}
 		},
 		computed: {
@@ -186,8 +233,13 @@
 					let detectedCountrySearch = (this.selectedCountryOption === '') ? '' : ' --- COUNTRY: ' + this.selectedCountryOption
 					let detectedContentSearch = (this.selectedPostContent === '') ? '' : ' --- CONTENT: ' + this.selectedPostContent
 					return "There is no post matching with" + detectedCountrySearch + detectedContentSearch
+				} else if (this.selectedCountryOption !== '' || this.selectedPostContent !== '') {
+					return "Search for post matching with "
 				}
 				return ""
+			},
+			updateInterestCountry() {
+				return this.updateValue()
 			}
 		},
 		methods: {
@@ -243,6 +295,10 @@
 				} catch (e) {
 					console.log(e.message)
 				}
+			},
+			updateValue() {
+				this.value = (this.value != null) ? this.value : this.userProfile.country_interested
+				return this.value
 			}
 		},
 		filters: {

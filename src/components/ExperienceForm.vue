@@ -76,7 +76,7 @@
                         </md-field>
                         <md-field>
                             <label>What is your experience in the trip?</label>
-                            <md-textarea v-model.trim = "post.content" md-autogrow md-counter="200"></md-textarea>
+                            <md-textarea v-model.trim = "post.content" md-autogrow md-counter = "1000"></md-textarea>
                         </md-field>
                         <label> Does any of the traveller have existing medical condition?</label>
                         <md-switch v-model = "post.medical">Yes</md-switch>
@@ -156,7 +156,7 @@
 <script>
 	import {mapState} from "vuex";
 	import moment from "moment";
-
+	
 	export default {
 		data() {
 			return {

@@ -179,6 +179,22 @@ section {
     justify-content: center
 }
 
+.rating {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    padding: 10px;
+    /* translateX used in combination with left to center .inner */
+    /* translateY used to position .inner 50% above its height.. */
+    /* starting from a declared position of top: 0 */
+    transform: translateX(-50%) translateY(-50%);
+    /* make .inner 50% of width and height of parent (.outer) */
+    width: auto;
+    height: auto;
+    background-color: hsla(0, 100%, 99%, 0.8);
+    border-radius: 20px;
+}
+
 label {
     display: block;
     font-size: 15px;
@@ -470,14 +486,23 @@ header ul li a {
     font-size: 16px;
     padding: 1.5rem;
     background: #fff;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+#dashboard .fullPost {
+    border: 1px solid #e6ecf0;
+    border-bottom: 0;
+    font-size: 16px;
+    padding: 1.5rem;
+    background: #fff;
+    margin-top: 2rem;
+    position: relative;
 }
 
 #dashboard .post:hover {
     background: #f5f8fa;
-}
-
-#dashboard .post:last-of-type {
-    border-bottom: 1px solid #F5F8FA;
 }
 
 #dashboard .post h5 {
@@ -488,6 +513,7 @@ header ul li a {
     display: block;
     font-style: italic;
     font-size: 14px;
+    margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     color: #a0bdd0;
 }
@@ -564,7 +590,7 @@ header ul li a {
     margin: 0 auto;
     padding: 2rem;
     border-radius: 3px;
-    background: #fff;
+    background: hsla(0, 100%, 99%, 0.9);
     box-shadow: 0 0 20px 0 rgba(52, 73, 94, 0.5);
     overflow: auto;
 }
@@ -589,7 +615,8 @@ header ul li a {
 #dashboard .p-modal .p-container .comment {
     font-size: 16px;
     padding: 1.5rem;
-    border-top: 1px solid #e6ecf0;
+    border-bottom: 1px solid #e6ecf0;
+    background-color: #ffffff;
 }
 
 #dashboard .p-modal .p-container .comment:first-of-type {
