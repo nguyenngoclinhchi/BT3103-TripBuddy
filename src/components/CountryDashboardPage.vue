@@ -3,31 +3,36 @@
         <div class = "container">
             <h6>Last Refreshed: {{date}}</h6>
             <div>
-                <section>
+                <section class="controls">
                     <md-autocomplete v-model="selectedOption" :md-options="country_options_dropdown">
                         <label>Country</label>
                     </md-autocomplete>
-                    <md-button @click = "updateData(selectedOption)" class = "md-raised md-primary">Search</md-button>
+                    <md-button @click = "updateData(selectedOption)" class = "md-raised md-primary"
+                               style="padding: 9px; display: block; overflow: hidden">
+                        Search
+                    </md-button>
                     <pin-a-country :selected-country="selectedOption"></pin-a-country>
                 </section>
                 <br>
                 <section>
-                    <div class = "chart">
+                    <div class = "chart controls">
                         <canvas id = "radarChart"></canvas>
                     </div>
-                    <div class = "indic" style = "background-color:white; padding:10px; border-radius: 17px">
-                        <p style = "font-size:120%;"><b> <u> Stringency Index </u> </b></p>
-                        <p>
-                            records the strictness of ‘lockdown style’ policies that primarily restrict people’
-                            behaviour </p>
-                        <p style = "font-size:120%;"><b> <u> Government Response Index </u> </b></p>
-                        <p>
-                            records how the response of governments has varied over all indicators in the database,
-                            becoming stronger or weaker over the course of the outbreak </p>
-                        <p style = "font-size:120%;"><b> <u> Containment & Health Index </u> </b></p>
-                        <p>
-                            combines ‘lockdown’ restrictions and closures with measures such as testing policy and
-                            contact tracing, short term investment in healthcare, as well investments in vaccine </p>
+                    <div class = "indic controls" style = "background-color:white; padding:10px; border-radius: 17px">
+                        <div>
+                            <p style = "font-size:120%;"><b> <u> Stringency Index </u> </b></p>
+                            <p>
+                                records the strictness of ‘lockdown style’ policies that primarily restrict people’
+                                behaviour </p>
+                            <p style = "font-size:120%;"><b> <u> Government Response Index </u> </b></p>
+                            <p>
+                                records how the response of governments has varied over all indicators in the database,
+                                becoming stronger or weaker over the course of the outbreak </p>
+                            <p style = "font-size:120%;"><b> <u> Containment & Health Index </u> </b></p>
+                            <p>
+                                combines ‘lockdown’ restrictions and closures with measures such as testing policy and
+                                contact tracing, short term investment in healthcare, as well investments in vaccine </p>
+                        </div>
                     </div>
                 </section>
                 <section style="min-height: 70vh">

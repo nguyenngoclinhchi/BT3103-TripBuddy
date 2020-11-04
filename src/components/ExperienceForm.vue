@@ -1,8 +1,7 @@
 <template>
     <div id = "statistics_form">
         <section>
-            <md-button @click = "active = true" class = "md-raised md-primary"
-                       style = "font-size: 13px; padding: 8px; width: 100%; height: 100%; display: block; overflow: hidden">
+            <md-button @click = "active = true" class = "md-raised md-primary md-button-custom">
                 Share a experience
             </md-button>
             <md-dialog :md-active.sync = "active">

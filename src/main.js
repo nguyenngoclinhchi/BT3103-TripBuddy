@@ -10,11 +10,14 @@ import {auth} from './firebase'
 import compositionApi from "@vue/composition-api";
 import { BootstrapVue, IconsPlugin, BFormRating } from 'bootstrap-vue'
 import PortalVue from 'portal-vue'
+import Vuetify from 'vuetify'
 import './assets/main.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
+// import 'vuetify/dist/vuetify.min.css'
 
+Vue.use(Vuetify)
 Vue.use(PortalVue)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)

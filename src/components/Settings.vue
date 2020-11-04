@@ -70,8 +70,8 @@
             <b-card no-body class = "mb-1">
                 <b-card-header header-tag = "header" class = "p-1" role = "tab">
                     <b-button block v-b-toggle.accordion-3 variant = "info"
-                              style = "font-size: 13px" @click = "
-                              value = (value != null)? value : userProfile.country_interested">
+                              style = "font-size: 13px"
+                              @click = "value = (value != null)? value : userProfile.country_interested">
                         Update customized pinned interesting countries
                     </b-button>
                 </b-card-header>

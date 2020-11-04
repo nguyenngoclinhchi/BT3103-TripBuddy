@@ -1,15 +1,17 @@
 <template>
     <div class = "mainPage">
-        <h1>Welcome {{ userProfile.name }} to Trip Buddy Home page</h1>
+        <card-sample></card-sample>
+<!--        <h1>Welcome {{ userProfile.name }} to Trip Buddy Home page</h1>-->
     </div>
 </template>
 <script>
 	import {mapState} from "vuex";
-	
+	import CardSample from "@/components/CardSample";
 	export default {
 		name: "MainPage",
 		components: {
-			// Notifications
+			// Notifications,
+            CardSample
 		},
 		data: function () {
 			return {
