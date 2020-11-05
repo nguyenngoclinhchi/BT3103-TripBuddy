@@ -120,7 +120,7 @@
 		methods: {
 			date_function: function () {
 				let currentDate = new Date();
-				//console.log(currentDate);
+				//console.log(currentDate.toJSON());
 				currentDate.setDate(currentDate.getDate() - 5);
 				// console.log(formatted_date);
 				return currentDate.toJSON().slice(0, 10);
@@ -189,7 +189,7 @@
 						alert('No data available for ' + name)
 					} else {
 						// fetch data for indicators table
-						let link = 'https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/' + code + '/2020-10-01';
+						let link = 'https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/' + code + '/' + this.date_function();
 						axios.get(link).then(response => {
 							this.H_indicators = [];
 							this.C_indicators = [];

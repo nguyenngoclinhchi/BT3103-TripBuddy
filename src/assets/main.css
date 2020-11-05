@@ -842,6 +842,27 @@ header ul li a {
     margin: auto;
 }
 
+#pinnedCountries .container {
+    max-width: 1300px;
+    margin: auto;
+    padding: 10px;
+}
+
+#pinnedCountries .chart {
+    width: 80%;
+    margin: auto;
+    padding: 15px;
+    /*float: left;*/
+}
+
+#pinnedCountries .news {
+    background-color: lightgrey;
+    border: 1px solid black;
+    width: 1000px;
+    height: 500px;
+    margin:auto;
+}
+
 #login .countries_container {
     overflow: auto; /* Optionally you can also use overflow: scroll; */
 }
