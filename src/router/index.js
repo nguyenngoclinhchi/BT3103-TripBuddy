@@ -6,6 +6,7 @@ import MainPage from "@/components/MainPage";
 import Statistics from "@/components/GlobalDashboardPage";
 import About from "@/components/About";
 import DashboardComment from "@/components/ExperienceDashboard";
+import PinnedCountry from "@/components/PinnedCountry";
 
 Vue.use(VueRouter)
 
@@ -46,6 +47,10 @@ const routes = [
 	{
 		path: '/comments',
 		component: DashboardComment
+	},
+	{
+		path: '/pinned',
+		component: PinnedCountry
 	}
 ]
 
