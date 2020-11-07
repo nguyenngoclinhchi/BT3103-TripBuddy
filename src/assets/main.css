@@ -831,6 +831,10 @@ header ul li a {
     padding: 10px;
 }
 
+#statistics_map {
+    min-height: 230vh;
+}
+
 #statistics_map section {
     padding: 20px;
     margin: auto;
@@ -848,6 +852,10 @@ header ul li a {
     padding: 10px;
 }
 
+#pinnedCountries {
+    min-height: 230vh;
+}
+
 #pinnedCountries .chart {
     width: 80%;
     margin: auto;
@@ -855,13 +863,6 @@ header ul li a {
     /*float: left;*/
 }
 
-#pinnedCountries .news {
-    background-color: lightgrey;
-    border: 1px solid black;
-    width: 1000px;
-    height: 500px;
-    margin:auto;
-}
 
 #login .countries_container {
     overflow: auto; /* Optionally you can also use overflow: scroll; */
