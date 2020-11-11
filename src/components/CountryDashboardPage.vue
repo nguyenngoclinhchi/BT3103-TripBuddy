@@ -1,6 +1,6 @@
 <template>
     <div id = "statistics_dashboard">
-        <div class = "container" style="padding-top: 25px">
+        <div class = "container">
             <h6>Last Refreshed: {{date}}</h6>
             <div>
                 <section class = "controls">
@@ -44,9 +44,9 @@
                         </div>
                     </div>
                 </section>
-                <section style = "min-height: 70vh">
+                <section style = "min-height: 70vh; margin: auto">
                     <div class = "H">
-                        <h5 style = "text-align: center"><b> Health System Policies </b></h5>
+                        <h6 style = "text-align: center"><b> Health System Policies </b></h6>
                         <table id = "H_indicators">
                             <thead>
                             <tr>
@@ -67,7 +67,7 @@
                         </table>
                     </div>
                     <div class = "C">
-                        <h5 style = "text-align: center"><b> Containment and Closure Policies </b></h5>
+                        <h6 style = "text-align: center"><b> Containment and Closure Policies </b></h6>
                         <table id = "C_indicators">
                             <thead>
                             <tr>

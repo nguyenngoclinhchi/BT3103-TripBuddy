@@ -338,5 +338,3 @@
 		},
 	}
 </script>
-<style>
-</style>

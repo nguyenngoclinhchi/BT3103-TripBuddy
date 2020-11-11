@@ -1,6 +1,6 @@
 <template>
     <div id = "pinnedCountries">
-        <div class = "container" style = "margin-top: 25px">
+        <div class = "container">
             <h6>
                 Last Refreshed: {{date}}
             </h6>
@@ -12,11 +12,9 @@
                     Display
                 </md-button>
             </section>
-            <h6>
-                <p style = "padding-bottom: 20px; text-align: right">
-                    <i>View your pinned countries by selecting from the dropdown button and click Display button</i>
-                </p>
-            </h6>
+            <p style = "padding-bottom: 10px; text-align: right">
+                <i>View your pinned countries by selecting from the dropdown button and click Display button</i>
+            </p>
             
             <div v-if = "this.alertStatus === 0">
                 <b-alert show variant = "secondary">
@@ -135,7 +133,7 @@
 		methods: {
 			createChart: function (chartId, chartData) {
 				try {
-					const ctx = document.getElementById(chartId);
+					const ctx = document.getElementById(chartId).getContext('2d');
 					this.myChart = new Chart(ctx, {
 						type: chartData.type,
 						data: chartData.data,
@@ -149,7 +147,7 @@
 			
 			createChart2: function (chartId, chartData) {
 				try {
-					const ctx = document.getElementById(chartId);
+					const ctx = document.getElementById(chartId).getContext('2d');
 					this.myChart2 = new Chart(ctx, {
 						type: chartData.type,
 						data: chartData.data,
@@ -162,12 +160,13 @@
 			},
 			
 			updateData: function (countryCode) {
-				document.getElementById("notification_processing").innerHTML = "processing data for " + countryCode
+				document.getElementById("notification_processing").innerHTML = "Processing data for " + countryCode
 				let code = countryCode.slice(1, 4)
 				// clear previous data
 				this.myChart.data.datasets[0].data = []
 				this.myChart.data.datasets[1].data = []
 				this.myChart.data.labels = []
+				this.myChart.update()
 				//let date = this.date
 				const link = "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/" + this.prev_date() + "/" + this.date_function()
 				axios.get(link).then(response => {
@@ -179,7 +178,7 @@
 								this.myChart.data.datasets[0].data.push(response.data.data[day][country].confirmed / 1000)
 								this.myChart.data.datasets[1].data.push(response.data.data[day][country].stringency)
 								this.myChart.data.labels.push(response.data.data[day][country].date_value)
-								
+								this.myChart.update()
 							}
 						}
 					}
@@ -195,6 +194,7 @@
 				let regiondeaths = 0;
 				this.myChart2.data.datasets[0].data = []
 				this.myChart2.data.labels = []
+				this.myChart2.update()
 				axios.get(link2).then(response => {
 					for (let day in response.data.data) {
 						for (let country in response.data.data[day]) {
@@ -214,6 +214,7 @@
 					this.myChart2.data.datasets[0].data.push(regiondeaths)
 					this.myChart2.data.labels.push(country)
 					this.myChart2.data.labels.push("Other countries in " + region)
+					this.myChart2.update()
 					let percentage = (deaths / regiondeaths).toFixed(3);
 					let total = deaths + regiondeaths;
 					document.getElementById("%deaths").innerHTML = percentage + "%"
@@ -295,6 +296,13 @@
 		},
 		mounted() {
 			this.createChart("mixedChart", this.mixedChartData);
+			this.createChart2("doughnutChart", this.doughnutChartData);
+			this.date = this.date_function()
+		},
+		created() {
+			console.log("Starting creating mixedChart")
+			this.createChart("mixedChart", this.mixedChartData);
+			console.log("Starting creating doughnutChart")
 			this.createChart2("doughnutChart", this.doughnutChartData);
 			this.date = this.date_function()
 		}

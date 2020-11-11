@@ -71,9 +71,3 @@
 		}
 	}
 </script>
-
-<style scoped>
-    .md-dialog {
-        transform: translate(0%, 0%) scale(1) !important;
-    }
-</style>

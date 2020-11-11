@@ -97,9 +97,3 @@
 		}
 	}
 </script>
-
-<style scoped>
-    .text-danger {
-        color: salmon;
-    }
-</style>

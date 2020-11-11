@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
 
 body {
     margin: 0;
     color: #34495E;
     background: #E6ECF0;
-    min-height: 150vh;
 }
 
 html {
@@ -23,31 +23,35 @@ html {
     outline: none;
 }
 
-h1, h2, h3, h4, h5, p {
+h1, h2, h3, h4, h5, h6, p {
     margin: 8px;
 }
 
 h1 {
-    font-size: 2.2rem;
+    font-size: 37px;
 }
 
 h2 {
-    font-size: 2.0rem;
+    font-size: 33px;
 }
 
 h3 {
-    font-size: 1.8rem;
+    font-size: 29px;
 }
 
 h4 {
-    font-size: 1.6rem;
+    font-size: 25px;
 }
 
 h5 {
-    font-size: 1.4rem;
+    font-size: 21px;
 }
 
-em p {
+h6 {
+    font-size: 17px;
+}
+
+em p li label form input textarea ul{
     font-size: 13px;
     line-height: 1.5;
 }
@@ -65,7 +69,7 @@ a:hover {
 
 section {
     display: flex;
-    max-width: 1300px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -157,7 +161,6 @@ section {
 
 .inline li {
     display: inline-block;
-    font-size: 14px;
 }
 
 .clear {
@@ -173,6 +176,7 @@ section {
 }
 
 .controls {
+    margin: 8px;
     display: flex;
     align-items: center;
     justify-content: center
@@ -194,16 +198,20 @@ section {
     border-radius: 20px;
 }
 
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding-top: 25px
+}
+
 label {
     display: block;
-    font-size: 15px;
 }
 
 form input {
     display: block;
     width: 100%;
     margin-bottom: 0.3rem;
-    font-size: 13px;
     padding: 5px 10px;
     outline: 0;
     border: 1px solid #e6ecf0;
@@ -221,7 +229,6 @@ form textarea {
     height: 100px;
     width: 100%;
     padding: 5px 10px;
-    font-size: 16px;
 }
 
 .fade-enter-active {
@@ -405,7 +412,7 @@ header ul li a {
 
 .modal .modal-content .error {
     color: tomato;
-    font-size: 16px;
+    font-size: 13px;
 }
 
 .modal .modal-content .button {
@@ -418,11 +425,6 @@ header ul li a {
 
 #dashboard .col1 {
     flex: 0 0 40%;
-}
-
-#dashboard section {
-    margin: auto;
-    max-width: 1100px;
 }
 
 @media screen and (max-width: 800px) {
@@ -460,7 +462,7 @@ header ul li a {
 #dashboard .hidden-posts {
     text-align: center;
     border: 1px solid #e6ecf0;
-    font-size: 16px;
+    font-size: 13px;
     border-bottom: 0;
     background: #fff;
 }
@@ -483,7 +485,7 @@ header ul li a {
 #dashboard .post {
     border: 1px solid #e6ecf0;
     border-bottom: 0;
-    font-size: 16px;
+    font-size: 13px;
     padding: 1.5rem;
     background: #fff;
     margin-top: 2rem;
@@ -494,7 +496,7 @@ header ul li a {
 #dashboard .fullPost {
     border: 1px solid #e6ecf0;
     border-bottom: 0;
-    font-size: 16px;
+    font-size: 13px;
     padding: 1.5rem;
     background: #fff;
     margin-top: 2rem;
@@ -512,7 +514,7 @@ header ul li a {
 #dashboard .post span {
     display: block;
     font-style: italic;
-    font-size: 14px;
+    font-size: 13px;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     color: #a0bdd0;
@@ -531,7 +533,7 @@ header ul li a {
 #dashboard .post ul li {
     display: inline-block;
     margin-right: 1rem;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 #dashboard .no-results {
@@ -600,7 +602,7 @@ header ul li a {
     top: 5px;
     right: 10px;
     padding: 5px;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 #dashboard .p-modal .p-container .post {
@@ -613,7 +615,7 @@ header ul li a {
 }
 
 #dashboard .p-modal .p-container .comment {
-    font-size: 16px;
+    font-size: 13px;
     padding: 1.5rem;
     border-bottom: 1px solid #e6ecf0;
     background-color: #ffffff;
@@ -630,7 +632,7 @@ header ul li a {
 #dashboard .p-modal .p-container .comment span {
     display: block;
     font-style: italic;
-    font-size: 14px;
+    font-size: 13px;
     margin-bottom: 0.5rem;
     color: #b1c8d8;
 }
@@ -750,18 +752,10 @@ header ul li a {
     height: 0;
 }
 
-#mainContent .container {
-    height: 200px;
-}
-
 #mainContent .container::after, .row::after {
     content: "";
     clear: both;
     display: table;
-}
-
-#statistics_form .section {
-    padding: 20px;
 }
 
 #statistics_dashboard .chart {
@@ -771,7 +765,7 @@ header ul li a {
 }
 
 #statistics_dashboard .indic {
-    width: 33%;
+    width: 350px;
     float: left;
 }
 
@@ -793,10 +787,14 @@ header ul li a {
     padding-right: 10px;
 }
 
+.text-danger {
+    color: salmon;
+}
+
 #statistics_dashboard table {
     margin-left: auto;
     margin-right: auto;
-    width: 600px;
+    width: 520px;
     border-collapse: collapse;
     border: 3px solid #ffffff;
 }
@@ -807,7 +805,7 @@ header ul li a {
     background: #000000;
     color: #FFF;
     padding: 8px;
-    min-width: 30px;
+    /*min-width: 30px;*/
 }
 
 #statistics_dashboard table td {
@@ -823,31 +821,22 @@ header ul li a {
     background: #dddddc;
 }
 
-#statistics_dashboard .container {
-    max-width: 1300px;
-    margin: auto;
-    padding: 10px;
-}
-
 #statistics_map {
     min-height: 230vh;
 }
 
 #statistics_map section {
-    padding: 20px;
-    margin: auto;
-    max-width: 1200px;
+    align-content: center;
+    width: 1000px;
+    max-width: 100%;
+    box-shadow: 2px 3px 18px -17px rgba(0, 0, 0, 1);
+    margin: 8px auto 2rem;
 }
 
-#statistics_map .container {
-    max-width: 1300px;
-    margin: auto;
-}
-
-#pinnedCountries .container {
-    max-width: 1300px;
-    margin: auto;
-    padding: 10px;
+#statistics_table {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #pinnedCountries {
@@ -961,4 +950,63 @@ header ul li a {
     to {
         stroke-dashoffset: 0;
     }
+}
+
+#mainPage {
+    box-sizing: border-box;
+    margin-left: 100px;
+    margin-right: 100px
+}
+
+#mainPage .column1 {
+    align-content: center;
+    margin: 30px auto 2rem;
+    width: 800px;
+    padding: 0;
+}
+
+#mainPage p {
+    text-align: left;
+}
+
+#mainPage .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#mainPage .column {
+    float: left;
+    width: 33%;
+    padding: 0 30px;
+}
+
+#mainPage .row {
+    margin: 0 -5px;
+}
+
+#mainPage .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 600px) {
+    #mainPage .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+#mainPage .card {
+    padding: 12px;
+    text-align: center;
+    background-color: #f1f1f1;
+    color: #fff;
+    box-shadow: 7px 6px 26px -17px rgba(0, 0, 0, 1);
+}
+
+#mainPage p {
+    text-align: center;
 }

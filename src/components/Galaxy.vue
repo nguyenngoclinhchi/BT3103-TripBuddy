@@ -1,5 +1,5 @@
 <template>
-    <div class="window u-pr">
+    <div id="galaxy" class="window u-pr">
         <div class="window--inner u-fw">
             <div class="window--container u-fw u-pr">
                 <ul class="window--stars u-fw u-pr">
