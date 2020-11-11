@@ -1,6 +1,7 @@
 <template>
     <div class = "mainPage" style="margin-left: 100px; margin-right: 100px">
-        <h1>Welcome {{ userProfile.name }} to Trip Buddy Home page</h1>
+        <h1>{{greeting}}, {{ userProfile.name }}</h1>
+		<h2>Welcome to your TripBuddy dashboard</h2>
 		<h4>Last Refreshed: {{date}}</h4><br>
 		<div class="row">
 			<div class="column">
@@ -53,10 +54,22 @@
 				totalDeaths: null,
 				totalRecovered: null,
 				showPostModal: true,
+				greeting: null
 			};
 		},
 		computed: {
-			...mapState(['userProfile', 'posts'])
+			...mapState(['userProfile', 'posts']),
+			getTime: function() {
+                var today = new Date();
+                var cur = today.getHours();
+                if (cur < 12) {
+                    this.greeting = 'Good morning'
+                } else if (cur < 18) {
+                    this.greeting = 'Good afternoon'
+                } else {
+                    this.greeting = 'Good evening'
+                }				
+			}
 		},
 		methods: {
 			user() {
