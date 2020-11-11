@@ -1,5 +1,5 @@
 <template>
-    <div class = "mainPage">
+    <div class = "mainPage" style="margin-left: 100px; margin-right: 100px">
         <h1>Welcome {{ userProfile.name }} to Trip Buddy Home page</h1>
 		<h4>Last Refreshed: {{date}}</h4><br>
 		<div class="row">
@@ -102,7 +102,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
 
 * {
-	font-family: "Merriweather", serif;
 	box-sizing: border-box;
 }
 .column1 {

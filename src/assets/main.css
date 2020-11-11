@@ -14,7 +14,7 @@ html {
 }
 
 * {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Merriweather", serif;
     box-sizing: border-box;
     transition: 0.15s;
 }
@@ -53,7 +53,6 @@ em p {
 }
 
 a {
-    font-family: 'Open Sans', sans-serif;
     text-decoration: none;
     color: #30A0EE;
     margin: 0;
@@ -675,7 +674,6 @@ header ul li a {
 }
 
 #aboutCOVID {
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
     background-image: url('https://stories.uh.edu/covid-19/assets/ag2dSlL11z/covidbackground05-2560x1440.jpeg');
     background-size: cover;
     color: #BF0000;
