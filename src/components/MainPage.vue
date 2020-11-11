@@ -1,7 +1,6 @@
 <template>
     <div class = "mainPage" style="margin-left: 100px; margin-right: 100px">
-        <h1>{{greeting}}, {{ userProfile.name }}</h1>
-		<h2>Welcome to your TripBuddy dashboard</h2>
+        <h1>{{greeting}}, {{ userProfile.name }}. Welcome to your TripBuddy dashboard</h1>
 		<h4>Last Refreshed: {{date}}</h4><br>
 		<div class="row">
 			<div class="column">
@@ -23,6 +22,7 @@
 				</div>
 			</div>
 		</div>
+		<br>
 		<div class="row">
 			<div class="column1">
 				<div class="card" style="background-color: white; padding: 0px;">
@@ -59,17 +59,6 @@
 		},
 		computed: {
 			...mapState(['userProfile', 'posts']),
-			getTime: function() {
-                var today = new Date();
-                var cur = today.getHours();
-                if (cur < 12) {
-                    this.greeting = 'Good morning'
-                } else if (cur < 18) {
-                    this.greeting = 'Good afternoon'
-                } else {
-                    this.greeting = 'Good evening'
-                }				
-			}
 		},
 		methods: {
 			user() {
@@ -94,7 +83,18 @@
 			},
 			numberWithCommas: function(x) {
 				return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-			}
+			},
+			getGreeting: function() {
+                var today = new Date();
+                var cur = today.getHours();
+                if (cur < 12) {
+                    return 'Good morning'
+                } else if (cur < 18) {
+                    return 'Good afternoon'
+                } else {
+                    return 'Good evening'
+                }				
+			},
 		},
 		created() {
 			this.setUser();
@@ -107,6 +107,7 @@
 		},
 		mounted() {
 			this.date = this.date_function();
+			this.greeting = this.getGreeting();
 		},
 	}
 </script>
@@ -165,6 +166,10 @@ h3 {
   content: "";
   display: table;
   clear: both;
+}
+
+.savedlist {
+	width: 40%;
 }
 
 /* Responsive columns */
