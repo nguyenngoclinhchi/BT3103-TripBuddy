@@ -1,6 +1,6 @@
 <template>
     <div id = "statistics_dashboard">
-        <div class = "container">
+        <div class = "container" style="padding-top: 25px">
             <h6>Last Refreshed: {{date}}</h6>
             <div>
                 <section class = "controls">

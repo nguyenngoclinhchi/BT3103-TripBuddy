@@ -1,6 +1,6 @@
 <template>
     <div id = "statistics_map" >
-        <div class="container">
+        <div class="container" style="padding-top: 25px">
             <h4 style="text-align: center">{{title}}</h4>
             <h6 style="padding: 10px">Last Refreshed: {{date}}</h6>
             <p style = "font-size:18px;"><br>

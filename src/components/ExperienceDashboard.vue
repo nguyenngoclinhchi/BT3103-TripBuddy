@@ -4,7 +4,7 @@
             <CommentModal :post = "selectedPost" @close = "toggleCommentModal()"
                           v-if = "showCommentModal"></CommentModal>
         </transition>
-        <section>
+        <section style="padding-top: 25px">
             <div class = "col1">
                 <div class = "profile">
                     <section class = "controls">

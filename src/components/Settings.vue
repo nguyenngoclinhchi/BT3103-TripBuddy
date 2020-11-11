@@ -1,5 +1,5 @@
 <template>
-    <div id = "settings" v-if = "showNav" style = "overflow-y: auto">
+    <div id = "settings" v-if = "showNav" style = "overflow-y: auto; padding-top: 25px">
         <div class = "accordion col1" role = "tablist">
             <b-card no-body class = "mb-1">
                 <b-card-header header-tag = "header" class = "p-1" role = "tab">

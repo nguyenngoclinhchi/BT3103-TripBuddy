@@ -9,7 +9,7 @@
                         </router-link>
                     </div>
                     <b-navbar-nav>
-                        <b-nav-item v-if = "current_page != null">Welcome to {{this.current_page}}</b-nav-item>
+                        <b-nav-item v-if = "current_page != null">Welcome {{this.userProfile.name}} to {{this.current_page}}</b-nav-item>
                     </b-navbar-nav>
                     <b-navbar-toggle target = "nav-collapse"></b-navbar-toggle>
                     <b-collapse id = "nav-collapse" is-nav>
@@ -57,6 +57,7 @@
 </template>
 <script>
 	import router from '../router/index';
+	import {mapState} from "vuex";
 	
 	export default {
 		name: "Navigation",
@@ -65,6 +66,9 @@
 			return {
 				current_page: ''
 			};
+		},
+        computed: {
+			...mapState(['userProfile', 'posts'])
 		},
 		methods: {
 			logout() {

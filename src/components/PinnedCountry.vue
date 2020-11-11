@@ -1,29 +1,33 @@
 <template>
     <div id = "pinnedCountries">
-        <div class = "container">
-            <h6><i> View your pinned countries by selecting from the dropdown button </i></h6>
-            <h6><b> Last Refreshed: {{date}} </b></h6>
-            <md-autocomplete v-model = "selectedOption" :md-options = "userProfile.country_interested">
-                <label>Pinned Countries</label>
-            </md-autocomplete>
-            <md-button @click = "updateData(selectedOption)" class = "md-raised md-primary" style = "padding: 9px; display: block; overflow: hidden">
-                Display
-            </md-button>
+        <div class = "container" style = "margin-top: 25px">
+            <h6>
+                Last Refreshed: {{date}}
+            </h6>
+            <section>
+                <md-autocomplete v-model = "selectedOption" :md-options = "userProfile.country_interested">
+                    <label>Pinned Countries</label>
+                </md-autocomplete>
+                <md-button @click = "updateData(selectedOption)" class = "md-raised md-primary" style = "padding: 9px; display: block; overflow: hidden">
+                    Display
+                </md-button>
+            </section>
+            <h7><i> View your pinned countries by selecting from the dropdown button </i></h7>
         </div>
-        <div id = "advisory" style = "margin-left:100px; margin-right:100px; background-color:lightgrey">
+
+        <div id = "advisory" style = "margin-top: 20px; margin-left:100px; margin-right:100px; background-color:lightgrey">
             <div style = "display:inline-block;vertical-align:top;padding:10px">
-                <img src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;" alt="img">
+                <img src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;" alt="flight">
             </div>
-            <div style = "display:inline-block; font-size:23px; padding:13px">
+            <div style = "display:inline-block; font-size:23px; padding: 13px">
                 <div id = "titleAdv"><u> Travel Advisory </u></div>
             </div>
             <p id = "recommend" style = "margin-left:60px; font-size:18px; color:white"></p>
             <p id = "comment" style = "margin-left:60px; font-size:18px; color:white"></p>
             <br>
         </div>
-        <div style = "margin-left:100px; margin-right:100px">
-            <b><h3 id = "title" style = "margin-left:40px;"></h3></b>
-        </div>
+        <br>
+        <b><h3 id = "title" style = "margin-left:40px;"></h3></b>
         <div class = "chart">
             <canvas id = "mixedChart"></canvas>
         </div>
@@ -44,7 +48,9 @@
             </div>
         </div>
         <br>
+    
     </div>
+
 </template>
 
 <script>
@@ -140,11 +146,11 @@
 					this.myChart2.data.datasets[0].data.push(regiondeaths)
 					this.myChart2.data.labels.push(country)
 					this.myChart2.data.labels.push("Other countries in " + region)
-					let percentage = (deaths / regiondeaths).toFixed(3);
-					let total = deaths + regiondeaths;
+					var percentage = (deaths / regiondeaths).toFixed(3)
+					var total = deaths + regiondeaths
 					document.getElementById("%deaths").innerHTML = percentage + "%"
 					document.getElementById("text").innerHTML = "of deaths in " + region
-					document.getElementById("total").innerHTML = total.toString()
+					document.getElementById("total").innerHTML = total
 					document.getElementById("regionDeaths").innerHTML = "cases of deaths in total in " + region
 				})
 				// generate travel advisory

@@ -1,7 +1,8 @@
 <template>
     <div class = "mainPage" style="margin-left: 100px; margin-right: 100px">
-        <h1>Welcome {{ userProfile.name }} to Trip Buddy Home page</h1>
-		<h4>Last Refreshed: {{date}}</h4><br>
+		<div style="padding-left: 25px; padding-top: 20px">
+			<h6>Last Refreshed: {{date}}</h6><br>
+		</div>
 		<div class="row">
 			<div class="column">
 				<div class="card" style="background-color: #3498db">
@@ -22,14 +23,14 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" style="min-height: 120vh">
 			<div class="column1">
-				<div class="card" style="background-color: white; padding: 0px;">
+				<div class="card" style="background-color: white; padding: 0;">
 					<bubblechart></bubblechart>
 				</div>
 			</div>
 			<div class="column2">
-				<div class="card" style="background-color: white; padding: 0px;">
+				<div class="card" style="background-color: white; padding: 0;">
 				</div>
 			</div>
 		</div>
@@ -69,12 +70,12 @@
 				this.showPostModal = false;
 			},
 			date_function: function () {
-				var currentDate = new Date();
+				let currentDate = new Date();
 				//console.log(currentDate);
 
 				currentDate.setDate(currentDate.getDate()-1);
-		
-				var formatted_date = currentDate.toJSON().slice(0,10);
+				
+				let formatted_date = currentDate.toJSON().slice(0, 10);
 				//console.log(formatted_date);
 				return formatted_date;
 			
@@ -85,7 +86,7 @@
 		},
 		created() {
 			this.setUser();
-			var url = 'https://api.covid19api.com/summary'
+			let url = 'https://api.covid19api.com/summary';
 			axios.get(url).then(response => {
 				this.totalCases = this.numberWithCommas(response.data.Global['TotalConfirmed']);
 				this.totalDeaths = this.numberWithCommas(response.data.Global['TotalDeaths']);
