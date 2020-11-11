@@ -97,10 +97,10 @@
                         <h5>{{ post.userName }}</h5>
                         <b-form-group>
                             <md-chip size = "sm" class = "md-info" md-static style = "margin: 5px">
-                                <em><u>Email</u></em> {{userProfile.email}}
+                                <em><u>Email</u></em> {{post.userEmail}}
                             </md-chip>
                             <md-chip size = "sm" class = "md-info" md-static style = "margin: 5px">
-                                <em><u>Nationality</u></em> {{userProfile.nationality}}
+                                <em><u>Nationality</u></em> {{post.userNationality}}
                             </md-chip>
                             <md-chip size = "sm" class = "md-info" md-static style = "margin: 5px">
                                 <em><u>Travelled to</u></em> {{post.countryTravelled}}
@@ -142,10 +142,10 @@
                         <h5>{{ fullPost.userName }}</h5>
                         <b-form-group>
                             <md-chip size = "sm" class = "md-info" md-static style = "margin: 5px">
-                                <em><u>Email</u></em> {{userProfile.email}}
+                                <em><u>Email</u></em> {{fullPost.userEmail}}
                             </md-chip>
                             <md-chip size = "sm" class = "md-info" md-static style = "margin: 5px">
-                                <em><u>Nationality</u></em> {{userProfile.nationality}}
+                                <em><u>Nationality</u></em> {{fullPost.userNationality}}
                             </md-chip>
                             <md-chip size = "sm" class = "md-info" md-static style = "margin: 5px">
                                 <em><u>Travelled to</u></em> {{fullPost.countryTravelled}}

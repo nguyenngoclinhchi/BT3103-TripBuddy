@@ -9,9 +9,9 @@ export const doughnutChartData = {
         labels: [],
     },
     options: {
-        rotation: 1 * Math.PI,
-        circumference: 1 * Math.PI
+        rotation: Math.PI,
+        circumference: Math.PI
     }
 }
-  
+
 export default doughnutChartData;
