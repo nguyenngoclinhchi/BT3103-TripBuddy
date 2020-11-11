@@ -1,5 +1,5 @@
 <template>
-    <div id = "login">
+    <div id = "login" style="max-height: 100vh">
         <PasswordReset @close = "togglePasswordReset()" v-if = "showPasswordReset"></PasswordReset>
         <section>
             <div class = "col1">
@@ -37,8 +37,12 @@
                 </form>
                 <form @submit.prevent v-else style = "padding-top: 5vh">
                     <div>
-                        <label for = "name">Name</label>
-                        <input id = "name" placeholder = "Full Name" type = "text" v-model.trim = "signupForm.name"/>
+                        <b-form-group label="Name">
+<!--                            <label for = "name">Name</label>-->
+                            <label>
+                                <input placeholder = "Full Name" type = "text" v-model.trim = "signupForm.name"/>
+                            </label>
+                        </b-form-group>
                     </div>
                     <div>
                         <b-form-group label = "Nationality" style = "margin: 0; padding: 0">
@@ -86,7 +90,7 @@
                                       style = "margin: 0; padding: 0">
                             <b-form-tags v-model = "value" no-outer-focus class = "mb-2">
                                 <template v-slot = "{ tags, disabled, addTag, removeTag }">
-                                    <p v-if = "value.length === 0">
+                                    <p v-if = "value.length === 0" style="font-size: 13px; text-align: center">
                                         There should be at least 1 pinned country in your profile
                                     </p>
                                     <ul v-if = "tags.length > 0" class = "list-inline d-inline-block mb-2">

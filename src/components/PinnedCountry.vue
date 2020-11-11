@@ -1,6 +1,6 @@
 <template>
     <div id = "pinnedCountries">
-        <div class = "container" style = "margin-top: 25px">
+        <div class = "container" style = "margin-top: 25px; margin-left:100px; margin-right:100px">
             <h6>
                 Last Refreshed: {{date}}
             </h6>
@@ -14,7 +14,6 @@
             </section>
             <h7><i> View your pinned countries by selecting from the dropdown button </i></h7>
         </div>
-
         <div id = "advisory" style = "margin-top: 20px; margin-left:100px; margin-right:100px; background-color:lightgrey">
             <div style = "display:inline-block;vertical-align:top;padding:10px">
                 <img src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;" alt="flight">

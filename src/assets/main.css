@@ -54,13 +54,13 @@ em p {
 
 a {
     text-decoration: none;
-    color: #30A0EE;
+    color: #0c5460;
     margin: 0;
     cursor: pointer;
 }
 
 a:hover {
-    color: #48abf0;
+    color: #0c5460;;
 }
 
 section {
