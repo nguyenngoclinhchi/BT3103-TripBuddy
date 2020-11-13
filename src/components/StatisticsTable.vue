@@ -1,5 +1,5 @@
 <template>
-    <div class = "center" style = "width: 1200px">
+    <div class = "center" style = "width: 1000px">
         <vue-table-dynamic :params = "params" ref = "table"></vue-table-dynamic>
     </div>
 </template>
