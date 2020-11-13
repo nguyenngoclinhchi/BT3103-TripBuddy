@@ -44,9 +44,10 @@
                         </div>
                     </div>
                 </section>
+				<br> <br>
                 <section style = "min-height: 70vh; margin: auto">
                     <div class = "H">
-                        <h6 style = "text-align: center"><b> Health System Policies </b></h6>
+                        <h6 style = "text-align: center; font-size:25px"><b> Health System Policies </b></h6>
                         <table id = "H_indicators">
                             <thead>
                             <tr>
@@ -67,7 +68,7 @@
                         </table>
                     </div>
                     <div class = "C">
-                        <h6 style = "text-align: center"><b> Containment and Closure Policies </b></h6>
+                        <h6 style = "text-align: center; font-size:25px"><b> Containment and Closure Policies </b></h6>
                         <table id = "C_indicators">
                             <thead>
                             <tr>

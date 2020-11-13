@@ -31,10 +31,10 @@
                                     <router-link to = "/dashboard">Country Dashboard</router-link>
                                 </b-dropdown-item>
                                 <b-dropdown-item style = "font-size: 15px" @click = "current_page = detect_current_page()">
-                                    <router-link to = "/comments">Experience Dashboard</router-link>
+                                    <router-link to = "/pinned">Pinned Country</router-link>
                                 </b-dropdown-item>
                                 <b-dropdown-item style = "font-size: 15px" @click = "current_page = detect_current_page()">
-                                    <router-link to = "/pinned">Pinned Country</router-link>
+                                    <router-link to = "/comments">Experience Dashboard</router-link>
                                 </b-dropdown-item>
                             </b-nav-item-dropdown>
                             <b-nav-item-dropdown right style = "font-size: 18px">

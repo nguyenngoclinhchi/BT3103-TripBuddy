@@ -88,19 +88,27 @@
         <br>
         <h4 id = "deaths" style = "text-align:center;padding:5px"></h4>
         <br>
-        <div class = "chart2">
-            <div style = "width: 50%; float:left; margin-left:150px">
-                <canvas id = "doughnutChart"></canvas>
-            </div>
-            <div style = "width:20%; float:right; text-align:center; margin-right:200px">
-                <br> <br> <br>
-                <h1 id = "%deaths"><b> </b></h1>
-                <p id = "text"></p>
-                <br>
-                <h1 id = "total"><b> </b></h1>
-                <p id = "regionDeaths"></p>
-            </div>
-        </div>
+        
+		<div class = "row">
+			<div class = "column">
+				<div class = "card" style = "background-color: #6699CC">
+					<h3><b>{{regionDeaths}}</b></h3>
+					<p id="total">Total Deaths in {{region}}</p>
+				</div>
+			</div>
+			<div class = "column">
+				<div class = "card" style = "background-color: #EF9D4C">
+					<h3><b>{{countryDeaths}}</b></h3>
+					<p>Total Deaths in {{country}}</p>
+				</div>
+			</div>
+			<div class = "column">
+				<div class = "card" style = "background-color: #29D2A5">
+					<h3><b>{{percentage}}</b></h3>
+					<p>of deaths in {{region}}</p>
+				</div>
+			</div>
+		</div>
         <br>
     
     </div>
@@ -113,7 +121,6 @@
 	import mixedChartData from "../mixedChart.js";
 	import axios from 'axios';
 	import worldCode from "../all.json";
-	import doughnutChartData from "../doughnut.js";
 	
 	export default {
 		data() {
@@ -122,9 +129,12 @@
 				selectedOption: '',
 				mixedChartData: mixedChartData,
 				myChart: null,
-				doughnutChartData: doughnutChartData,
-				myChart2: null,
-				alertStatus: 0
+				alertStatus: 0,
+				region: '',
+				country: '',
+				regionDeaths: null,
+				countryDeaths: null,
+				percentage: null
 			}
 		},
 		computed: {
@@ -140,20 +150,6 @@
 						optionsSortingElement: chartData.options
 					});
 					this.myChart.update()
-				} catch (e) {
-					console.log(e.message);
-				}
-			},
-			
-			createChart2: function (chartId, chartData) {
-				try {
-					const ctx = document.getElementById(chartId).getContext('2d');
-					this.myChart2 = new Chart(ctx, {
-						type: chartData.type,
-						data: chartData.data,
-						options: chartData.options
-					});
-					this.myChart2.update()
 				} catch (e) {
 					console.log(e.message);
 				}
@@ -186,15 +182,12 @@
 				let country = countryCode.substr(6)
 				document.getElementById("title").innerHTML = "Monitoring " + country + "'s COVID-19 situation";
 				
-				// generate doughnut chart for number of deaths
+				// retrieve statistics for number of deaths
 				document.getElementById("deaths").innerHTML = "Cases of death in " + country + " VS. others in the same region";
 				const link2 = "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/" + this.date_function() + "/" + this.date_function()
 				let region = this.findRegion(code);
 				let deaths = 0;
 				let regiondeaths = 0;
-				this.myChart2.data.datasets[0].data = []
-				this.myChart2.data.labels = []
-				this.myChart2.update()
 				axios.get(link2).then(response => {
 					for (let day in response.data.data) {
 						for (let country in response.data.data[day]) {
@@ -208,19 +201,14 @@
 							}
 						}
 					}
-					// console.log("deaths is: " + deaths)
-					// console.log("region deaths is: " + regiondeaths)
-					this.myChart2.data.datasets[0].data.push(deaths)
-					this.myChart2.data.datasets[0].data.push(regiondeaths)
-					this.myChart2.data.labels.push(country)
-					this.myChart2.data.labels.push("Other countries in " + region)
-					this.myChart2.update()
+				
 					let percentage = (deaths / regiondeaths).toFixed(3);
 					let total = deaths + regiondeaths;
-					document.getElementById("%deaths").innerHTML = percentage + "%"
-					document.getElementById("text").innerHTML = "of deaths in " + region
-					document.getElementById("total").innerHTML = total
-					document.getElementById("regionDeaths").innerHTML = "cases of deaths in total in " + region
+					this.regionDeaths = total
+					this.countryDeaths = deaths
+					this.percentage = percentage + "%"
+					this.region = region
+					this.country = country
 				})
 				// generate travel advisory
 				const url = 'https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/' + code + '/' + this.date_function();
@@ -296,14 +284,11 @@
 		},
 		mounted() {
 			this.createChart("mixedChart", this.mixedChartData);
-			this.createChart2("doughnutChart", this.doughnutChartData);
 			this.date = this.date_function()
 		},
 		created() {
 			console.log("Starting creating mixedChart")
 			this.createChart("mixedChart", this.mixedChartData);
-			console.log("Starting creating doughnutChart")
-			this.createChart2("doughnutChart", this.doughnutChartData);
 			this.date = this.date_function()
 		}
 	}
