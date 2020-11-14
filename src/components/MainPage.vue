@@ -28,7 +28,7 @@
                 <div class = "card" style = "background-color: white; padding: 0;">
                     <bubblechart></bubblechart>
                 </div>
-                <p style = "font-size: 12px"><i>Only pinned counties are highlighted in the charts</i></p>
+                <p style = "font-size: 12px; text-align: right"><i>Only pinned counties are highlighted in the charts</i></p>
             </div>
         </div>
     </div>

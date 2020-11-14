@@ -5,7 +5,7 @@
                           v-if = "showCommentModal"></CommentModal>
         </transition>
         <div class = "container">
-            <section style = "padding-top: 25px">
+            <section>
                 <div class = "col1">
                     <div class = "profile">
                         <section class = "controls">

@@ -15,9 +15,9 @@
                 </section>
                 <p>
                     Using shortcut search with PINNED country list by clicking in the country tag</p>
-                <b-form-group style = "padding: 0 8px">
+                <b-form-group>
                     <md-chip class = "md-accent" v-for = "chip in userProfile.country_interested" :key = "chip"
-                             md-clickable style = "margin: 5px"
+                             md-clickable style = "padding-bottom:8px; margin-right: 5px"
                              @click = "selectedOption = chip; updateData(selectedOption)">
                         {{chip}}
                     </md-chip>
@@ -46,8 +46,11 @@
                 </section>
 				<br> <br>
                 <section style = "min-height: 70vh; margin: auto">
-                    <div class = "H">
-                        <h6 style = "text-align: center; font-size:25px"><b> Health System Policies </b></h6>
+                    <div class = "H" v-if="this.H_indicators.length === 0">
+                        <p style="text-align: center">The Heath system policies is not available for the country</p>
+                    </div>
+                    <div class = "H" v-else>
+                        <h6 style = "text-align: center"><b> Health System Policies </b></h6>
                         <table id = "H_indicators">
                             <thead>
                             <tr>
@@ -67,8 +70,11 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class = "C">
-                        <h6 style = "text-align: center; font-size:25px"><b> Containment and Closure Policies </b></h6>
+                    <div class = "C" v-if="this.C_indicators.length === 0">
+                        <p style="text-align: center">The Containment and Closure Policies is not available for the country</p>
+                    </div>
+                    <div class = "C" v-else>
+                        <h6 style = "text-align: center"><b> Containment and Closure Policies </b></h6>
                         <table id = "C_indicators">
                             <thead>
                             <tr>
@@ -116,7 +122,7 @@
 			PinACountry
 		},
 		computed: {
-			...mapState(['userProfile', 'posts', 'country_options_dropdown'])
+			...mapState(['userProfile', 'country_options_dropdown'])
 		},
 		methods: {
 			date_function: function () {
@@ -173,7 +179,6 @@
 					this.myChart.data.datasets[0].data.push(CI)
 					this.myChart.data.datasets[0].data.push(GI)
 					this.myChart.data.datasets[0].data.push(SI)
-					// console.log(this.myChart.data.datasets[0].data)
 					this.myChart.update()
 					// alert when no data available
 					if (CI === 0.0 && GI === 0.0 && SI === 0.0) {
@@ -211,7 +216,6 @@
 								} else if (polCode.slice(0, 1) === 'C') {
 									this.C_indicators.push(row)
 								}
-								//this.indicators.push(row);
 							}
 						})
 					}
