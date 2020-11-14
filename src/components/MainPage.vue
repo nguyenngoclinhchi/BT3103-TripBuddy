@@ -1,39 +1,36 @@
 <template>
     <div id = "mainPage">
         <br>
+		<section style = "padding: 50px">
+			<div style = "max-width: 50%">
+				<h3>Staying cognizant</h3>
+				<div class = "block"></div>
+				<p> While measures ease, it remains critical that we remain aware of key pandemic statistics as we
+					continue to combat COVID-19 as a society.
+				</p>
+			</div>
+			<div class = "controls">
+				<div class = "card-shadow" style = "background-color: #3498db;padding: 12px">
+					<h3><b>{{totalCases}}</b></h3>
+					<p>Global Total Cases</p>
+				</div>
+				<div class = "card-shadow" style = "background-color: #e74c3c;padding: 12px">
+					<h3><b>{{totalDeaths}}</b></h3>
+					<p>Global Total Deaths</p>
+				</div>
+				<div class = "card-shadow" style = "background-color: #2ecc71; padding: 12px">
+					<h3><b>{{totalRecovered}}</b></h3>
+					<p>Global Total Recovered</p>
+				</div>
+			</div>
+		</section>
         <GlobalDashboard></GlobalDashboard>
-        <div class = "container">
-            <br>
+        <div style = "padding: 50px">
             <section>
-                <div style = "max-width: 50%">
-                    <h3>Staying cognizant</h3>
-                    <div class = "block"></div>
-                    <p> While measures ease, it remains critical that we remain aware of key pandemic statistics as we
-                        continue to combat COVID-19 as a society
-                    </p>
-                </div>
-                <div class = "controls">
-                    <div class = "card-shadow" style = "background-color: #3498db;padding: 12px">
-                        <h3><b>{{totalCases}}</b></h3>
-                        <p>Total Cases</p>
-                    </div>
-                    <div class = "card-shadow" style = "background-color: #e74c3c;padding: 12px">
-                        <h3><b>{{totalDeaths}}</b></h3>
-                        <p>Total Deaths</p>
-                    </div>
-                    <div class = "card-shadow" style = "background-color: #2ecc71; padding: 12px">
-                        <h3><b>{{totalRecovered}}</b></h3>
-                        <p>Total Recovered</p>
-                    </div>
-                </div>
-            </section>
-            <br>
-            <br>
-            <section>
-                <div style="min-width: 650px">
+                <div style = "min-width: 650px">
                     <bubblechart></bubblechart>
                 </div>
-				<div style = "padding-left: 20px" class="controls">
+				<div style = "padding-left: 40px" class="controls">
 					<div>
 						<h3> Make informed decisions </h3>
 						<div class = "block"></div>

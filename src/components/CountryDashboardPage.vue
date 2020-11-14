@@ -26,11 +26,11 @@
                     <div class = "chart controls">
                         <canvas id = "radarChart"></canvas>
                     </div>
-                    <div class = "indic controls" style = "background-color:white; padding:10px; border-radius: 17px">
+                    <div class = "indicControls" style = "background-color:white; padding:15px; border-radius: 17px;">
                         <div>
                             <h5><b> <u> Stringency Index </u> </b></h5>
                             <p>
-                                records the strictness of ‘lockdown style’ policies that primarily restrict people’
+                                records the strictness of ‘lockdown style’ policies that primarily restrict people’s
                                 behaviour </p>
                             <h5><b> <u> Government Response Index </u> </b></h5>
                             <p>
@@ -47,10 +47,10 @@
                 <br> <br>
                 <section style = "margin: auto">
                     <div class = "H" v-if = "this.H_indicators.length === 0">
-                        <p style = "text-align: center">The Heath system policies is not available for the country</p>
+                        <p style = "text-align: center">The Health System policies is not available for the country.</p>
                     </div>
                     <div class = "H" v-else>
-                        <h6 style = "text-align: center; font-size:20px"><b> Health System Policies </b></h6>
+                        <h6 style = "text-align: center; font-size:20px; margin-left: 30px;"><b> Health System Policies </b></h6>
                         <table id = "H_indicators">
                             <thead>
                             <tr>
@@ -72,10 +72,10 @@
                     </div>
                     <div class = "C" v-if = "this.C_indicators.length === 0">
                         <p style = "text-align: center">The Containment and Closure Policies is not available for the
-                                                        country</p>
+                                                        country.</p>
                     </div>
                     <div class = "C" v-else>
-                        <h6 style = "text-align: center; font-size:20px"><b> Containment and Closure Policies </b></h6>
+                        <h6 style = "text-align: center; font-size:20px; margin-left: 60px;"><b> Containment and Closure Policies </b></h6>
                         <table id = "C_indicators">
                             <thead>
                             <tr>
@@ -128,15 +128,12 @@
 		methods: {
 			date_function: function () {
 				let currentDate = new Date();
-				//console.log(currentDate.toJSON());
 				currentDate.setDate(currentDate.getDate() - 5);
-				// console.log(formatted_date);
 				return currentDate.toJSON().slice(0, 10);
 			},
 			next_date: function () {
 				let currentDate = new Date();
 				currentDate.setDate(currentDate.getDate() - 4);
-				// console.log(formatted_date);
 				return currentDate.toJSON().slice(0, 10);
 			},
 			createChart: function (chartId, chartData) {
@@ -149,8 +146,6 @@
 			},
 			updateData: function (countryCode) {
 				const url = 'https://datasource.kapsarc.org/api/records/1.0/search/?dataset=oxford-covid-19-government-response-tracker&rows=10000&disjunctive.countryname=true&disjunctive.indicator=true&refine.indicator=Containment+Health+Index.&refine.indicator=Government+Response+Index.&refine.indicator=Stringency+Index.&q=date:%5B' + this.date_function() + 'T16:00:00Z+TO+' + this.next_date() + 'T15:59:59Z%5D&timezone=Asia/Shanghai&lang=en';
-				//var url = 'https://datasource.kapsarc.org/api/records/1.0/search/?dataset=oxford-covid-19-government-response-tracker&rows=10000&disjunctive.countryname=true&disjunctive.indicator=true&refine.indicator=Containment+Health+Index.&refine.indicator=Government+Response+Index.&refine.indicator=Stringency+Index.&q=date:%5B2020-10-20T16:00:00Z+TO+2020-10-21T15:59:59Z%5D&timezone=Asia/Shanghai&lang=en'
-				// console.log("called")
 				let name = countryCode.substr(6)
 				const containment = 'Containment Health Index.';
 				const government = 'Government Response Index.';
@@ -175,7 +170,6 @@
 					}
 					// populate radar chart
 					this.myChart.data.datasets[0].label = code + ' Index'
-					// console.log(this.myChart.data.datasets[0].label)
 					this.myChart.data.datasets[0].data = []
 					this.myChart.data.datasets[0].data.push(CI)
 					this.myChart.data.datasets[0].data.push(GI)

@@ -306,12 +306,6 @@ header {
     -webkit-justify-content: center;
     -ms-flex-pack: center;
     justify-content: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    /*background: #e55d87;*/
-    /*background: -moz-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);*/
-    /*background: -webkit-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);*/
-    /*background: linear-gradient(135deg, #e55d87 0%, #5fc3e4 100%);*/
     background: #17A2B8;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e55d87', endColorstr='#5fc3e4', GradientType=1);
 }
@@ -324,6 +318,7 @@ header h3 {
 header ul {
     float: right;
     text-align: right;
+    font-size: 16px;
 }
 
 header ul li {
@@ -943,6 +938,17 @@ footer p {
     float: left;
 }
 
+#statistics_dashboard .indicControls {
+    width: 400px;
+}
+#statistics_dashboard .indicControls h5{
+    font-size: 16px;
+}
+
+#statistics_dashboard .indicControls p{
+    font-size: 13px;
+}
+
 #statistics_dashboard .H {
     width: 45%;
     margin-right: 5%;
@@ -954,10 +960,18 @@ footer p {
     float: left;
 }
 
-#statistics_dashboard table {
+#statistics_dashboard #C_indicators {
+    width: 500px;
+    margin-left: 10px;
+    margin-right: auto;
+    border-collapse: collapse;
+    border: 3px solid #ffffff;
+}
+
+#statistics_dashboard #H_indicators {
+    width: 480px;
     margin-left: auto;
     margin-right: auto;
-    width: 520px;
     border-collapse: collapse;
     border: 3px solid #ffffff;
 }
@@ -988,17 +1002,17 @@ footer p {
 
 #statistics_map .geo-map-section {
     align-content: center;
-    width: 1000px;
+    width: 5000px;
     max-width: 100%;
-    box-shadow: 2px 3px 18px -17px rgba(0, 0, 0, 1);
-    margin: 8px auto 2rem;
+    /*box-shadow: 2px 3px 18px -17px rgba(0, 0, 0, 1);*/
+    /*margin: 8px auto 2rem;*/
+    /*padding: 50px*/
 }
 
 /******************************************************/
 /*Statistical Table (Global Dashboard)*/
 
 #statistics_table {
-    width: 1000px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -1006,6 +1020,10 @@ footer p {
 /******************************************************/
 /*Pinned Countries section*/
 
+#pinnedCountries .advisory p{
+    padding-left: 10px;
+    padding-right: 10px;
+}
 #pinnedCountries .column {
     float: left;
     width: 33%;
@@ -1137,10 +1155,13 @@ footer p {
 }
 
 #mainPage .card-shadow {
-    text-align: center;
+    text-align: left;
     color: #fff;
+    border-radius: 5px;
     box-shadow: 7px 6px 26px -17px rgba(0, 0, 0, 1);
     margin-left: 20px;
+    width: 230px;
+    max-width: 230px;
 }
 
 @media screen and (max-width: 742px) {
@@ -1173,19 +1194,19 @@ footer p {
     position: absolute;
     width: 150px;
     height: 100%;
-    background: linear-gradient(#ff5252, #ffc107);
+    background: linear-gradient(#dE685E, #EE786E);
     transition: width 0.4s;
     overflow: hidden;
     z-index: 2;
 }
 .card.green .additional {
-    background: linear-gradient(#0c5460, #A2CCB6);
+    background: linear-gradient(#92bCa6, #A2CCB6);
 }
 .card.blue .additional {
-    background: linear-gradient(#214a64, #80bdff);
+    background: linear-gradient(#92bCa6, #A2CCB6);
 }
 .card.purple .additional {
-    background: linear-gradient(purple, #f5c6cb);
+    background: linear-gradient(#dE685E, #EE786E);
 }
 .card:hover .additional {
     width: 100%;

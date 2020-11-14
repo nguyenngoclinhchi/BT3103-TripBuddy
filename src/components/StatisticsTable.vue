@@ -22,7 +22,7 @@
 					enableSearch: true,
 					highlight: {row: [0]},
 					sort: [0, 1, 2, 3, 4],
-					height: 500,
+					height: 400,
 					border: true,
 					highlightedColor: '#52b2bf'
 				}
@@ -63,17 +63,14 @@
 				for (let key in response.data.data) {
 					for (let countryKey in response.data.data[key]) {
 						let stringency = response.data.data[key][countryKey].stringency;
-						// console.log(stringency)
 						let confirmed = response.data.data[key][countryKey].confirmed;
 						let deaths = response.data.data[key][countryKey].deaths;
 						let alphaCode = countryKey + "";
-						//let countryCode = this.findMatchingAlphaCode(alphaCode);
 						let countryName = this.findMatchingCountryName(alphaCode)
 						if (countryName === "null") {
 							continue;
 						}
 						let countryData = [countryName, alphaCode, confirmed, deaths, stringency];
-						// console.log(countryData)
 						this.params.data.push(countryData)
 					}
 				}

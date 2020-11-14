@@ -4,8 +4,8 @@
         <section>
             <div class = "col1">
                 <galaxy></galaxy>
-                <h1>Trip Buddy</h1>
-                <p>TripBuddy is a travel advisory application that provides potential travellers with all the necessary
+                <h1>tripBuddy</h1>
+                <p style = "font-size: 13px;">tripBuddy is a travel advisory application that provides potential travellers with all the necessary
                    and latest information needed to plan for their travels during the COVID-19 pandemic following the
                    gradual lifting of travel restrictions in some countries. Through a thorough assessment of government
                    policy responses based on the context of each country, the web application aims to give
@@ -13,7 +13,7 @@
             </div>
             <div :class = "{ 'signup-form': !showLoginForm }" class = "col2" style = "overflow-y: auto">
                 <form @submit.prevent v-if = "showLoginForm">
-                    <img alt = "logo" class = "logo" src = "../../public/logo.svg">
+                    <img alt = "logo" class = "logo" src = "../../public/logo.svg" style = "display: block; margin-left: auto; margin-right: auto;">
                     <div>
                         <label for = "email1">Email</label>
                         <input id = "email1" placeholder = "you@email.com" type = "text" v-model.trim = "loginForm.email"/>
@@ -44,7 +44,7 @@
                     <div>
                         <b-form-group label = "Nationality" style = "margin: 0; padding: 0">
                             <b-form-tags class = "mb-2" no-outer-focus v-model = "signupForm.nationality">
-                                <template v-slot = "{ tags, disabled}">
+                                <template v-slot = "{ disabled}">
                                     <ul class = "list-inline d-inline-block mb-2" v-if = "signupForm.nationality.length > 0">
                                         <li>
                                             <b-form-tag :disabled = "disabled" @remove = "removeTagNationality()" class = "list-inline-item"

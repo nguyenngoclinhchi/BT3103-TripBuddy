@@ -6,7 +6,7 @@
             </md-button>
             <md-dialog :md-active.sync = "active">
                 <md-dialog-title>
-                    <b> For a more personalized advisory, please fill in the form </b>
+                    <b> Share your travel experience! </b>
                 </md-dialog-title>
                 <md-dialog-content>
                     <div>
@@ -141,7 +141,7 @@
                             </b-input-group>
                         </div>
                         <div>
-                            <label>Recommendation to travel</label>
+                            <label>Overall Satisfaction</label>
                             <b-input-group>
                                 <b-form-rating icon-clear = "slash-circle"
                                                icon-empty = "heart"
@@ -259,6 +259,7 @@
 				this.post.rating_value_2 = null
 				this.post.rating_value_3 = null
 				this.post.rating_value_4 = null
+                this.post.rating_value_5 = null
 				this.post.countryTravelled = null
 			},
 		},

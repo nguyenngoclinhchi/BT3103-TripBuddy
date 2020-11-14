@@ -18,12 +18,12 @@
                 Using shortcut search with PINNED country list by clicking in the country tag</p>
             <b-form-group>
                 <md-chip :key = "chip" @click = "selectedOption = chip; updateData(selectedOption)" class = "md-accent"
-                         md-clickable style = "padding-bottom:8px; margin-right: 5px"
+                         md-clickable style = "padding-top: 5px; margin-right: 5px"
                          v-for = "chip in userProfile.country_interested">
                     {{chip}}
                 </md-chip>
             </b-form-group>
-            <div v-if = "this.alertStatus === 0">
+            <div class = "advisory" v-if = "this.alertStatus === 0">
                 <b-alert show variant = "secondary">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
                         <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
@@ -32,11 +32,11 @@
                         No advisories found!
                     </h5>
                     <p>
-                        Search for country to receive travel advisories
+                        Search for country to receive travel advisories.
                     </p>
                 </b-alert>
             </div>
-            <div v-if = "this.alertStatus === 1">
+            <div  class = "advisory" v-if = "this.alertStatus === 1">
                 <b-alert show variant = "success">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
                         <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
@@ -46,11 +46,12 @@
                     </h5>
                     <p>
                         No quarantine required upon arrival. Contact tracing is done to prevent the spread of COVID-19.
-                        <br>Have a safe trip!
+                        Older adults, those with underlying medical conditions and others at increased risk for severe illness are recommended to talk to their healthcare providers before travelling.
+                        <br><b>Have a safe trip!</b>
                     </p>
                 </b-alert>
             </div>
-            <div v-if = "this.alertStatus === 2">
+            <div  class = "advisory" v-if = "this.alertStatus === 2">
                 <b-alert show variant = "warning">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
                         <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
@@ -59,12 +60,13 @@
                         Level 2 - Exercise Increased Caution!
                     </h5>
                     <p>
-                        Quarantine is required upon arrival - travel only if necessary.
-                        <br>Be aware of heightened risks to safety and security. Elderly & children to take extra care.
+                        Quarantine is required upon arrival. 
+                        Older adults, those with underlying medical conditions and others at increased risk for severe illness are recommended to postpone all non-essential travel.
+                        <br><b>Be aware of heightened risks to safety and security.</b>
                     </p>
                 </b-alert>
             </div>
-            <div v-if = "this.alertStatus === 7">
+            <div  class = "advisory" v-if = "this.alertStatus === 7">
                 <b-alert show variant = "warning">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
                         <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
@@ -73,12 +75,12 @@
                         Level 2 - Exercise Increased Caution!
                     </h5>
                     <p>
-                        Please check  the list of country/region entry restrictions at <a href="https://www.trip.com/travel-restrictions-covid-19/">COVID-19 Travel Restrictions</a>.
-                        <br>Be aware of heightened risks to safety and security. Elderly & children to take extra care.
+                        Check out the list of country/region entry restrictions at <a href="https://www.trip.com/travel-restrictions-covid-19/">COVID-19 Travel Restrictions</a>.
+                        <br><b>Be aware of heightened risks to safety and security. Elderly & children to take extra care.</b>
                     </p>
                 </b-alert>
             </div>
-            <div v-if = "this.alertStatus === 3">
+            <div  class = "advisory" v-if = "this.alertStatus === 3">
                 <b-alert show variant = "danger">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
                         <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
@@ -88,11 +90,11 @@
                     </h5>
                     <p>
                         Arrival is banned for some/all regions in the country.
-                        <br>Avoid travel due to serious risks to safety and security.
+                        <br><b>Avoid travel due to serious risks to safety and security.</b>
                     </p>
                 </b-alert>
             </div>
-            <div v-if = "this.alertStatus === 4">
+            <div class = "advisory" v-if = "this.alertStatus === 4">
                 <b-alert show variant = "danger">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
                         <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
@@ -102,11 +104,11 @@
                     </h5>
                     <p>
                         No proper contact tracing is done to prevent the spread of COVID-19. High risks to children and elderly.
-                        <br>Avoid travel due to serious risks to safety and security.
+                        <br><b>Avoid travel due to serious risks to safety and security.</b>
                     </p>
                 </b-alert>
             </div>
-            <div v-if = "this.alertStatus === 5">
+            <div  class = "advisory" v-if = "this.alertStatus === 5">
                 <b-alert show variant = "danger">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
                         <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
@@ -116,11 +118,11 @@
                     </h5>
                     <p>
                         Level of strictness of government policies is high to contain the spread of COVID-19.
-                        <br>Avoid travel due to serious risks to safety and security.
+                        <br><b>Avoid travel due to serious risks to safety and security.</b>
                     </p>
                 </b-alert>
             </div>
-            <div v-if = "this.alertStatus === 6">
+            <div class = "advisory" v-if = "this.alertStatus === 6">
                 <b-alert show variant = "secondary">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
                         <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
@@ -266,7 +268,7 @@
 				const url = 'https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/' + code + '/' + this.date_function();
 				axios.get(url).then(response => {
 					let SI = response.data.stringencyData.stringency
-					if (SI > 70) {
+					if (SI > 60) {
 						this.alertStatus = 5
 					} else {
 						let indic3 = 0;
@@ -317,7 +319,7 @@
 			findRegion: function (alpha3) {
 				for (let index = 0; index < worldCode.length; index++) {
 					if (worldCode[index]["alpha-3"] === alpha3) {
-						return worldCode[index]["sub-region"]
+						return worldCode[index]["region"]
 					}
 				}
 			}

@@ -27,7 +27,7 @@
                     <b-card-body style = "height: 370px">
                         <b-form-group style = "margin: 0; padding: 0">
                             <b-form-tags class = "mb-2" no-outer-focus v-model = "nationality">
-                                <template v-slot = "{ tags, disabled}">
+                                <template v-slot = "{ disabled}">
                                     <ul class = "list-inline d-inline-block mb-2" v-if = "nationality != null && nationality.length > 0">
                                         <li>
                                             <b-form-tag :disabled = "disabled" @remove = "removeTagNationality()" class = "list-inline-item"

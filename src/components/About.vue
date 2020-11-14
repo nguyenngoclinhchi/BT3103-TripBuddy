@@ -18,8 +18,8 @@
                     without requiring special treatment. Older people, and those with underlying medical
                     problems like cardiovascular disease, diabetes, chronic respiratory disease, and cancer
                     are more likely to develop serious illness.
-                </p>
-                <h3>About TRIP BUDDY</h3>
+                </p><br>
+                <h3>About tripBUDDY</h3>
                 <div class = "block"></div>
                 <p>
                     With the COVID-19 pandemic impacting many countries across the globe, travelling
@@ -29,12 +29,9 @@
                     World Tourism Organization. Governments are taking a wide range of measures in response
                     to the COVID-19 outbreak. <br><br>Using several policy indicators of government responses
                     like containment and restrictions/closure policies, as well as their health system
-                    policies, we intend to develop a website that is able to help users access the potential
-                    risks involved and provide travel advisory for them. The travel advisory and risk
-                    assessment website is targeted at those who are intending to travel overseas during
-                    the COVID-19 pandemic. It can be for several reasons such as business purposes, studying
-                    abroad, vacation, or a trip back to their hometown.
-                </p>
+                    policies, we help you access the potential
+                    risks involved and provide a travel advisory tailored just for you. 
+                </p><br>
                 <h3>Meet our team</h3>
                 <div class = "block"></div>
                 <team-members></team-members>
