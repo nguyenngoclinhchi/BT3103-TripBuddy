@@ -116,7 +116,6 @@
 	import mixedChartData from "../mixedChart.js";
 	import axios from 'axios';
 	import worldCode from "../all.json";
-	import doughnutChartData from "../doughnut.js";
 	import PinACountry from "@/components/PinACountry";
 	export default {
 		components: {
