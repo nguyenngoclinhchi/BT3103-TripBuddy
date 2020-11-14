@@ -44,7 +44,7 @@
 		<div id="bottom">
 			<div class="row">
 				<div class="column1" style="width: 60%; float:left; ">
-					<div class="card" style="background-color: white; padding: 0px;">
+					<div>
 						<bubblechart></bubblechart>
 					</div>
 				</div>
