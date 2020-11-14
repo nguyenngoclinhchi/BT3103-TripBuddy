@@ -1,14 +1,10 @@
 <template>
-    <div id = "statistics_map">
-        <div class = "container">
-            <h4 style = "text-align: center">{{title}}</h4>
-            <h6>Last Refreshed: {{date}}</h6>
-            <p><br>
-                This is a composite measure based on nine response indicators including school closures, workplace
-                closures, and travel bans, rescaled to a value from 0
-                to 100 (100 = strictest).</p>
+    <div id = "statistics_map" style='height: 80%' >
+		<div style="width: 70%; float:left">
+        <div class="container">
+            <h4 style="text-align: center"></h4>
         </div>
-        <section>
+        <section style="align-content: center;">
             <GChart
                     :data = "chartData"
                     :options = "chartOptions"
@@ -16,21 +12,22 @@
                     type = "GeoChart"/>
         </section>
 		<h6 style="padding: 10px; text-align: center">Last Refreshed: {{date}}</h6>
-		<p style = "font-size:15px; text-align: center"><br>
+		<p style = "font-size:2rem; text-align: center"><br>
                 Measure is rescaled to a value from 0
                 to 100 (100 = strictest)</p>
         <div style="padding-right: 120px">
             <statistics-table></statistics-table>
         </div>
-        <div style="width: 30%; float:right; padding-top:300px ">
-            <div style="padding-top:50px;">
-                <h1 style="font-size:50px;text-align:center"> Go anywhere </h1>
-                <h4 style="font-size:15px;text-align:left"> It's your world and we'll help you explore it - responsibly. As our flight paths reopen post COVID-19,
-                                                            we seek to provide users with information to travel safely through the <b>Government Response Stringency Index</b>, a composite
-                                                            meaure of indicators including school and workplace closures, travel bans and more.
-                </h4>
-            </div>
-        </div>
+		</div>
+		<div style="width: 30%; float:right; padding-top:300px ">
+			<div style="padding-top:50px;">
+				<h1 style="font-size:4rem;text-align:center"> Go anywhere </h1>
+				<h4 style="font-size:2rem;text-align:left"> It's your world and we'll help you explore it - responsibly. As our flight paths reopen post COVID-19, 
+					we seek to provide users with information to travel safely through the <b>Government Response Stringency Index</b>, a composite
+					meaure of indicators including school and workplace closures, travel bans and more.
+				</h4>
+			</div>
+		</div>	
     </div>
 </template>
 

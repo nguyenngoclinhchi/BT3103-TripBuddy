@@ -27,9 +27,6 @@
                                     <router-link to = "/about">About our app</router-link>
                                 </b-dropdown-item>
                                 <b-dropdown-item @click = "current_page = detect_current_page()" style = "margin-right: 4px">
-                                    <router-link to = "/statistics">Global Dashboard</router-link>
-                                </b-dropdown-item>
-                                <b-dropdown-item @click = "current_page = detect_current_page()" style = "margin-right: 4px">
                                     <router-link to = "/dashboard">Country Dashboard</router-link>
                                 </b-dropdown-item>
                                 <b-dropdown-item @click = "current_page = detect_current_page()" style = "margin-right: 4px">
