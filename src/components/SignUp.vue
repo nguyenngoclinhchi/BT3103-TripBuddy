@@ -2,10 +2,10 @@
     <div style = "background-color: white;">
         <div style = "padding-right:15%; padding-left:15%; padding-bottom:15%;">
             <div class = "logo" style = "padding:5%;  border-radius: 1rem 1rem 0 0;">
-                <img src = "../../public/logo.png" style = "height:300px;width:550px;padding-bottom:5px">
+                <img alt = "logo" src = "../../public/logo.png" style = "height:300px;width:550px;padding-bottom:5px">
             </div>
             <div style = "text-align:center">
-                <h1 style = "color:DARKCYAN; font-size:3vh; padding:5%;">SIGN UP</h1>
+                <h1 style = "color:DARKCYAN; padding:5%;">SIGN UP</h1>
             </div>
             <form @submit.prevent = 'submitForm'>
                 <!-- Name field -->
@@ -97,9 +97,3 @@
 		}
 	}
 </script>
-
-<style scoped>
-    .text-danger {
-        color: salmon;
-    }
-</style>

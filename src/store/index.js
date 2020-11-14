@@ -149,6 +149,8 @@ const store = new Vuex.Store({
 				createdOn: new Date(),
 				userId: fb.auth.currentUser.uid,
 				userName: state.userProfile.name,
+				userNationality: state.userProfile.nationality,
+				userEmail: state.userProfile.email,
 				comments: 0,
 				likes: 0,
 				content: post.content,

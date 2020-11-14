@@ -1,10 +1,14 @@
 <template>
-    <div id = "statistics_map" style='height: 80%' >
-		<div style="width: 70%; float:left">
-        <div class="container">
-            <h4 style="text-align: center"></h4>
+    <div id = "statistics_map">
+        <div class = "container">
+            <h4 style = "text-align: center">{{title}}</h4>
+            <h6>Last Refreshed: {{date}}</h6>
+            <p><br>
+                This is a composite measure based on nine response indicators including school closures, workplace
+                closures, and travel bans, rescaled to a value from 0
+                to 100 (100 = strictest).</p>
         </div>
-        <section style="align-content: center;">
+        <section>
             <GChart
                     :data = "chartData"
                     :options = "chartOptions"

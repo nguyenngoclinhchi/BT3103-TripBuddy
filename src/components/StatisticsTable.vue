@@ -1,5 +1,5 @@
 <template>
-    <div class = "center" style = "width: 1000px">
+    <div id = "statistics_table">
         <vue-table-dynamic :params = "params" ref = "table"></vue-table-dynamic>
     </div>
 </template>
@@ -49,21 +49,16 @@
 				return "null";
 			},
 			date_function: function () {
-				var currentDate = new Date();
-				//console.log(currentDate);
-				
+				let currentDate = new Date();
 				currentDate.setDate(currentDate.getDate() - 1);
-				
-				var formatted_date = currentDate.toJSON().slice(0, 10);
+				let formatted_date = currentDate.toJSON().slice(0, 10);
 				console.log(formatted_date);
 				return formatted_date;
 				
 			},
 		},
 		created() {
-			//var arrayData = [['Country', 'Stringency']]
 			let url = 'https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/' + this.date_function() + '/' + this.date_function() + '';
-			//var url = 'https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/2020-10-16/2020-10-16'
 			axios.get(url).then(response => {
 				for (let key in response.data.data) {
 					for (let countryKey in response.data.data[key]) {
@@ -83,16 +78,7 @@
 					}
 				}
 			})
-			//console.log(arrayData)
-			//this.chartData.push(arrayData)
 		}
 	}
 
 </script>
-
-<style scoped>
-    div.center {
-        margin-left: auto;
-        margin-right: auto;
-    }
-</style>

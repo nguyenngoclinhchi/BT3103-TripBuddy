@@ -4,17 +4,18 @@
             <md-button @click = "pinACountry(); $bvToast.show('my-toast')" class = "md-raised md-accent md-button-custom">
                 Pin a country!
             </md-button>
-            <b-toast id = "my-toast" variant = "warning" solid @click="validPinnedCountry = false">
+            <b-toast @click = "validPinnedCountry = false" id = "my-toast" solid variant = "warning">
                 <template #toast-title>
                     <div class = "d-flex flex-grow-1 align-items-baseline">
-                        <b-img blank blank-color = "#ff5555" class = "mr-2" width = "14" height = "14"></b-img>
+                        <b-img blank blank-color = "#ff5555" class = "mr-2" height = "14" width = "14"></b-img>
                         <strong class = "mr-auto">{{status}}!</strong>
                         <small class = "text-muted mr-2">1 seconds ago</small>
                     </div>
                 </template>
                 <p>
                     {{textMessage}}<br>
-                    To edit full pinned country list, please proceed to <router-link to = "/settings">Settings page</router-link>
+                    To edit full pinned country list, please proceed to
+                    <router-link to = "/settings">Settings page</router-link>
                 </p>
             </b-toast>
         </section>
@@ -29,7 +30,7 @@
 			return {
 				validPinnedCountry: false,
 				textMessage: '',
-                status: ''
+				status: ''
 			}
 		},
 		props: {
@@ -51,16 +52,16 @@
 						nationality: this.userProfile.nationality,
 						country_interested: currentInterestedCountry
 					})
-                    this.status = "SUCCESS"
-                    this.textMessage = this.selectedCountry + " has been added to your customized pinned list of countries."
+					this.status = "SUCCESS"
+					this.textMessage = this.selectedCountry + " has been added to your customized pinned list of countries."
 				} else if (this.selectedCountry !== '') {
 					this.status = "FAIL"
 					this.textMessage = this.selectedCountry + " has NOT been added to your customized pinned " +
-                        "list of countries because this target country is already in the pinned list OR its name is not in pre-defined list."
-                } else {
+						"list of countries because this target country is already in the pinned list OR its name is not in pre-defined list."
+				} else {
 					this.status = "FAIL"
 					this.textMessage = "The target country is not defined"
-                }
+				}
 			}
 		},
 		created() {
@@ -71,9 +72,3 @@
 		}
 	}
 </script>
-
-<style scoped>
-    .md-dialog {
-        transform: translate(0%, 0%) scale(1) !important;
-    }
-</style>

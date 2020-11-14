@@ -8,12 +8,13 @@ import router from "./router"
 import store from './store'
 import {auth} from './firebase'
 import compositionApi from "@vue/composition-api";
-import { BootstrapVue, IconsPlugin, BFormRating } from 'bootstrap-vue'
+import {BFormRating, BootstrapVue, IconsPlugin} from 'bootstrap-vue'
 import PortalVue from 'portal-vue'
 import './assets/main.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
+import './assets/fontawesome/css/all.css'
 import KProgress from 'k-progress';
 
 Vue.use(PortalVue)
@@ -25,6 +26,7 @@ Vue.use(Toast);
 Vue.use(compositionApi);
 
 Vue.config.productionTip = false
+
 Vue.component('navBar', Navigation)
 Vue.component('b-form-rating', BFormRating)
 Vue.component('k-progress', KProgress);

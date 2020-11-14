@@ -4,7 +4,7 @@
             <h6>Last Refreshed: {{date}}</h6>
             <div>
                 <section class = "controls">
-                    <md-autocomplete v-model = "selectedOption" :md-options = "country_options_dropdown">
+                    <md-autocomplete :md-options = "country_options_dropdown" v-model = "selectedOption">
                         <label>Country</label>
                     </md-autocomplete>
                     <md-button @click = "updateData(selectedOption)" class = "md-raised md-primary"
@@ -15,10 +15,10 @@
                 </section>
                 <p>
                     Using shortcut search with PINNED country list by clicking in the country tag</p>
-                <b-form-group style = "padding: 0 8px">
-                    <md-chip class = "md-accent" v-for = "chip in userProfile.country_interested" :key = "chip"
-                             md-clickable style = "margin: 5px"
-                             @click = "selectedOption = chip; updateData(selectedOption)">
+                <b-form-group>
+                    <md-chip :key = "chip" @click = "selectedOption = chip; updateData(selectedOption)" class = "md-accent"
+                             md-clickable style = "padding-bottom:8px; margin-right: 5px"
+                             v-for = "chip in userProfile.country_interested">
                         {{chip}}
                     </md-chip>
                 </b-form-group>
@@ -28,15 +28,15 @@
                     </div>
                     <div class = "indic controls" style = "background-color:white; padding:10px; border-radius: 17px">
                         <div>
-                            <p style = "font-size:120%;"><b> <u> Stringency Index </u> </b></p>
+                            <h5><b> <u> Stringency Index </u> </b></h5>
                             <p>
                                 records the strictness of ‘lockdown style’ policies that primarily restrict people’
                                 behaviour </p>
-                            <p style = "font-size:120%;"><b> <u> Government Response Index </u> </b></p>
+                            <h5><b> <u> Government Response Index </u> </b></h5>
                             <p>
                                 records how the response of governments has varied over all indicators in the database,
                                 becoming stronger or weaker over the course of the outbreak </p>
-                            <p style = "font-size:120%;"><b> <u> Containment & Health Index </u> </b></p>
+                            <h5><b> <u> Containment & Health Index </u> </b></h5>
                             <p>
                                 combines ‘lockdown’ restrictions and closures with measures such as testing policy and
                                 contact tracing, short term investment in healthcare, as well investments in
@@ -44,9 +44,13 @@
                         </div>
                     </div>
                 </section>
-                <section style = "min-height: 70vh">
-                    <div class = "H">
-                        <h5 style = "text-align: center"><b> Health System Policies </b></h5>
+                <br> <br>
+                <section style = "margin: auto">
+                    <div class = "H" v-if = "this.H_indicators.length === 0">
+                        <p style = "text-align: center">The Heath system policies is not available for the country</p>
+                    </div>
+                    <div class = "H" v-else>
+                        <h6 style = "text-align: center; font-size:20px"><b> Health System Policies </b></h6>
                         <table id = "H_indicators">
                             <thead>
                             <tr>
@@ -66,8 +70,12 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class = "C">
-                        <h5 style = "text-align: center"><b> Containment and Closure Policies </b></h5>
+                    <div class = "C" v-if = "this.C_indicators.length === 0">
+                        <p style = "text-align: center">The Containment and Closure Policies is not available for the
+                                                        country</p>
+                    </div>
+                    <div class = "C" v-else>
+                        <h6 style = "text-align: center; font-size:20px"><b> Containment and Closure Policies </b></h6>
                         <table id = "C_indicators">
                             <thead>
                             <tr>
@@ -115,7 +123,7 @@
 			PinACountry
 		},
 		computed: {
-			...mapState(['userProfile', 'posts', 'country_options_dropdown'])
+			...mapState(['userProfile', 'country_options_dropdown'])
 		},
 		methods: {
 			date_function: function () {
@@ -172,7 +180,6 @@
 					this.myChart.data.datasets[0].data.push(CI)
 					this.myChart.data.datasets[0].data.push(GI)
 					this.myChart.data.datasets[0].data.push(SI)
-					// console.log(this.myChart.data.datasets[0].data)
 					this.myChart.update()
 					// alert when no data available
 					if (CI === 0.0 && GI === 0.0 && SI === 0.0) {
@@ -210,7 +217,6 @@
 								} else if (polCode.slice(0, 1) === 'C') {
 									this.C_indicators.push(row)
 								}
-								//this.indicators.push(row);
 							}
 						})
 					}
