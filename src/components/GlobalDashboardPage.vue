@@ -17,6 +17,19 @@
             <p>Measure is rescaled to a value from 0 to 100 (100 = strictest)</p>
             <statistics-table></statistics-table>
         </div>
+        <div style = "width: 30%; float:right; padding-top:300px ">
+            <div style = "padding-top:50px;">
+                <h1 style = "font-size:4rem;text-align:center"> Go anywhere </h1>
+                <h4 style = "font-size:2rem;text-align:left"> It's your world and we'll help you explore it -
+                                                              responsibly. As our flight paths reopen post COVID-19,
+                                                              we seek to provide users with information to travel safely
+                                                              through the <b>Government Response Stringency Index</b>, a
+                                                              composite
+                                                              meaure of indicators including school and workplace
+                                                              closures, travel bans and more.
+                </h4>
+            </div>
+        </div>
     </div>
 </template>
 

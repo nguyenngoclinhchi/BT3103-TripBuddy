@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import Dashboard from '@/components/CountryDashboardPage'
 import {auth} from '@/firebase'
 import MainPage from "@/components/MainPage";
-import Statistics from "@/components/GlobalDashboardPage";
 import About from "@/components/About";
 import DashboardComment from "@/components/ExperienceDashboard";
 import PinnedCountry from "@/components/PinnedCountry";
@@ -32,12 +31,6 @@ const routes = [
 		component: () => import( /* webpackChunkName: "settings" */ '../components/Settings.vue'),
 		meta: {
 			requiresAuth: true
-		}
-	},
-	{
-		path: '/statistics',
-		components: {
-			default: Statistics,
 		}
 	},
 	{
