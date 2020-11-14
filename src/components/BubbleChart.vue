@@ -26,15 +26,13 @@
 				],
 				chartOptions: {
 					chart: {},
-					//colorAxis: { colors: ["grey", "#52b2bf"] },
 					colors: ['#CED4D3', '#52b2bf'],
-					//colorAxis: {values: [0,5], colors: ['#CED4D3','#52b2bf'], legend: {position: 'none'}},
 					bubble: {opacity: 0.7},
 					sortBubblesBySize: false,
 					height: 650,
 					//backgroundColor: '#e6ecf0',
+					//chartArea: {backgroundColor: '#e6ecf0'},
 					legend: {position: 'none'},
-					//chartArea: {backgroundColor:'#FFFFFF'},
 					title: 'Stringency Index vs Cases Fataility Rate in Each Country',
 					hAxis: {scaleType: 'log', title: 'Cases Fatality Rate (Logarithmic Scaling)'},
 					vAxis: {title: 'Stringency Index'},
@@ -89,7 +87,6 @@
 				for (let key in response.data.data) {
 					for (let countryKey in response.data.data[key]) {
 						let stringency = parseFloat(response.data.data[key][countryKey].stringency);
-						//console.log(stringency)
 						let confirmed = response.data.data[key][countryKey].confirmed;
 						let deaths = response.data.data[key][countryKey].deaths;
 						let alphaCode = countryKey + "";
@@ -98,7 +95,6 @@
 							continue;
 						}
 						let country = '[' + alphaCode + '] ' + countryName;
-						//let region = this.findMatchingRegion(alphaCode);
 						let deathrate = parseFloat(0);
 						if (confirmed != 0) { //account for division error
 							deathrate = parseFloat((parseFloat(deaths) / parseFloat(confirmed)) * 100);
@@ -109,7 +105,6 @@
 							countryData[3] = 'Yes';
 							countryData[4] = 3;
 						}
-						//console.log(countryData)
 						this.chartData.push(countryData);
 					}
 				}
@@ -119,7 +114,6 @@
 					if (countries_int.includes(this.chartData[index][0])) {
 						var arr1 = this.chartData[index];
 						arr2.push(arr1);
-						//console.log(arr1);
 						this.chartData.splice(index, 1);
 					}
 				}

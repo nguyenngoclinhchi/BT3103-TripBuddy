@@ -5,7 +5,7 @@ export const mixedChartData = {
 			{
 				label: 'Confirmed Cases /1000',
 				data: [],
-				backgroundColor: "rgb(119, 208, 189, 0.2)",
+				backgroundColor: "rgb(119, 208, 189, 0.5)",
 				order: 2
 			},
 			{

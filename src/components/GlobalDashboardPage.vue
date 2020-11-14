@@ -1,12 +1,6 @@
 <template>
     <div id = "statistics_map">
-        <div class = "container">
-            <h2>{{title}}</h2>
-            <div class = "block"></div>
-            <h6>Last Refreshed: {{date}}</h6>
-            <p>This is a composite measure based on nine response indicators including school closures, workplace
-               closures, and travel bans, rescaled to a value from 0
-               to 100 (100 = strictest).</p>
+        <div style = "padding: 50px">
             <section>
                 <div class = "geo-map-section">
                     <GChart
@@ -15,7 +9,7 @@
                             :settings = "{ packages: ['geochart'] }"
                             type = "GeoChart"/>
                 </div>
-                <div style = "max-width: 400px; padding: 20px" class="controls">
+                <div style = "max-width: 400px; padding: 40px" class="controls">
                     <div>
                         <h3> Go anywhere </h3>
                         <div class = "block"></div>
@@ -30,7 +24,7 @@
             </section>
             <br>
             <h6>Last Refreshed: {{date}}</h6>
-            <p>Measure is rescaled to a value from 0 to 100 (100 = strictest)</p>
+            <p>Measure is rescaled to a value from 0 to 100 (100 = strictest).</p>
             <statistics-table></statistics-table>
         </div>
     </div>
@@ -53,7 +47,6 @@
 				],
 				chartOptions: {
 					chart: {},
-					height: 600,
 					backgroundColor: '#e6ecf0',
 				}
 			}
@@ -61,9 +54,7 @@
 		methods: {
 			date_function: function () {
 				let currentDate = new Date();
-				//console.log(currentDate);
 				currentDate.setDate(currentDate.getDate() - 1);
-				// console.log(formatted_date);
 				return currentDate.toJSON().slice(0, 10);
 			},
 			findMatchingAlphaCode: function (geoId) {
@@ -93,14 +84,11 @@
 			this.date = this.date_function()
 		},
 		created() {
-			// let arrayData = [['Country', 'Stringency']];
 			let url = 'https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/' + this.date_function() + '/' + this.date_function() + '';
-			//var url = 'https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/2020-10-16/2020-10-16'
 			axios.get(url).then(response => {
 				for (let key in response.data.data) {
 					for (let countryKey in response.data.data[key]) {
 						let stringency = response.data.data[key][countryKey].stringency;
-						//console.log(stringency)
 						let alphaCode = countryKey + "";
 						let countryCode = this.findMatchingAlphaCode(alphaCode);
 						if (countryCode === "null") {
@@ -112,7 +100,6 @@
 					}
 				}
 			})
-			// console.log(arrayData)
 		},
 	}
 </script>

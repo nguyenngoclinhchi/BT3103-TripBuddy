@@ -64,9 +64,6 @@
 				}
 			}
 		},
-		created() {
-			// this.$store.dispatch("addCountries")
-		},
 		computed: {
 			...mapState(['userProfile', 'country_options_dropdown']),
 		}

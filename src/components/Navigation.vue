@@ -5,7 +5,7 @@
                 <b-navbar toggleable = "lg" type = "dark">
                     <div @click = "current_page = 'Home page'">
                         <router-link style = "text-decoration: none" to = "/">
-                            <h1 style = "color: white">TRIP BUDDY</h1>
+                            <h3 style = "color: white">tripBUDDY</h3>
                         </router-link>
                     </div>
                     <b-navbar-nav>
@@ -24,16 +24,16 @@
                                     <router-link to = "/">Home</router-link>
                                 </b-dropdown-item>
                                 <b-dropdown-item @click = "current_page = detect_current_page()" style = "margin-right: 4px">
-                                    <router-link to = "/about">About our app</router-link>
+                                    <router-link to = "/about">About Our App</router-link>
                                 </b-dropdown-item>
                                 <b-dropdown-item @click = "current_page = detect_current_page()" style = "margin-right: 4px">
-                                    <router-link to = "/dashboard">Country Dashboard</router-link>
+                                    <router-link to = "/dashboard">Country Indices</router-link>
                                 </b-dropdown-item>
                                 <b-dropdown-item @click = "current_page = detect_current_page()" style = "margin-right: 4px">
-                                    <router-link to = "/pinned">Pinned Country</router-link>
+                                    <router-link to = "/pinned">My Pinned Countries</router-link>
                                 </b-dropdown-item>
                                 <b-dropdown-item @click = "current_page = detect_current_page()" style = "margin-right: 4px">
-                                    <router-link to = "/comments">Experience Dashboard</router-link>
+                                    <router-link to = "/comments">Travel Experiences</router-link>
                                 </b-dropdown-item>
                             </b-nav-item-dropdown>
                             <b-nav-item-dropdown right>
@@ -75,19 +75,17 @@
 			},
 			detect_current_page() {
 				if (router.currentRoute.path === '/') {
-					return "Home page"
+					return "Home Page"
 				} else if (router.currentRoute.path === '/about') {
-					return "About page"
+					return "About Page"
 				} else if (router.currentRoute.path === '/dashboard') {
-					return "Country dashboard"
-				} else if (router.currentRoute.path === '/statistics') {
-					return "Global Dashboard"
+					return "Country Indices"
 				} else if (router.currentRoute.path === '/comments') {
-					return "Experience Dashboard"
+					return "Travel Experiences"
 				} else if (router.currentRoute.path === '/settings') {
 					return "Profile Settings"
 				} else if (router.currentRoute.path === '/pinned') {
-					return "Pinned Countries"
+					return "My Pinned Countries"
 				}
 				return null
 			}

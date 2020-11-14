@@ -16,12 +16,6 @@
                     <a href = "https://github.com/nguyenngoclinhchi/BT3103-TripBuddy" target = "_blank" title = "GithubLink">
                         <i class = "fab fa-github-square generic-anchor"></i>
                     </a>
-                    <a href = "https://www.linkedin.com/in/ngoc-linh-chi-nguyen-53463217a/" target = "_blank" title = "LinkedInLink">
-                        <i class = "fab fa-linkedin generic-anchor"></i>
-                    </a>
-                    <a href = "https://www.facebook.com/profile.php?id=100009045380956" target = "_blank" title = "FacebookLink">
-                        <i class = "fab fa-facebook-square generic-anchor"></i>
-                    </a>
                 </span>
             </div>
         </div>

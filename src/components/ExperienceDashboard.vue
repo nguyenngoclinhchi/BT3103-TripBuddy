@@ -32,11 +32,11 @@
                                     Choose only posts with ONLY specific country in the PINNED list</p>
                                 <b-form-group style = "padding: 0 8px">
                                     <md-chip :key = "chip" @click = "selectedCountryOption = chip" class = "md-accent"
-                                             md-clickable style = "padding-top: 3px; margin: 5px" v-for = "chip in updateInterestCountry">
+                                             md-clickable style = "padding: 5px; margin-right: 5px" v-for = "chip in updateInterestCountry">
                                         {{chip}}
                                     </md-chip>
                                     <md-chip @click = "selectedCountryOption = ''" class = "md-info" md-clickable
-                                             style = "padding-top: 3px; margin: 5px">
+                                             style = "padding-top: 5px; margin: 5px">
                                         Reset to all countries
                                     </md-chip>
                                 </b-form-group>
@@ -87,8 +87,8 @@
                 <div class = "col2">
                     <div>
                         <div :key = "post.id" class = "post" v-for = "post in getCountryUpdatedPostsList">
-                            <section class = "controls rating">
-                                <label for = "rating-inline" style = "padding: 0; margin: 10px">Overall
+                            <section class = "controls rating" style = "width: 270px;">
+                                <label for = "rating-inline" style = "padding: 0; font-size: 14px; margin: 0px;">Overall
                                                                                                 Satisfaction</label>
                                 <b-form-rating :value = "post.rating_value_5"
                                                id = "rating-inline"
@@ -188,6 +188,14 @@
                             <section class = "controls" style = "justify-content: left">
                                 <p>Contact tracing</p>
                                 <b-form-rating :value = "fullPost.rating_value_3"
+                                               id = "rating-inline"
+                                               inline no-border readonly
+                                               style = "padding: 10px"
+                                               variant = "warning"></b-form-rating>
+                            </section>
+                            <section class = "controls" style = "justify-content: left">
+                                <p>Recommendation to travel</p>
+                                <b-form-rating :value = "fullPost.rating_value_4"
                                                id = "rating-inline"
                                                inline no-border readonly
                                                style = "padding: 10px"
