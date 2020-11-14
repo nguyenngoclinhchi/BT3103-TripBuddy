@@ -9,7 +9,8 @@ body {
 }
 
 html {
-    -webkit-text-size-adjust: 100%;
+    -webkit-text-size-adjust: auto;
+    text-size-adjust: auto
 }
 
 * {
@@ -52,7 +53,6 @@ h6 {
 
 em p li label form input textarea ul{
     font-size: 13px;
-    line-height: 1.5;
 }
 
 a {
@@ -324,7 +324,6 @@ header ul li a {
 #login .col1 p {
     max-width: 490px;
     margin-top: 0.8rem;
-    line-height: 1.8;
 }
 
 #login .col1 a {
@@ -845,7 +844,7 @@ header ul li a {
 #pinnedCountries .column {
     float: left;
     width: 33%;
-    padding: 0 30px;
+    padding-left: 10px;
 }
 
 #pinnedCountries .row {

@@ -13,8 +13,8 @@
             </div>
             <div :class = "{ 'signup-form': !showLoginForm }" class = "col2" style = "overflow-y: auto">
                 <form @submit.prevent v-if = "showLoginForm">
-                    <div class = "logo" style = "padding:5%; max-width: 480px">
-                        <img alt = "logo" src = "../../public/logo.svg" style = "height:300px;width:550px;padding-bottom:5px">
+                    <div class = "logo">
+                        <img alt = "logo" src = "../../public/logo.svg" style = "height:300px;width:430px;padding-bottom:5px">
                     </div>
                     <div>
                         <label for = "email1">Email</label>

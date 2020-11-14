@@ -75,34 +75,54 @@
                     </p>
                 </b-alert>
             </div>
+            <br>
+            <h4 id = "deaths" style = "text-align:center; padding:5px"></h4>
+            <br>
+            <section>
+                <div class = "column">
+                    <div class = "card" style = "background-color: #6699CC">
+                        <h3><b>{{regionDeaths}}</b></h3>
+                        <p id="total">Total Deaths in {{region}}</p>
+                    </div>
+                </div>
+                <div class = "column">
+                    <div class = "card" style = "background-color: #EF9D4C">
+                        <h3><b>{{countryDeaths}}</b></h3>
+                        <p>Total Deaths in {{country}}</p>
+                    </div>
+                </div>
+                <div class = "column">
+                    <div class = "card" style = "background-color: #29D2A5">
+                        <h3><b>{{percentage}}</b></h3>
+                        <p>of deaths in {{region}}</p>
+                    </div>
+                </div>
+            </section>
         </div>
-        <b><h4 id = "title" style = "margin-left:40px; text-align: center"></h4></b>
+        <br><br>
+        <b><h4 id = "title" style = "margin-left:40px; margin-top: 20px; text-align: center"></h4></b>
         <div class = "chart">
             <canvas id = "mixedChart"></canvas>
         </div>
-        <br>
-        <h4 id = "deaths" style = "text-align:center; padding:5px"></h4>
-        <br>
-        
-		<div class = "row">
-			<div class = "column">
-				<div class = "card" style = "background-color: #6699CC">
-					<h3><b>{{regionDeaths}}</b></h3>
-					<p id="total">Total Deaths in {{region}}</p>
-				</div>
-			</div>
-			<div class = "column">
-				<div class = "card" style = "background-color: #EF9D4C">
-					<h3><b>{{countryDeaths}}</b></h3>
-					<p>Total Deaths in {{country}}</p>
-				</div>
-			</div>
-			<div class = "column">
-				<div class = "card" style = "background-color: #29D2A5">
-					<h3><b>{{percentage}}</b></h3>
-					<p>of deaths in {{region}}</p>
-				</div>
-			</div>
+        <div class = "row">
+<!--			<div class = "column">-->
+<!--				<div class = "card" style = "background-color: #6699CC">-->
+<!--					<h3><b>{{regionDeaths}}</b></h3>-->
+<!--					<p id="total">Total Deaths in {{region}}</p>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--			<div class = "column">-->
+<!--				<div class = "card" style = "background-color: #EF9D4C">-->
+<!--					<h3><b>{{countryDeaths}}</b></h3>-->
+<!--					<p>Total Deaths in {{country}}</p>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--			<div class = "column">-->
+<!--				<div class = "card" style = "background-color: #29D2A5">-->
+<!--					<h3><b>{{percentage}}</b></h3>-->
+<!--					<p>of deaths in {{region}}</p>-->
+<!--				</div>-->
+<!--			</div>-->
 		</div>
         <br>
     
@@ -117,6 +137,7 @@
 	import axios from 'axios';
 	import worldCode from "../all.json";
 	import PinACountry from "@/components/PinACountry";
+	
 	export default {
 		components: {
 			PinACountry
@@ -203,8 +224,7 @@
 					this.myChart2.data.labels.push("Other countries in " + region)
 					this.myChart2.update()
 					let percentage = (deaths / regiondeaths).toFixed(3);
-					let total = deaths + regiondeaths;
-					this.regionDeaths = total
+					this.regionDeaths = deaths + regiondeaths
 					this.countryDeaths = deaths
 					this.percentage = percentage + "%"
 					this.region = region
