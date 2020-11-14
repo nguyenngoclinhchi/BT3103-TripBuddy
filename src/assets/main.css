@@ -1002,6 +1002,13 @@ footer p {
     max-width: 1300px;
 }
 
+#mainPage .card-shadow {
+    text-align: center;
+    color: #fff;
+    box-shadow: 7px 6px 26px -17px rgba(0, 0, 0, 1);
+    margin-left: 20px;
+}
+
 @media screen and (max-width: 742px) {
     #mainPage .column {
         width: 100%;

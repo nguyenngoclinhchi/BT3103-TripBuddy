@@ -126,11 +126,3 @@
 		},
 	}
 </script>
-<style>
-    .card-shadow {
-        text-align: center;
-        color: #fff;
-        box-shadow: 7px 6px 26px -17px rgba(0, 0, 0, 1);
-        margin-left: 20px;
-    }
-</style>
