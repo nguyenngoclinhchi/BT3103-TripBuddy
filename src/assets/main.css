@@ -9,7 +9,6 @@ body {
 }
 
 html {
-    line-height: 1.15;
     -webkit-text-size-adjust: 100%;
 }
 
@@ -24,7 +23,7 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6, p {
-    margin: 8px;
+    margin: 8px 8px 8px 0;
 }
 
 h1 {
@@ -176,7 +175,6 @@ section {
 }
 
 .controls {
-    margin: 8px;
     display: flex;
     align-items: center;
     justify-content: center
@@ -425,11 +423,12 @@ header ul li a {
 
 #dashboard .col1 {
     flex: 0 0 40%;
+    margin-right: 10px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 742px) {
     #dashboard .col1 {
-        flex: 0 0 40%;
+        flex: 0 0 30%;
     }
 }
 
@@ -734,7 +733,7 @@ header ul li a {
     margin: 5px;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 742px) {
     .columnName {
         width: 100%;
         display: block;
@@ -991,7 +990,7 @@ header ul li a {
     clear: both;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 742px) {
     #mainPage .column {
         width: 100%;
         display: block;

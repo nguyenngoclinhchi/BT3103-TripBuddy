@@ -4,18 +4,25 @@
             <h6>
                 Last Refreshed: {{date}}
             </h6>
-            <section>
-                <md-autocomplete v-model = "selectedOption" :md-options = "userProfile.country_interested">
-                    <label>Pinned Countries</label>
+            <section class = "controls">
+                <md-autocomplete v-model = "selectedOption" :md-options = "country_options_dropdown">
+                    <label>Country</label>
                 </md-autocomplete>
-                <md-button @click = "updateData(selectedOption)" class = "md-raised md-primary">
-                    Display
+                <md-button @click = "updateData(selectedOption)" class = "md-raised md-primary"
+                           style = "padding: 9px; display: block; overflow: hidden">
+                    Search
                 </md-button>
+                <pin-a-country :selected-country = "selectedOption"></pin-a-country>
             </section>
-            <p style = "padding-bottom: 10px; text-align: right">
-                <i>View your pinned countries by selecting from the dropdown button and click Display button</i>
-            </p>
-            
+            <p>
+                Using shortcut search with PINNED country list by clicking in the country tag</p>
+            <b-form-group>
+                <md-chip class = "md-accent" v-for = "chip in userProfile.country_interested" :key = "chip"
+                         md-clickable style = "padding-bottom:8px; margin-right: 5px"
+                         @click = "selectedOption = chip; updateData(selectedOption)">
+                    {{chip}}
+                </md-chip>
+            </b-form-group>
             <div v-if = "this.alertStatus === 0">
                 <b-alert show variant = "secondary">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
@@ -68,25 +75,13 @@
                     </p>
                 </b-alert>
             </div>
-            <p id = "notification_processing"></p>
-            <!--            <div id = "advisory" style = "margin-top: 20px; background-color:lightgrey">-->
-            <!--                <div style = "display:inline-block;vertical-align:top;padding:10px">-->
-            <!--                    <img src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;" alt = "flight">-->
-            <!--                </div>-->
-            <!--                <div style = "display:inline-block; font-size:23px; padding: 13px">-->
-            <!--                    <div id = "titleAdv"><u> Travel Advisory </u></div>-->
-            <!--                </div>-->
-            <!--                <p id = "recommend" style = "margin-left:60px; font-size:18px; color:white"></p>-->
-            <!--                <p id = "comment" style = "margin-left:60px; font-size:18px; color:white"></p>-->
-            <!--                <br>-->
-            <!--            </div>-->
         </div>
         <b><h4 id = "title" style = "margin-left:40px; text-align: center"></h4></b>
         <div class = "chart">
             <canvas id = "mixedChart"></canvas>
         </div>
         <br>
-        <h4 id = "deaths" style = "text-align:center;padding:5px"></h4>
+        <h4 id = "deaths" style = "text-align:center; padding:5px"></h4>
         <br>
         <div class = "chart2">
             <div style = "width: 50%; float:left; margin-left:150px">
@@ -114,8 +109,12 @@
 	import axios from 'axios';
 	import worldCode from "../all.json";
 	import doughnutChartData from "../doughnut.js";
+	import PinACountry from "@/components/PinACountry";
 	
 	export default {
+		components: {
+			PinACountry
+        },
 		data() {
 			return {
 				date: 'today',
@@ -128,7 +127,7 @@
 			}
 		},
 		computed: {
-			...mapState(['userProfile'])
+			...mapState(['userProfile', 'country_options_dropdown'])
 		},
 		methods: {
 			createChart: function (chartId, chartData) {
@@ -160,21 +159,19 @@
 			},
 			
 			updateData: function (countryCode) {
-				document.getElementById("notification_processing").innerHTML = "Processing data for " + countryCode
 				let code = countryCode.slice(1, 4)
-				// clear previous data
 				this.myChart.data.datasets[0].data = []
 				this.myChart.data.datasets[1].data = []
 				this.myChart.data.labels = []
 				this.myChart.update()
 				//let date = this.date
-				const link = "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/" + this.prev_date() + "/" + this.date_function()
+				const link = "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/" +
+                    this.prev_date() + "/" + this.date_function()
 				axios.get(link).then(response => {
 					// push data for the past 20 days
 					for (let day in response.data.data) {
 						for (let country in response.data.data[day]) {
 							if (response.data.data[day][country].country_code === code) {
-								console.log(response.data.data[day][country].confirmed / 1000)
 								this.myChart.data.datasets[0].data.push(response.data.data[day][country].confirmed / 1000)
 								this.myChart.data.datasets[1].data.push(response.data.data[day][country].stringency)
 								this.myChart.data.labels.push(response.data.data[day][country].date_value)
@@ -208,8 +205,6 @@
 							}
 						}
 					}
-					// console.log("deaths is: " + deaths)
-					// console.log("region deaths is: " + regiondeaths)
 					this.myChart2.data.datasets[0].data.push(deaths)
 					this.myChart2.data.datasets[0].data.push(regiondeaths)
 					this.myChart2.data.labels.push(country)
@@ -227,10 +222,6 @@
 				axios.get(url).then(response => {
 					let SI = response.data.stringencyData.stringency
 					if (SI > 50) {
-						// document.getElementById("advisory").style.backgroundColor = "#ff4d4d"
-						// document.getElementById("titleAdv").style.color = "white"
-						// document.getElementById("recommend").innerHTML = "Level 3 - Not recommended to travel!"
-						// document.getElementById("comment").innerHTML = "Avoid travel due to serious risks to safety and security."
 						this.alertStatus = 3
 					} else {
 						let indic1 = 0;
@@ -248,17 +239,9 @@
 						}
 						// travel with care
 						if (indic1 > 2 || indic2 > 2 || indic3 > 2) {
-							// document.getElementById("advisory").style.backgroundColor = "#ffc34d"
-							// document.getElementById("titleAdv").style.color = "white"
-							// document.getElementById("recommend").innerHTML = "Level 2 - Exercise Increased Caution!"
-							// document.getElementById("comment").innerHTML = "Be aware of heightened risks to safety and security. Elderly & children to take extra care."
 							this.alertStatus = 2
 						} else {
 							// safe to travel
-							// document.getElementById("advisory").style.backgroundColor = "#00cc66"
-							// document.getElementById("titleAdv").style.color = "white"
-							// document.getElementById("recommend").innerHTML = "Level 1 - Safe to travel; Exercise Normal Precautions"
-							// document.getElementById("comment").innerHTML = "Have a safe trip!"
 							this.alertStatus = 1
 						}
 					}
@@ -275,15 +258,12 @@
 			},
 			date_function: function () {
 				let currentDate = new Date();
-				//console.log(currentDate.toJSON());
 				currentDate.setDate(currentDate.getDate() - 5);
-				// console.log(formatted_date);
 				return currentDate.toJSON().slice(0, 10);
 			},
 			prev_date: function () {
 				let currentDate = new Date();
 				currentDate.setDate(currentDate.getDate() - 35);
-				// console.log(formatted_date);
 				return currentDate.toJSON().slice(0, 10);
 			},
 			findRegion: function (alpha3) {
@@ -308,7 +288,3 @@
 		}
 	}
 </script>
-
-<style scoped>
-
-</style>
