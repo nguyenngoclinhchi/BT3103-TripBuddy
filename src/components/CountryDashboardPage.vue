@@ -17,7 +17,7 @@
                     Using shortcut search with PINNED country list by clicking in the country tag</p>
                 <b-form-group>
                     <md-chip :key = "chip" @click = "selectedOption = chip; updateData(selectedOption)" class = "md-accent"
-                             md-clickable style = "padding-top: 3px; margin-right: 5px"
+                             md-clickable style = "padding-top: 5px; margin-right: 5px"
                              v-for = "chip in userProfile.country_interested">
                         {{chip}}
                     </md-chip>

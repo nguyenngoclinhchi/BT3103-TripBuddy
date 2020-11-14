@@ -10,7 +10,7 @@
                        target = "_blank" title = "NUSLink">
                         <i class = "fas fa-map-marker-alt generic-anchor"></i>
                     </a>
-                    <a href = "mailto:qcjy3103@gmail.com">
+                    <a href = "mailto:qcjy3103@gmail.com" target = "_blank" title = "EmailLink">
                         <i class = "fas fa-envelope-open-text generic-anchor"></i>
                     </a>
                     <a href = "https://github.com/nguyenngoclinhchi/BT3103-TripBuddy" target = "_blank" title = "GithubLink">
@@ -37,10 +37,12 @@
     .generic-anchor {
         color: white;
         cursor: pointer;
+        text-decoration: none;
     }
     
     .generic-anchor:hover {
         color: #ccc;
+        text-decoration: none;
     }
     
     .flex-rw {
