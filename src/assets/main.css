@@ -23,6 +23,7 @@ body {
     box-sizing: border-box;
     transition: 0.15s;
     letter-spacing: .02rem;
+    line-height: 2rem;
 }
 
 *:focus {
@@ -63,15 +64,16 @@ em p li label pre blockquote dl figure table ul ol form input textarea select fi
 
 a {
     text-decoration: none;
-    color: #0c5460;
+    color: #17A2B8;
     margin: 0;
     cursor: pointer;
 }
 
 a:hover {
-    color: #0c5460;
+    color: #17A2B8;
     text-decoration: #17a2b8;
 }
+
 
 section {
     display: flex;
@@ -284,7 +286,7 @@ form textarea {
 
 .block {
     width: 70px;
-    height: 2px;
+    height: 3px;
     background: #e55d87; /* Old browsers */
     background: -moz-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);
     background: -webkit-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);
@@ -303,10 +305,11 @@ header {
     justify-content: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    background: #e55d87;
-    background: -moz-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);
-    background: -webkit-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);
-    background: linear-gradient(135deg, #e55d87 0%, #5fc3e4 100%);
+    /*background: #e55d87;*/
+    /*background: -moz-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);*/
+    /*background: -webkit-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);*/
+    /*background: linear-gradient(135deg, #e55d87 0%, #5fc3e4 100%);*/
+    background: #17A2B8;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e55d87', endColorstr='#5fc3e4', GradientType=1);
 }
 
@@ -342,13 +345,15 @@ header ul li a {
 }
 
 footer {
+    width: 100%;
     margin-top: 70px;
-    min-height: 120px;
-    padding: 40px 0 40px 0;
-    background: #e55d87;
-    background: -moz-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);
-    background: -webkit-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);
-    background: linear-gradient(135deg, #e55d87 0%, #5fc3e4 100%);
+    min-height: 50px;
+    padding: 20px 0 20px 0;
+    /*background: #e55d87;*/
+    /*background: -moz-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);*/
+    /*background: -webkit-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);*/
+    /*background: linear-gradient(135deg, #e55d87 0%, #5fc3e4 100%);*/
+    background: #17A2B8;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e55d87', endColorstr='#5fc3e4', GradientType=1);
     box-sizing: border-box;
 }
@@ -788,7 +793,6 @@ footer p {
     padding: 20px;
     margin: 80px auto 2rem;
     background-color: whitesmoke;
-    line-height: 2rem;
 }
 
 #statistics_dashboard .chart {

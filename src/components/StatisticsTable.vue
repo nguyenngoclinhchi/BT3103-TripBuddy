@@ -24,7 +24,7 @@
 					sort: [0, 1, 2, 3, 4],
 					height: 500,
 					border: true,
-					highlightedColor: '#52b2bf'
+					highlightedColor: '#1BB9D3'
 				}
 			}
 		},

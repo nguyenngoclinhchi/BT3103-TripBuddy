@@ -4,7 +4,7 @@
             <CommentModal :post = "selectedPost" @close = "toggleCommentModal()"
                           v-if = "showCommentModal"></CommentModal>
         </transition>
-        <div class = "container">
+        <div class = "container" style="margin-top: 20px">
             <section>
                 <div class = "col1">
                     <div class = "profile">
@@ -32,11 +32,11 @@
                                     Choose only posts with ONLY specific country in the PINNED list</p>
                                 <b-form-group style = "padding: 0 8px">
                                     <md-chip :key = "chip" @click = "selectedCountryOption = chip" class = "md-accent"
-                                             md-clickable style = "margin: 5px" v-for = "chip in updateInterestCountry">
+                                             md-clickable style = "padding-top: 3px; margin: 5px" v-for = "chip in updateInterestCountry">
                                         {{chip}}
                                     </md-chip>
                                     <md-chip @click = "selectedCountryOption = ''" class = "md-info" md-clickable
-                                             style = "margin: 5px">
+                                             style = "padding-top: 3px; margin: 5px">
                                         Reset to all countries
                                     </md-chip>
                                 </b-form-group>
@@ -49,7 +49,7 @@
                                 </b-button>
                             </b-card-header>
                             <b-collapse accordion = "my-accordion" id = "accordion-2" role = "tabpanel">
-                                <b-card-body style = "padding-top: 3px; padding-bottom: 0">
+                                <b-card-body style = "padding-top: 3px; margin-right: 5px">
                                     <md-autocomplete :md-options = "country_options_dropdown"
                                                      id = "countryDropdownList"
                                                      style = "margin-right: 20px" v-model = "selectedCountryOption">
