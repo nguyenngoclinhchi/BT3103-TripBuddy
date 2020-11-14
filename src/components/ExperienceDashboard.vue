@@ -23,7 +23,7 @@
                     <div class = "accordion" role = "tablist">
                         <b-card no-body class = "mb-1">
                             <b-card-header header-tag = "header" class = "p-1" role = "tab">
-                                <b-button block v-b-toggle.accordion-1 variant = "info" style = "font-size: 13px">
+                                <b-button block v-b-toggle.accordion-1 variant = "info">
                                     SHORTCUT FILTER posts with PINNED COUNTRY list
                                 </b-button>
                             </b-card-header>
@@ -44,12 +44,12 @@
                         </b-card>
                         <b-card no-body class = "mb-1">
                             <b-card-header header-tag = "header" class = "p-1" role = "tab">
-                                <b-button block v-b-toggle.accordion-2 variant = "info" style = "font-size: 13px">
+                                <b-button block v-b-toggle.accordion-2 variant = "info">
                                     FILTER and SEARCH
                                 </b-button>
                             </b-card-header>
                             <b-collapse id = "accordion-2" accordion = "my-accordion" role = "tabpanel">
-                                <b-card-body style = "padding-top: 3px; padding-bottom: 0; font-size: 13px">
+                                <b-card-body style = "padding-top: 3px; padding-bottom: 0">
                                     <md-autocomplete v-model = "selectedCountryOption"
                                                      :md-options = "country_options_dropdown"
                                                      id = "countryDropdownList" style = "margin-right: 20px">

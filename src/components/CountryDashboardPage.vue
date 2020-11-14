@@ -28,15 +28,15 @@
                     </div>
                     <div class = "indic controls" style = "background-color:white; padding:10px; border-radius: 17px">
                         <div>
-                            <p style = "font-size:120%;"><b> <u> Stringency Index </u> </b></p>
+                            <h5><b> <u> Stringency Index </u> </b></h5>
                             <p>
                                 records the strictness of ‘lockdown style’ policies that primarily restrict people’
                                 behaviour </p>
-                            <p style = "font-size:120%;"><b> <u> Government Response Index </u> </b></p>
+                            <h5><b> <u> Government Response Index </u> </b></h5>
                             <p>
                                 records how the response of governments has varied over all indicators in the database,
                                 becoming stronger or weaker over the course of the outbreak </p>
-                            <p style = "font-size:120%;"><b> <u> Containment & Health Index </u> </b></p>
+                            <h5><b> <u> Containment & Health Index </u> </b></h5>
                             <p>
                                 combines ‘lockdown’ restrictions and closures with measures such as testing policy and
                                 contact tracing, short term investment in healthcare, as well investments in
@@ -45,7 +45,7 @@
                     </div>
                 </section>
 				<br> <br>
-                <section style = "min-height: 70vh; margin: auto">
+                <section style = "margin: auto">
                     <div class = "H" v-if="this.H_indicators.length === 0">
                         <p style="text-align: center">The Heath system policies is not available for the country</p>
                     </div>

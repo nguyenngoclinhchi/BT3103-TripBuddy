@@ -73,7 +73,7 @@
                                         <b-dropdown-divider></b-dropdown-divider>
                                         <b-dropdown-item-button
                                                 v-for = "option in availableOptionsNationality"
-                                                :key = "option" style = "font-size: 13px"
+                                                :key = "option"
                                                 @click = "onOptionClickNationality({option})">
                                             {{ option }}
                                         </b-dropdown-item-button>
@@ -90,7 +90,7 @@
                                       style = "margin: 0; padding: 0">
                             <b-form-tags v-model = "value" no-outer-focus class = "mb-2">
                                 <template v-slot = "{ tags, disabled, addTag, removeTag }">
-                                    <p v-if = "value.length === 0" style="font-size: 13px; text-align: center">
+                                    <p v-if = "value.length === 0" style="text-align: center">
                                         There should be at least 1 pinned country in your profile
                                     </p>
                                     <ul v-if = "tags.length > 0" class = "list-inline d-inline-block mb-2">
@@ -121,7 +121,7 @@
                                         <b-dropdown-divider></b-dropdown-divider>
                                         <b-dropdown-item-button
                                                 v-for = "option in availableOptions"
-                                                :key = "option" style = "font-size: 13px"
+                                                :key = "option"
                                                 @click = "onOptionClick({ option, addTag })">
                                             {{ option }}
                                         </b-dropdown-item-button>

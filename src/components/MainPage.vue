@@ -23,12 +23,12 @@
                 </div>
             </div>
         </div>
-        <div class = "row" style = "min-height: 120vh">
+        <div class = "row">
             <div class = "column1">
                 <div class = "card" style = "background-color: white; padding: 0;">
                     <bubblechart></bubblechart>
                 </div>
-                <p style = "font-size: 12px; text-align: right"><i>Only pinned counties are highlighted in the charts</i></p>
+                <p style = "text-align: right"><i>Only pinned counties are highlighted in the charts</i></p>
             </div>
         </div>
     </div>

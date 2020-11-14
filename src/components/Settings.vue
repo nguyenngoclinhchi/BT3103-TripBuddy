@@ -3,7 +3,7 @@
         <div class = "accordion col1" role = "tablist">
             <b-card no-body class = "mb-1">
                 <b-card-header header-tag = "header" class = "p-1" role = "tab">
-                    <b-button block v-b-toggle.accordion-1 variant = "info" style = "font-size: 13px">Update Name
+                    <b-button block v-b-toggle.accordion-1 variant = "info">Update Name
                     </b-button>
                 </b-card-header>
                 <b-collapse id = "accordion-1" visible accordion = "my-accordion" role = "tabpanel">
@@ -17,8 +17,7 @@
             </b-card>
             <b-card no-body class = "mb-1">
                 <b-card-header header-tag = "header" class = "p-1" role = "tab">
-                    <b-button block v-b-toggle.accordion-2 variant = "info"
-                              style = "font-size: 13px" @click = "
+                    <b-button block v-b-toggle.accordion-2 variant = "info" @click = "
                               nationality = (nationality != null)? nationality : userProfile.nationality">
                         Update Nationality
                     </b-button>
@@ -53,7 +52,7 @@
                                         <b-dropdown-divider></b-dropdown-divider>
                                         <b-dropdown-item-button
                                                 v-for = "option in availableOptionsNationality"
-                                                :key = "option" style = "font-size: 13px"
+                                                :key = "option"
                                                 @click = "onOptionClickNationality({option})">
                                             {{ option }}
                                         </b-dropdown-item-button>
@@ -70,7 +69,6 @@
             <b-card no-body class = "mb-1">
                 <b-card-header header-tag = "header" class = "p-1" role = "tab">
                     <b-button block v-b-toggle.accordion-3 variant = "info"
-                              style = "font-size: 13px"
                               @click = "value = (value != null)? value : userProfile.country_interested">
                         Update customized pinned interesting countries
                     </b-button>
@@ -95,7 +93,7 @@
                                     </ul>
                                     <b-dropdown size = "sm" variant = "outline-info" block menu-class = "w-100"
                                                 class = "my-scrolling-class">
-                                        <template #button-content style = "font-size: 13px">
+                                        <template #button-content>
                                             <b-icon icon = "tag-fill"></b-icon>
                                             Choose countries
                                         </template>
@@ -109,7 +107,7 @@
                                         </b-dropdown-form>
                                         <b-dropdown-divider></b-dropdown-divider>
                                         <b-dropdown-item-button v-for = "option in availableOptions"
-                                                                :key = "option" style = "font-size: 13px"
+                                                                :key = "option"
                                                                 @click = "onOptionClick({ option, addTag })">
                                             {{ option }}
                                         </b-dropdown-item-button>
@@ -123,7 +121,7 @@
                     </b-card-body>
                 </b-collapse>
             </b-card>
-            <b-button style = "font-size: 13px; padding: 8px; width: 100%; height: 100%; display: block; overflow: hidden"
+            <b-button style = "padding: 8px; width: 100%; height: 100%; display: block; overflow: hidden"
                       @click = "updateProfile(); $bvToast.show('my-toast')">Update Profile
             </b-button>
             <b-toast id = "my-toast" variant = "warning" solid>

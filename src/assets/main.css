@@ -2,21 +2,26 @@
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css');
 @import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
 
+/* Typography
+********************************************************************* */
+
+html {
+    -webkit-text-size-adjust: auto;
+    text-size-adjust: auto;
+    font-size: 70%;
+}
+
 body {
     margin: 0;
     color: #34495E;
     background: #E6ECF0;
 }
 
-html {
-    -webkit-text-size-adjust: auto;
-    text-size-adjust: auto
-}
-
 * {
     font-family: "Merriweather", serif;
     box-sizing: border-box;
     transition: 0.15s;
+    letter-spacing: .02rem;
 }
 
 *:focus {
@@ -24,35 +29,35 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6, p {
-    margin: 8px 8px 8px 0;
+    margin-top: 10px;
 }
 
 h1 {
-    font-size: 37px;
+    font-size: 2.6rem;
 }
 
 h2 {
-    font-size: 33px;
+    font-size: 2.3rem;
 }
 
 h3 {
-    font-size: 29px;
+    font-size: 2.0rem;
 }
 
 h4 {
-    font-size: 25px;
+    font-size: 1.8rem;
 }
 
 h5 {
-    font-size: 21px;
+    font-size: 1.6rem;
 }
 
 h6 {
-    font-size: 17px;
+    font-size: 1.4rem;
 }
 
-em p li label form input textarea ul{
-    font-size: 13px;
+em p li label form input textarea ul {
+    font-size: 1.1rem;
 }
 
 a {
@@ -77,6 +82,9 @@ section {
         display: block;
     }
 }
+
+/* Generic Classes
+********************************************************************* */
 
 .my-scrolling-class .dropdown-menu {
     max-height: 300px;
@@ -130,7 +138,6 @@ section {
     color: #fff;
     padding: 0.5rem 1rem;
     min-width: 150px;
-    font-size: 13px;
     border-radius: 3px;
     cursor: pointer;
     margin-left: 10px;
@@ -200,6 +207,21 @@ section {
     max-width: 1100px;
     margin: auto;
     padding-top: 25px
+}
+
+/* For devices larger than 400px */
+@media (min-width: 400px) {
+    .container {
+        width: 85%;
+        padding: 0;
+    }
+}
+
+/* For devices larger than 550px */
+@media (min-width: 550px) {
+    .container {
+        width: 80%;
+    }
 }
 
 label {
@@ -409,7 +431,6 @@ header ul li a {
 
 .modal .modal-content .error {
     color: tomato;
-    font-size: 13px;
 }
 
 .modal .modal-content .button {
@@ -460,7 +481,6 @@ header ul li a {
 #dashboard .hidden-posts {
     text-align: center;
     border: 1px solid #e6ecf0;
-    font-size: 13px;
     border-bottom: 0;
     background: #fff;
 }
@@ -483,7 +503,6 @@ header ul li a {
 #dashboard .post {
     border: 1px solid #e6ecf0;
     border-bottom: 0;
-    font-size: 13px;
     padding: 1.5rem;
     background: #fff;
     margin-top: 2rem;
@@ -494,7 +513,6 @@ header ul li a {
 #dashboard .fullPost {
     border: 1px solid #e6ecf0;
     border-bottom: 0;
-    font-size: 13px;
     padding: 1.5rem;
     background: #fff;
     margin-top: 2rem;
@@ -512,7 +530,6 @@ header ul li a {
 #dashboard .post span {
     display: block;
     font-style: italic;
-    font-size: 13px;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     color: #a0bdd0;
@@ -531,7 +548,6 @@ header ul li a {
 #dashboard .post ul li {
     display: inline-block;
     margin-right: 1rem;
-    font-size: 13px;
 }
 
 #dashboard .no-results {
@@ -600,7 +616,6 @@ header ul li a {
     top: 5px;
     right: 10px;
     padding: 5px;
-    font-size: 13px;
 }
 
 #dashboard .p-modal .p-container .post {
@@ -613,7 +628,6 @@ header ul li a {
 }
 
 #dashboard .p-modal .p-container .comment {
-    font-size: 13px;
     padding: 1.5rem;
     border-bottom: 1px solid #e6ecf0;
     background-color: #ffffff;
@@ -630,7 +644,6 @@ header ul li a {
 #dashboard .p-modal .p-container .comment span {
     display: block;
     font-style: italic;
-    font-size: 13px;
     margin-bottom: 0.5rem;
     color: #b1c8d8;
 }
@@ -779,7 +792,6 @@ header ul li a {
 }
 
 .body {
-    min-height: 110vh;
     max-width: 100vh;
     padding-left: 10px;
     padding-right: 10px;
@@ -819,10 +831,6 @@ header ul li a {
     background: #dddddc;
 }
 
-#statistics_map {
-    min-height: 230vh;
-}
-
 #statistics_map section {
     align-content: center;
     width: 1000px;
@@ -835,10 +843,6 @@ header ul li a {
     width: 1000px;
     margin-left: auto;
     margin-right: auto;
-}
-
-#pinnedCountries {
-    min-height: 200vh;
 }
 
 #pinnedCountries .column {
