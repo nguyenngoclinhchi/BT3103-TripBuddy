@@ -196,11 +196,7 @@
 							}
 						}
 					}
-					this.myChart2.data.datasets[0].data.push(deaths)
-					this.myChart2.data.datasets[0].data.push(regiondeaths)
-					this.myChart2.data.labels.push(country)
-					this.myChart2.data.labels.push("Other countries in " + region)
-					this.myChart2.update()
+					
 					let percentage = (deaths / regiondeaths).toFixed(3);
 					this.regionDeaths = deaths + regiondeaths
 					this.countryDeaths = deaths

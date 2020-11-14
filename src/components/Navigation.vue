@@ -22,9 +22,6 @@
                                     <router-link to = "/">Home</router-link>
                                 </b-dropdown-item>
                                 <b-dropdown-item @click = "current_page = detect_current_page()">
-                                    <router-link to = "/about">About our app</router-link>
-                                </b-dropdown-item>
-                                <b-dropdown-item @click = "current_page = detect_current_page()">
                                     <router-link to = "/statistics">Global Dashboard</router-link>
                                 </b-dropdown-item>
                                 <b-dropdown-item @click = "current_page = detect_current_page()">
@@ -35,6 +32,9 @@
                                 </b-dropdown-item>
                                 <b-dropdown-item @click = "current_page = detect_current_page()">
                                     <router-link to = "/comments">Experience Dashboard</router-link>
+                                </b-dropdown-item>
+                                <b-dropdown-item @click = "current_page = detect_current_page()">
+                                    <router-link to = "/about">About our app</router-link>
                                 </b-dropdown-item>
                             </b-nav-item-dropdown>
                             <b-nav-item-dropdown right >
