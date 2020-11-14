@@ -7,19 +7,19 @@
             <div class = "column">
                 <div class = "card" style = "background-color: #3498db">
                     <h3><b>{{totalCases}}</b></h3>
-                    <p>Total Global Cases</p>
+                    <p>Global Total Cases</p>
                 </div>
             </div>
             <div class = "column">
                 <div class = "card" style = "background-color: #e74c3c">
                     <h3><b>{{totalDeaths}}</b></h3>
-                    <p>Total Global Deaths</p>
+                    <p>Global Total Deaths</p>
                 </div>
             </div>
             <div class = "column">
                 <div class = "card" style = "background-color: #2ecc71">
                     <h3><b>{{totalRecovered}}</b></h3>
-                    <p>Total Global Recovered</p>
+                    <p>Global Total Recovered</p>
                 </div>
             </div>
         </div>

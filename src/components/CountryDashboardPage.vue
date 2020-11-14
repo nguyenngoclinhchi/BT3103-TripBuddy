@@ -44,6 +44,7 @@
                         </div>
                     </div>
                 </section>
+				<br> <br>
                 <section style = "min-height: 70vh; margin: auto">
                     <div class = "H" v-if="this.H_indicators.length === 0">
                         <p style="text-align: center">The Heath system policies is not available for the country</p>

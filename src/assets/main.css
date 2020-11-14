@@ -839,7 +839,25 @@ header ul li a {
 }
 
 #pinnedCountries {
-    min-height: 230vh;
+    min-height: 200vh;
+}
+
+#pinnedCountries .column {
+    float: left;
+    width: 33%;
+    padding: 0 30px;
+}
+
+#pinnedCountries .row {
+    margin: 0 -5px;
+}
+
+#pinnedCountries .card {
+    padding: 12px;
+    text-align: center;
+    background-color: #f1f1f1;
+    color: #fff;
+    box-shadow: 7px 6px 26px -17px rgba(0, 0, 0, 1);
 }
 
 #pinnedCountries .chart {
