@@ -50,7 +50,7 @@
                         <p style = "text-align: center">The Heath system policies is not available for the country</p>
                     </div>
                     <div class = "H" v-else>
-                        <h6 style = "text-align: center"><b> Health System Policies </b></h6>
+                        <h6 style = "text-align: center; font-size:20px"><b> Health System Policies </b></h6>
                         <table id = "H_indicators">
                             <thead>
                             <tr>
@@ -75,7 +75,7 @@
                                                         country</p>
                     </div>
                     <div class = "C" v-else>
-                        <h6 style = "text-align: center"><b> Containment and Closure Policies </b></h6>
+                        <h6 style = "text-align: center; font-size:20px"><b> Containment and Closure Policies </b></h6>
                         <table id = "C_indicators">
                             <thead>
                             <tr>
