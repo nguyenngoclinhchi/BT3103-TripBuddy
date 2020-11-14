@@ -9,6 +9,7 @@ html {
     -webkit-text-size-adjust: auto;
     text-size-adjust: auto;
     font-size: 70%;
+    scroll-behavior: smooth
 }
 
 body {
@@ -56,7 +57,7 @@ h6 {
     font-size: 1.4rem;
 }
 
-em p li label form input textarea ul {
+em p li label pre blockquote dl figure table ul ol form input textarea select fieldset ul ol ul ul, ul ol, ol ol, ol ul {
     font-size: 1.1rem;
 }
 
@@ -68,7 +69,8 @@ a {
 }
 
 a:hover {
-    color: #0c5460;;
+    color: #0c5460;
+    text-decoration: #17a2b8;
 }
 
 section {
@@ -83,7 +85,35 @@ section {
     }
 }
 
-/* Generic Classes
+label {
+    display: block;
+}
+
+form input {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.3rem;
+    padding: 5px 10px;
+    outline: 0;
+    border: 1px solid #e6ecf0;
+    border-radius: 3px;
+}
+
+form input:focus {
+    box-shadow: 0 0 5px 0 rgba(52, 73, 94, 0.2);
+}
+
+form textarea {
+    resize: none;
+    border: 1px solid #e6ecf0;
+    outline: 0;
+    height: 100px;
+    width: 100%;
+    padding: 5px 10px;
+}
+
+
+/* Global Classes
 ********************************************************************* */
 
 .my-scrolling-class .dropdown-menu {
@@ -224,31 +254,20 @@ section {
     }
 }
 
-label {
-    display: block;
+.logo {
+    height: 300px;
+    width: 430px;
+    padding-bottom: 5px
 }
 
-form input {
-    display: block;
-    width: 100%;
-    margin-bottom: 0.3rem;
-    padding: 5px 10px;
-    outline: 0;
-    border: 1px solid #e6ecf0;
-    border-radius: 3px;
-}
-
-form input:focus {
-    box-shadow: 0 0 5px 0 rgba(52, 73, 94, 0.2);
-}
-
-form textarea {
-    resize: none;
-    border: 1px solid #e6ecf0;
-    outline: 0;
-    height: 100px;
-    width: 100%;
-    padding: 5px 10px;
+.goTop {
+    height: 40px;
+    width: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
 }
 
 .fade-enter-active {
@@ -263,11 +282,32 @@ form textarea {
     opacity: 0;
 }
 
+.block {
+    width: 70px;
+    height: 2px;
+    background: #e55d87; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);
+    background: -webkit-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);
+    background: linear-gradient(135deg, #e55d87 0%, #5fc3e4 100%);
+    margin-bottom: 50px;
+}
+
 header {
-    position: relative;
-    background: #fff;
-    box-shadow: 0 0 5px 0 rgba(52, 73, 94, 0.5);
-    z-index: 10;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #e55d87;
+    background: -moz-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);
+    background: -webkit-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);
+    background: linear-gradient(135deg, #e55d87 0%, #5fc3e4 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e55d87', endColorstr='#5fc3e4', GradientType=1);
 }
 
 header h3 {
@@ -299,6 +339,23 @@ header ul li a {
         float: none;
         text-align: center;
     }
+}
+
+footer {
+    margin-top: 70px;
+    min-height: 120px;
+    padding: 40px 0 40px 0;
+    background: #e55d87;
+    background: -moz-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);
+    background: -webkit-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);
+    background: linear-gradient(135deg, #e55d87 0%, #5fc3e4 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e55d87', endColorstr='#5fc3e4', GradientType=1);
+    box-sizing: border-box;
+}
+
+footer p {
+    color: #FFFFFF;
+    margin: 20px 0 0 0;
 }
 
 #login {
@@ -682,51 +739,6 @@ header ul li a {
     overflow-y: auto;
 }
 
-#mainContent {
-    background-color: white;
-}
-
-#aboutCOVID {
-    background-image: url('https://stories.uh.edu/covid-19/assets/ag2dSlL11z/covidbackground05-2560x1440.jpeg');
-    background-size: cover;
-    color: #BF0000;
-}
-
-#aboutApp {
-    display: block;
-    position: relative;
-    color: rgb(255, 255, 255)
-}
-
-#aboutApp::after {
-    content: "";
-    background-image: url('https://media.cntraveler.com/photos/5ecfbc8a0877597c10c84052/16:9/w_2560%2Cc_limit/Travel-GettyImages-482761951.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-color: #da554b;
-    background-blend-mode: multiply;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
-}
-
-#aboutCOVID p {
-    padding-left: 200px;
-    padding-right: 200px;
-}
-
-#aboutApp p {
-    padding-left: 200px;
-    padding-right: 200px;
-}
-
-#mainContent h5 {
-    padding: 0 150px;
-}
-
 #mainContent .name {
     font-weight: bold;
     padding-top: 10px;
@@ -735,7 +747,6 @@ header ul li a {
 }
 
 #mainContent .rowName {
-    /*background: linear-gradient(white, #efb3ab, #ec9488);*/
     padding: 0 100px 100px;
 }
 
@@ -767,6 +778,17 @@ header ul li a {
     content: "";
     clear: both;
     display: table;
+}
+
+#mainContent .content-container {
+    align-content: center;
+    width: 1000px;
+    max-width: 100%;
+    box-shadow: 2px 3px 18px -17px rgba(0, 0, 0, 1);
+    padding: 20px;
+    margin: 80px auto 2rem;
+    background-color: whitesmoke;
+    line-height: 2rem;
 }
 
 #statistics_dashboard .chart {

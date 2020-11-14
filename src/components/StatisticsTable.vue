@@ -1,5 +1,5 @@
 <template>
-    <div id="statistics_table">
+    <div id = "statistics_table">
         <vue-table-dynamic :params = "params" ref = "table"></vue-table-dynamic>
     </div>
 </template>

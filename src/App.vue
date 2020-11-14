@@ -1,18 +1,28 @@
 <template>
     <div id = "app">
-        <nav-bar v-if = "showNav"></nav-bar>
+        <div>
+            <nav-bar v-if = "showNav"></nav-bar>
+        </div>
         <router-view></router-view>
-        <footer-page v-if = "showNavFooter"></footer-page>
+        <nav v-if = "showNav && !($router.currentRoute.path === '/settings')">
+            <a @click = "scrollTop" id = "butt">
+                <img alt = "goTop" src = "../public/GoTop.svg" class = "goTop">
+            </a>
+        </nav>
+        <div  v-if = "showNav && !($router.currentRoute.path === '/settings')">
+            <footer-page></footer-page>
+        </div>
     </div>
 </template>
 
 <script>
 	import {mapState} from 'vuex'
 	import FooterPage from "@/components/FooterPage";
-	import router from "@/router";
 	
 	export default {
-		components: {FooterPage},
+		components: {
+			FooterPage,
+        },
 		computed: {
 			...mapState(['userProfile', 'country_options_dropdown']),
 			showNav() {
@@ -21,18 +31,22 @@
 				return Object.keys(this.userProfile).length > 1
 					&& this.country_options_dropdown.length > 0
 			},
-			showNavFooter() {
-				if (router.currentRoute.path === '/settings') {
-					return false
-				}
-				return Object.keys(this.userProfile).length > 1
-					&& this.country_options_dropdown.length > 0
-			}
 		},
 		created() {
 			this.$store.dispatch("addCountries")
 			console.log("App.vue: this.$store.dispatch(addCountries)")
 		},
+		methods: {
+			scrollTop() {
+				let butt = document.getElementById('butt');
+				butt.onclick = function () {
+					window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+					});
+				}
+			}
+		}
 	}
 </script>
 

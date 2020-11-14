@@ -4,7 +4,7 @@
             <h6>Last Refreshed: {{date}}</h6>
             <div>
                 <section class = "controls">
-                    <md-autocomplete v-model = "selectedOption" :md-options = "country_options_dropdown">
+                    <md-autocomplete :md-options = "country_options_dropdown" v-model = "selectedOption">
                         <label>Country</label>
                     </md-autocomplete>
                     <md-button @click = "updateData(selectedOption)" class = "md-raised md-primary"
@@ -16,9 +16,9 @@
                 <p>
                     Using shortcut search with PINNED country list by clicking in the country tag</p>
                 <b-form-group>
-                    <md-chip class = "md-accent" v-for = "chip in userProfile.country_interested" :key = "chip"
+                    <md-chip :key = "chip" @click = "selectedOption = chip; updateData(selectedOption)" class = "md-accent"
                              md-clickable style = "padding-bottom:8px; margin-right: 5px"
-                             @click = "selectedOption = chip; updateData(selectedOption)">
+                             v-for = "chip in userProfile.country_interested">
                         {{chip}}
                     </md-chip>
                 </b-form-group>
@@ -44,10 +44,10 @@
                         </div>
                     </div>
                 </section>
-				<br> <br>
+                <br> <br>
                 <section style = "margin: auto">
-                    <div class = "H" v-if="this.H_indicators.length === 0">
-                        <p style="text-align: center">The Heath system policies is not available for the country</p>
+                    <div class = "H" v-if = "this.H_indicators.length === 0">
+                        <p style = "text-align: center">The Heath system policies is not available for the country</p>
                     </div>
                     <div class = "H" v-else>
                         <h6 style = "text-align: center"><b> Health System Policies </b></h6>
@@ -70,8 +70,9 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class = "C" v-if="this.C_indicators.length === 0">
-                        <p style="text-align: center">The Containment and Closure Policies is not available for the country</p>
+                    <div class = "C" v-if = "this.C_indicators.length === 0">
+                        <p style = "text-align: center">The Containment and Closure Policies is not available for the
+                                                        country</p>
                     </div>
                     <div class = "C" v-else>
                         <h6 style = "text-align: center"><b> Containment and Closure Policies </b></h6>

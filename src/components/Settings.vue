@@ -1,59 +1,60 @@
 <template>
-    <div id = "settings" v-if = "showNav" style = "overflow-y: auto; padding-top: 25px">
+    <div id = "settings" style = "overflow-y: auto; padding-top: 25px" v-if = "showNav">
         <div class = "accordion col1" role = "tablist">
-            <b-card no-body class = "mb-1">
-                <b-card-header header-tag = "header" class = "p-1" role = "tab">
+            <b-card class = "mb-1" no-body>
+                <b-card-header class = "p-1" role = "tab">
                     <b-button block v-b-toggle.accordion-1 variant = "info">Update Name
                     </b-button>
                 </b-card-header>
-                <b-collapse id = "accordion-1" visible accordion = "my-accordion" role = "tabpanel">
+                <b-collapse accordion = "my-accordion" id = "accordion-1" role = "tabpanel" visible>
                     <b-card-body>
                         <form @submit.prevent>
                             <label for = "name">Name</label>
-                            <input :placeholder="userProfile.name" id = "name" type = "text" v-model.trim = "name"/>
+                            <input :placeholder = "userProfile.name" id = "name" type = "text" v-model.trim = "name"/>
                         </form>
                     </b-card-body>
                 </b-collapse>
             </b-card>
-            <b-card no-body class = "mb-1">
-                <b-card-header header-tag = "header" class = "p-1" role = "tab">
-                    <b-button block v-b-toggle.accordion-2 variant = "info" @click = "
-                              nationality = (nationality != null)? nationality : userProfile.nationality">
+            <b-card class = "mb-1" no-body>
+                <b-card-header class = "p-1"  role = "tab">
+                    <b-button @click = "
+                              nationality = (nationality != null)? nationality : userProfile.nationality"
+                              block v-b-toggle.accordion-2 variant = "info">
                         Update Nationality
                     </b-button>
                 </b-card-header>
-                <b-collapse id = "accordion-2" accordion = "my-accordion" role = "tabpanel">
+                <b-collapse accordion = "my-accordion" id = "accordion-2" role = "tabpanel">
                     <b-card-body style = "height: 370px">
                         <b-form-group style = "margin: 0; padding: 0">
-                            <b-form-tags v-model = "nationality" no-outer-focus class = "mb-2">
+                            <b-form-tags class = "mb-2" no-outer-focus v-model = "nationality">
                                 <template v-slot = "{ tags, disabled}">
-                                    <ul v-if = "nationality != null && nationality.length > 0" class = "list-inline d-inline-block mb-2">
+                                    <ul class = "list-inline d-inline-block mb-2" v-if = "nationality != null && nationality.length > 0">
                                         <li>
-                                            <b-form-tag :disabled = "disabled" class = "list-inline-item" variant = "info"
-                                                        @remove = "removeTagNationality()">
+                                            <b-form-tag :disabled = "disabled" @remove = "removeTagNationality()" class = "list-inline-item"
+                                                        variant = "info">
                                                 {{nationality[0]}}
                                             </b-form-tag>
                                         </li>
                                     </ul>
-                                    <b-dropdown size = "sm" variant = "outline-info" block menu-class = "w-100"
-                                                class = "my-scrolling-class">
+                                    <b-dropdown block class = "my-scrolling-class" menu-class = "w-100" size = "sm"
+                                                variant = "outline-info">
                                         <template #button-content>
                                             <b-icon icon = "tag-fill"></b-icon>
                                             Choose countries
                                         </template>
                                         <b-dropdown-form @submit.stop.prevent = "() => {}">
-                                            <b-form-group label-for = "tag-search-input-nationality" label = "Search countries"
-                                                          label-cols-md = "auto" class = "mb-0"
-                                                          label-size = "sm" :description = "searchDescNationality" :disabled = "disabled">
-                                                <b-form-input v-model = "searchNationality" id = "tag-search-input-nationality" type = "search"
-                                                              size = "sm" autocomplete = "on"></b-form-input>
+                                            <b-form-group :description = "searchDescNationality" :disabled = "disabled"
+                                                          class = "mb-0" label = "Search countries"
+                                                          label-cols-md = "auto" label-for = "tag-search-input-nationality" label-size = "sm">
+                                                <b-form-input autocomplete = "on" id = "tag-search-input-nationality" size = "sm"
+                                                              type = "search" v-model = "searchNationality"></b-form-input>
                                             </b-form-group>
                                         </b-dropdown-form>
                                         <b-dropdown-divider></b-dropdown-divider>
                                         <b-dropdown-item-button
-                                                v-for = "option in availableOptionsNationality"
                                                 :key = "option"
-                                                @click = "onOptionClickNationality({option})">
+                                                @click = "onOptionClickNationality({option})"
+                                                v-for = "option in availableOptionsNationality">
                                             {{ option }}
                                         </b-dropdown-item-button>
                                         <b-dropdown-text v-if = "availableOptionsNationality.length === 0">
@@ -66,49 +67,49 @@
                     </b-card-body>
                 </b-collapse>
             </b-card>
-            <b-card no-body class = "mb-1">
-                <b-card-header header-tag = "header" class = "p-1" role = "tab">
-                    <b-button block v-b-toggle.accordion-3 variant = "info"
-                              @click = "value = (value != null)? value : userProfile.country_interested">
+            <b-card class = "mb-1" no-body>
+                <b-card-header class = "p-1"  role = "tab">
+                    <b-button @click = "value = (value != null)? value : userProfile.country_interested" block v-b-toggle.accordion-3
+                              variant = "info">
                         Update customized pinned interesting countries
                     </b-button>
                 </b-card-header>
-                <b-collapse id = "accordion-3" accordion = "my-accordion" role = "tabpanel">
+                <b-collapse accordion = "my-accordion" id = "accordion-3" role = "tabpanel">
                     <b-card-body style = "min-height: 450px">
                         <b-form-group style = "margin: 0; padding: 0">
-                            <b-form-tags v-model = "value" no-outer-focus class = "mb-2">
+                            <b-form-tags class = "mb-2" no-outer-focus v-model = "value">
                                 <template v-slot = "{ tags, disabled, addTag, removeTag }">
                                     <p v-if = "value.length === 0">
                                         There should be at least 1 pinned country in your profile
                                     </p>
-                                    <ul v-if = "tags.length > 0" class = "list-inline d-inline-block mb-2">
-                                        <li v-for = "tag in tags" :key = "tag" class = "list-inline-item">
-                                            <b-form-tag @remove = "removeTag(tag)"
+                                    <ul class = "list-inline d-inline-block mb-2" v-if = "tags.length > 0">
+                                        <li :key = "tag" class = "list-inline-item" v-for = "tag in tags">
+                                            <b-form-tag :disabled = "disabled"
                                                         :title = "tag"
-                                                        :disabled = "disabled"
+                                                        @remove = "removeTag(tag)"
                                                         variant = "info">
                                                 {{ tag }}
                                             </b-form-tag>
                                         </li>
                                     </ul>
-                                    <b-dropdown size = "sm" variant = "outline-info" block menu-class = "w-100"
-                                                class = "my-scrolling-class">
+                                    <b-dropdown block class = "my-scrolling-class" menu-class = "w-100" size = "sm"
+                                                variant = "outline-info">
                                         <template #button-content>
                                             <b-icon icon = "tag-fill"></b-icon>
                                             Choose countries
                                         </template>
                                         <b-dropdown-form @submit.stop.prevent = "() => {}">
-                                            <b-form-group label-for = "tag-search-input" label = "Search countries"
-                                                          label-cols-md = "auto" class = "mb-0"
-                                                          label-size = "sm" :description = "searchDesc" :disabled = "disabled">
-                                                <b-form-input v-model = "search" id = "tag-search-input" type = "search"
-                                                              size = "sm" autocomplete = "on"></b-form-input>
+                                            <b-form-group :description = "searchDesc" :disabled = "disabled"
+                                                          class = "mb-0" label = "Search countries"
+                                                          label-cols-md = "auto" label-for = "tag-search-input" label-size = "sm">
+                                                <b-form-input autocomplete = "on" id = "tag-search-input" size = "sm"
+                                                              type = "search" v-model = "search"></b-form-input>
                                             </b-form-group>
                                         </b-dropdown-form>
                                         <b-dropdown-divider></b-dropdown-divider>
-                                        <b-dropdown-item-button v-for = "option in availableOptions"
-                                                                :key = "option"
-                                                                @click = "onOptionClick({ option, addTag })">
+                                        <b-dropdown-item-button :key = "option"
+                                                                @click = "onOptionClick({ option, addTag })"
+                                                                v-for = "option in availableOptions">
                                             {{ option }}
                                         </b-dropdown-item-button>
                                         <b-dropdown-text v-if = "availableOptions.length === 0">
@@ -121,13 +122,13 @@
                     </b-card-body>
                 </b-collapse>
             </b-card>
-            <b-button style = "padding: 8px; width: 100%; height: 100%; display: block; overflow: hidden"
-                      @click = "updateProfile(); $bvToast.show('my-toast')">Update Profile
+            <b-button @click = "updateProfile(); $bvToast.show('my-toast')"
+                      style = "padding: 8px; width: 100%; height: 100%; display: block; overflow: hidden">Update Profile
             </b-button>
-            <b-toast id = "my-toast" variant = "warning" solid>
+            <b-toast id = "my-toast" solid variant = "warning">
                 <template #toast-title>
                     <div class = "d-flex flex-grow-1 align-items-baseline">
-                        <b-img blank blank-color = "#ff5555" class = "mr-2" width = "12" height = "12"></b-img>
+                        <b-img blank blank-color = "#ff5555" class = "mr-2" height = "12" width = "12"></b-img>
                         <strong class = "mr-auto">Notice!</strong>
                         <small class = "text-muted mr-2">1 seconds ago</small>
                     </div>
@@ -170,9 +171,9 @@
 					this.extraMessage += " List of pinned country is required when updating Profile, so it is reset back to old value."
 					
 				}
-                let updatedValueName = this.name !== '' ? this.name : this.userProfile.name
-                let updatedValueNationality = this.nationality.length > 0 ? this.nationality[0] : this.userProfile.nationality
-                let updatedInterestedCountry = this.value.length > 0 ? this.value : this.userProfile.country_interested
+				let updatedValueName = this.name !== '' ? this.name : this.userProfile.name
+				let updatedValueNationality = this.nationality.length > 0 ? this.nationality[0] : this.userProfile.nationality
+				let updatedInterestedCountry = this.value.length > 0 ? this.value : this.userProfile.country_interested
 				this.$store.dispatch('updateProfile', {
 					email: this.userProfile.email,
 					name: updatedValueName,
@@ -181,7 +182,7 @@
 				})
 				this.name = updatedValueName
 				this.nationality = updatedValueNationality
-                this.value = updatedInterestedCountry
+				this.value = updatedInterestedCountry
 				this.showSuccess = true
 				setTimeout(() => {
 					this.showSuccess = false
@@ -202,8 +203,8 @@
 			},
 			updateValues() {
 				console.log("UPDATE IS CALLED!")
-                console.log("Previous value", this.value)
-                console.log("Previous nationality", this.nationality)
+				console.log("Previous value", this.value)
+				console.log("Previous nationality", this.nationality)
 				if (this.value === null) {
 					console.log("After value", this.value)
 					this.value = this.userProfile.country_interested

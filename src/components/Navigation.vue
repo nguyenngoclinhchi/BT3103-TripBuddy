@@ -2,14 +2,16 @@
     <header>
         <div class = "col1" style = "padding: 0;">
             <div>
-                <b-navbar toggleable = "lg" type = "dark" variant = "info">
-                    <div @click="current_page = 'Home page'">
-                        <router-link to = "/">
-                            <h3 style = "color: white">TRIP BUDDY</h3>
+                <b-navbar toggleable = "lg" type = "dark">
+                    <div @click = "current_page = 'Home page'">
+                        <router-link style = "text-decoration: none" to = "/">
+                            <h1 style = "color: white">TRIP BUDDY</h1>
                         </router-link>
                     </div>
                     <b-navbar-nav>
-                        <b-nav-item v-if = "current_page != null">Welcome {{this.userProfile.name}} to {{this.current_page}}</b-nav-item>
+                        <b-nav-item style = "text-decoration: none" v-if = "current_page != null">
+                            Welcome {{this.userProfile.name}} to {{this.current_page}}
+                        </b-nav-item>
                     </b-navbar-nav>
                     <b-navbar-toggle target = "nav-collapse"></b-navbar-toggle>
                     <b-collapse id = "nav-collapse" is-nav>
@@ -18,33 +20,33 @@
                                 <template #button-content>
                                     <em style = "color: white">Discover</em>
                                 </template>
-                                <b-dropdown-item @click = "current_page = detect_current_page()">
+                                <b-dropdown-item @click = "current_page = detect_current_page()" style = "margin-right: 4px">
                                     <router-link to = "/">Home</router-link>
                                 </b-dropdown-item>
-                                <b-dropdown-item @click = "current_page = detect_current_page()">
+                                <b-dropdown-item @click = "current_page = detect_current_page()" style = "margin-right: 4px">
                                     <router-link to = "/about">About our app</router-link>
                                 </b-dropdown-item>
-                                <b-dropdown-item @click = "current_page = detect_current_page()">
+                                <b-dropdown-item @click = "current_page = detect_current_page()" style = "margin-right: 4px">
                                     <router-link to = "/statistics">Global Dashboard</router-link>
                                 </b-dropdown-item>
-                                <b-dropdown-item @click = "current_page = detect_current_page()">
+                                <b-dropdown-item @click = "current_page = detect_current_page()" style = "margin-right: 4px">
                                     <router-link to = "/dashboard">Country Dashboard</router-link>
                                 </b-dropdown-item>
-                                <b-dropdown-item @click = "current_page = detect_current_page()">
+                                <b-dropdown-item @click = "current_page = detect_current_page()" style = "margin-right: 4px">
                                     <router-link to = "/pinned">Pinned Country</router-link>
                                 </b-dropdown-item>
-                                <b-dropdown-item @click = "current_page = detect_current_page()">
+                                <b-dropdown-item @click = "current_page = detect_current_page()" style = "margin-right: 4px">
                                     <router-link to = "/comments">Experience Dashboard</router-link>
                                 </b-dropdown-item>
                             </b-nav-item-dropdown>
-                            <b-nav-item-dropdown right >
+                            <b-nav-item-dropdown right>
                                 <template #button-content>
                                     <em style = "color: white">User</em>
                                 </template>
-                                <b-dropdown-item @click = "current_page = detect_current_page()">
+                                <b-dropdown-item @click = "current_page = detect_current_page()" style = "margin-right: 4px">
                                     <router-link to = "/settings">Profile Settings</router-link>
                                 </b-dropdown-item>
-                                <b-dropdown-item @click = "logout()">
+                                <b-dropdown-item @click = "logout()" style = "margin-right: 4px">
                                     Sign Out
                                 </b-dropdown-item>
                             </b-nav-item-dropdown>
@@ -67,7 +69,7 @@
 				current_page: ''
 			};
 		},
-        computed: {
+		computed: {
 			...mapState(['userProfile', 'posts'])
 		},
 		methods: {
@@ -87,9 +89,9 @@
 					return "Experience Dashboard"
 				} else if (router.currentRoute.path === '/settings') {
 					return "Profile Settings"
-                } else if (router.currentRoute.path === '/pinned') {
-                    return "Pinned Countries"
-                }
+				} else if (router.currentRoute.path === '/pinned') {
+					return "Pinned Countries"
+				}
 				return null
 			}
 		},

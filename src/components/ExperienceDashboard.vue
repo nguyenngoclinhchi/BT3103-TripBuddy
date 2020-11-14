@@ -21,54 +21,54 @@
                         <progress-bar :selectedPosts = "getCountryUpdatedPostsList"></progress-bar>
                     </div>
                     <div class = "accordion" role = "tablist">
-                        <b-card no-body class = "mb-1">
-                            <b-card-header header-tag = "header" class = "p-1" role = "tab">
+                        <b-card class = "mb-1" no-body>
+                            <b-card-header class = "p-1" role = "tab">
                                 <b-button block v-b-toggle.accordion-1 variant = "info">
                                     SHORTCUT FILTER posts with PINNED COUNTRY list
                                 </b-button>
                             </b-card-header>
-                            <b-collapse id = "accordion-1" visible accordion = "my-accordion" role = "tabpanel">
+                            <b-collapse accordion = "my-accordion" id = "accordion-1" role = "tabpanel" visible>
                                 <p style = "text-align: center">
                                     Choose only posts with ONLY specific country in the PINNED list</p>
                                 <b-form-group style = "padding: 0 8px">
-                                    <md-chip class = "md-accent" v-for = "chip in updateInterestCountry" :key = "chip"
-                                             md-clickable style = "margin: 5px" @click = "selectedCountryOption = chip">
+                                    <md-chip :key = "chip" @click = "selectedCountryOption = chip" class = "md-accent"
+                                             md-clickable style = "margin: 5px" v-for = "chip in updateInterestCountry">
                                         {{chip}}
                                     </md-chip>
-                                    <md-chip class = "md-info" md-clickable style = "margin: 5px"
-                                             @click = "selectedCountryOption = ''">
+                                    <md-chip @click = "selectedCountryOption = ''" class = "md-info" md-clickable
+                                             style = "margin: 5px">
                                         Reset to all countries
                                     </md-chip>
                                 </b-form-group>
                             </b-collapse>
                         </b-card>
-                        <b-card no-body class = "mb-1">
-                            <b-card-header header-tag = "header" class = "p-1" role = "tab">
+                        <b-card class = "mb-1" no-body>
+                            <b-card-header class = "p-1" role = "tab">
                                 <b-button block v-b-toggle.accordion-2 variant = "info">
                                     FILTER and SEARCH
                                 </b-button>
                             </b-card-header>
-                            <b-collapse id = "accordion-2" accordion = "my-accordion" role = "tabpanel">
+                            <b-collapse accordion = "my-accordion" id = "accordion-2" role = "tabpanel">
                                 <b-card-body style = "padding-top: 3px; padding-bottom: 0">
-                                    <md-autocomplete v-model = "selectedCountryOption"
-                                                     :md-options = "country_options_dropdown"
-                                                     id = "countryDropdownList" style = "margin-right: 20px">
+                                    <md-autocomplete :md-options = "country_options_dropdown"
+                                                     id = "countryDropdownList"
+                                                     style = "margin-right: 20px" v-model = "selectedCountryOption">
                                         <label>Search with Country</label>
                                     </md-autocomplete>
                                     <md-field>
                                         <label>Search with Post Content</label>
-                                        <md-input v-model = "selectedPostContent" class = "controls"></md-input>
+                                        <md-input class = "controls" v-model = "selectedPostContent"></md-input>
                                     </md-field>
                                     <pin-a-country :selected-country = "selectedCountryOption"></pin-a-country>
                                     <label style = "padding-top: 10px">SORT BY ELEMENT</label>
                                     <section class = "controls" style = "justify-content: left">
-                                        <md-radio v-model = "selectedSortingElement" value = "createdOn" class = "md-primary">
+                                        <md-radio class = "md-primary" v-model = "selectedSortingElement" value = "createdOn">
                                             CreatedTime
                                         </md-radio>
-                                        <md-radio v-model = "selectedSortingElement" value = "likes" class = "md-primary">
+                                        <md-radio class = "md-primary" v-model = "selectedSortingElement" value = "likes">
                                             Likes
                                         </md-radio>
-                                        <md-radio v-model = "selectedSortingElement" value = "ratings" class = "md-primary">
+                                        <md-radio class = "md-primary" v-model = "selectedSortingElement" value = "ratings">
                                             Overall Satisfaction
                                         </md-radio>
                                     </section>
@@ -90,27 +90,27 @@
                             <section class = "controls rating">
                                 <label for = "rating-inline" style = "padding: 0; margin: 10px">Overall
                                                                                                 Satisfaction</label>
-                                <b-form-rating id = "rating-inline"
-                                               variant = "info"
-                                               readonly no-border inline
-                                               :value = "post.rating_value_5"
-                                               style = "padding: 10px"></b-form-rating>
+                                <b-form-rating :value = "post.rating_value_5"
+                                               id = "rating-inline"
+                                               inline no-border readonly
+                                               style = "padding: 10px"
+                                               variant = "info"></b-form-rating>
                             </section>
                             <h5>{{ post.userName }}</h5>
                             <b-form-group>
-                                <md-chip size = "sm" class = "md-info" md-static style = "margin: 5px">
+                                <md-chip class = "md-info" md-static size = "sm" style = "margin: 5px">
                                     <em><u>Email</u></em> {{post.userEmail}}
                                 </md-chip>
-                                <md-chip size = "sm" class = "md-info" md-static style = "margin: 5px">
+                                <md-chip class = "md-info" md-static size = "sm" style = "margin: 5px">
                                     <em><u>Nationality</u></em> {{post.userNationality}}
                                 </md-chip>
-                                <md-chip size = "sm" class = "md-info" md-static style = "margin: 5px">
+                                <md-chip class = "md-info" md-static size = "sm" style = "margin: 5px">
                                     <em><u>Travelled to</u></em> {{post.countryTravelled}}
                                 </md-chip>
-                                <md-chip size = "sm" class = "md-light" md-static style = "margin: 5px">
+                                <md-chip class = "md-light" md-static size = "sm" style = "margin: 5px">
                                     <em><u>Purpose</u></em> {{post.purpose}}
                                 </md-chip>
-                                <md-chip size = "sm" class = "md-light" md-static style = "margin: 5px">
+                                <md-chip class = "md-light" md-static size = "sm" style = "margin: 5px">
                                     <em><u>Period</u></em> {{post.dateTravelled|formatDateTravelled}}
                                                            to {{post.dateTravelledTo|formatDateTravelled}}
                                 </md-chip>
@@ -136,70 +136,70 @@
                             <section class = "controls rating">
                                 <label for = "rating-inline" style = "padding: 0; margin: 10px">Overall
                                                                                                 Satisfaction</label>
-                                <b-form-rating id = "rating-inline"
-                                               variant = "info"
-                                               readonly no-border inline
-                                               :value = "fullPost.rating_value_5"
-                                               style = "padding: 10px"></b-form-rating>
+                                <b-form-rating :value = "fullPost.rating_value_5"
+                                               id = "rating-inline"
+                                               inline no-border readonly
+                                               style = "padding: 10px"
+                                               variant = "info"></b-form-rating>
                             </section>
                             <h5>{{ fullPost.userName }}</h5>
                             <b-form-group>
-                                <md-chip size = "sm" class = "md-info" md-static style = "margin: 5px">
+                                <md-chip class = "md-info" md-static size = "sm" style = "margin: 5px">
                                     <em><u>Email</u></em> {{fullPost.userEmail}}
                                 </md-chip>
-                                <md-chip size = "sm" class = "md-info" md-static style = "margin: 5px">
+                                <md-chip class = "md-info" md-static size = "sm" style = "margin: 5px">
                                     <em><u>Nationality</u></em> {{fullPost.userNationality}}
                                 </md-chip>
-                                <md-chip size = "sm" class = "md-info" md-static style = "margin: 5px">
+                                <md-chip class = "md-info" md-static size = "sm" style = "margin: 5px">
                                     <em><u>Travelled to</u></em> {{fullPost.countryTravelled}}
                                 </md-chip>
-                                <md-chip size = "sm" class = "md-light" md-static style = "margin: 5px">
+                                <md-chip class = "md-light" md-static size = "sm" style = "margin: 5px">
                                     <em><u>Purpose</u></em> {{fullPost.purpose}}
                                 </md-chip>
-                                <md-chip size = "sm" class = "md-light" md-static style = "margin: 5px">
+                                <md-chip class = "md-light" md-static size = "sm" style = "margin: 5px">
                                     <em><u>Period</u></em> {{fullPost.dateTravelled|formatDateTravelled}}
                                                            to {{fullPost.dateTravelledTo|formatDateTravelled}}
                                 </md-chip>
-                                <md-chip v-if = "getTravelledPeople(fullPost) !== ''" size = "sm" class = "md-light"
-                                         md-static style = "margin: 5px">
+                                <md-chip class = "md-light" md-static size = "sm"
+                                         style = "margin: 5px" v-if = "getTravelledPeople(fullPost) !== ''">
                                     <em><u>Travellers</u></em> {{getTravelledPeople(fullPost)}}
                                 </md-chip>
-                                <md-chip size = "sm" class = "md-light" md-static style = "margin: 5px">
+                                <md-chip class = "md-light" md-static size = "sm" style = "margin: 5px">
                                     <em><u>Having existing medical condition</u></em> {{fullPost.medical}}
                                 </md-chip>
                             </b-form-group>
                             <span>posted {{ fullPost.createdOn | formatDate }}</span>
                             <section class = "controls" style = "justify-content: left">
                                 <p>Overall public health situation</p>
-                                <b-form-rating id = "rating-inline"
-                                               variant = "warning"
-                                               readonly no-border inline
-                                               :value = "fullPost.rating_value_1"
-                                               style = "padding: 10px"></b-form-rating>
+                                <b-form-rating :value = "fullPost.rating_value_1"
+                                               id = "rating-inline"
+                                               inline no-border readonly
+                                               style = "padding: 10px"
+                                               variant = "warning"></b-form-rating>
                             </section>
                             <section class = "controls" style = "justify-content: left">
                                 <p>Observing of safety measures by the public</p>
-                                <b-form-rating id = "rating-inline"
-                                               variant = "warning"
-                                               readonly no-border inline
-                                               :value = "fullPost.rating_value_2"
-                                               style = "padding: 10px"></b-form-rating>
+                                <b-form-rating :value = "fullPost.rating_value_2"
+                                               id = "rating-inline"
+                                               inline no-border readonly
+                                               style = "padding: 10px"
+                                               variant = "warning"></b-form-rating>
                             </section>
                             <section class = "controls" style = "justify-content: left">
                                 <p>Contact tracing</p>
-                                <b-form-rating id = "rating-inline"
-                                               variant = "warning"
-                                               readonly no-border inline
-                                               :value = "fullPost.rating_value_3"
-                                               style = "padding: 10px"></b-form-rating>
+                                <b-form-rating :value = "fullPost.rating_value_3"
+                                               id = "rating-inline"
+                                               inline no-border readonly
+                                               style = "padding: 10px"
+                                               variant = "warning"></b-form-rating>
                             </section>
                             <section class = "controls" style = "justify-content: left">
                                 <p>Overall Satisfaction</p>
-                                <b-form-rating id = "rating-inline"
-                                               variant = "warning"
-                                               readonly no-border inline
-                                               :value = "fullPost.rating_value_5"
-                                               style = "padding: 10px"></b-form-rating>
+                                <b-form-rating :value = "fullPost.rating_value_5"
+                                               id = "rating-inline"
+                                               inline no-border readonly
+                                               style = "padding: 10px"
+                                               variant = "warning"></b-form-rating>
                             </section>
                             <br>
                             <p><strong>{{ fullPost.content}}</strong></p>

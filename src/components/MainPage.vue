@@ -43,6 +43,7 @@
 		components: {
 			bubblechart,
 		},
+		
 		data: function () {
 			return {
 				name: 'Person',
@@ -72,9 +73,8 @@
 				
 				currentDate.setDate(currentDate.getDate() - 1);
 				
-				let formatted_date = currentDate.toJSON().slice(0, 10);
 				//console.log(formatted_date);
-				return formatted_date;
+				return currentDate.toJSON().slice(0, 10);
 				
 			},
 			numberWithCommas: function (x) {

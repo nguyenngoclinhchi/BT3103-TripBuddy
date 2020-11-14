@@ -19,12 +19,12 @@
                             </md-select>
                         </md-field>
                         <label> Date of Travel Range</label>
-                        <md-datepicker v-model = "post.dateTravelled" md-immediately
-                                       :md-disabled-dates = "disabledDatesFrom">
+                        <md-datepicker :md-disabled-dates = "disabledDatesFrom" md-immediately
+                                       v-model = "post.dateTravelled">
                             <label> From</label>
                         </md-datepicker>
-                        <md-datepicker v-model = "post.dateTravelledTo" md-immediately
-                                       :md-disabled-dates = "disabledDatesFrom">
+                        <md-datepicker :md-disabled-dates = "disabledDatesFrom" md-immediately
+                                       v-model = "post.dateTravelledTo">
                             <label> To</label>
                         </md-datepicker>
                         <label> No. of Travellers</label>
@@ -76,21 +76,21 @@
                         </md-field>
                         <md-field>
                             <label>What was your experience in the trip?</label>
-                            <md-textarea v-model.trim = "post.content" md-autogrow md-counter = "1000"></md-textarea>
+                            <md-textarea md-autogrow md-counter = "1000" v-model.trim = "post.content"></md-textarea>
                         </md-field>
                         <label> Does any of the traveller have existing medical condition?</label>
                         <md-switch v-model = "post.medical">Yes</md-switch>
                         <div>
                             <label>Overall public health situation</label>
                             <b-input-group name = "rating_1">
-                                <b-form-rating v-model = "post.rating_value_1"
+                                <b-form-rating icon-clear = "slash-circle"
+                                               icon-empty = "heart"
+                                               icon-full = "heart-fill"
+                                               icon-half = "heart-half"
+                                               show-clear
                                                show-value
                                                show-value-max
-                                               icon-empty = "heart"
-                                               icon-half = "heart-half"
-                                               icon-full = "heart-fill"
-                                               icon-clear = "slash-circle"
-                                               show-clear
+                                               v-model = "post.rating_value_1"
                                                variant = "danger">
                                 </b-form-rating>
                             </b-input-group>
@@ -98,14 +98,14 @@
                         <div>
                             <label>Observing of safety measures by the public</label>
                             <b-input-group>
-                                <b-form-rating v-model = "post.rating_value_2"
+                                <b-form-rating icon-clear = "slash-circle"
+                                               icon-empty = "heart"
+                                               icon-full = "heart-fill"
+                                               icon-half = "heart-half"
+                                               show-clear
                                                show-value
                                                show-value-max
-                                               icon-empty = "heart"
-                                               icon-half = "heart-half"
-                                               icon-full = "heart-fill"
-                                               icon-clear = "slash-circle"
-                                               show-clear
+                                               v-model = "post.rating_value_2"
                                                variant = "danger">
                                 </b-form-rating>
                             </b-input-group>
@@ -113,14 +113,14 @@
                         <div>
                             <label>Contact tracing</label>
                             <b-input-group>
-                                <b-form-rating v-model = "post.rating_value_3"
+                                <b-form-rating icon-clear = "slash-circle"
+                                               icon-empty = "heart"
+                                               icon-full = "heart-fill"
+                                               icon-half = "heart-half"
+                                               show-clear
                                                show-value
                                                show-value-max
-                                               icon-empty = "heart"
-                                               icon-half = "heart-half"
-                                               icon-full = "heart-fill"
-                                               icon-clear = "slash-circle"
-                                               show-clear
+                                               v-model = "post.rating_value_3"
                                                variant = "danger">
                                 </b-form-rating>
                             </b-input-group>
@@ -128,14 +128,14 @@
                         <div>
                             <label>Recommendation to travel</label>
                             <b-input-group>
-                                <b-form-rating v-model = "post.rating_value_4"
+                                <b-form-rating icon-clear = "slash-circle"
+                                               icon-empty = "heart"
+                                               icon-full = "heart-fill"
+                                               icon-half = "heart-half"
+                                               show-clear
                                                show-value
                                                show-value-max
-                                               icon-empty = "heart"
-                                               icon-half = "heart-half"
-                                               icon-full = "heart-fill"
-                                               icon-clear = "slash-circle"
-                                               show-clear
+                                               v-model = "post.rating_value_4"
                                                variant = "danger">
                                 </b-form-rating>
                             </b-input-group>
@@ -143,14 +143,14 @@
                         <div>
                             <label>Recommendation to travel</label>
                             <b-input-group>
-                                <b-form-rating v-model = "post.rating_value_5"
+                                <b-form-rating icon-clear = "slash-circle"
+                                               icon-empty = "heart"
+                                               icon-full = "heart-fill"
+                                               icon-half = "heart-half"
+                                               show-clear
                                                show-value
                                                show-value-max
-                                               icon-empty = "heart"
-                                               icon-half = "heart-half"
-                                               icon-full = "heart-fill"
-                                               icon-clear = "slash-circle"
-                                               show-clear
+                                               v-model = "post.rating_value_5"
                                                variant = "danger">
                                 </b-form-rating>
                             </b-input-group>

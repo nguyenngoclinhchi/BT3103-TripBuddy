@@ -1,17 +1,18 @@
 <template>
     <div>
         <div id = "password">
-            <ul style="padding-bottom: 0; margin: 0">
-                <li v-bind:class = "{ is_valid: contains_six_characters }"><strong>Must</strong> contain 6 Characters</li>
+            <ul style = "padding-bottom: 0; margin: 0">
+                <li v-bind:class = "{ is_valid: contains_six_characters }"><strong>Must</strong> contain 6 Characters
+                </li>
                 <li v-bind:class = "{ is_valid: contains_number }">Contain Number</li>
                 <li v-bind:class = "{ is_valid: contains_uppercase }">Contain Uppercase</li>
                 <li v-bind:class = "{ is_valid: contains_special_character }">Contain Special Character</li>
             </ul>
-            <section style="padding: 0; margin: 0">
-                <p v-if = "passed_password.length > 0" style = "padding: 0; text-align: center">
+            <section style = "padding: 0; margin: 0">
+                <p style = "padding: 0; text-align: center" v-if = "passed_password.length > 0">
                     Password Strength: <strong>{{checkPassword()}}</strong>
                 </p>
-                <p v-else style = "padding: 0; text-align: center">
+                <p style = "padding: 0; text-align: center" v-else>
                     Password is <strong>empty</strong>
                 </p>
                 <div class = "checkmark_container" v-bind:class = "{ show_checkmark: valid_password }">

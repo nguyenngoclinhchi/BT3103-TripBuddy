@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Dashboard from '../components/CountryDashboardPage.vue'
+import Dashboard from '@/components/CountryDashboardPage'
 import {auth} from '@/firebase'
 import MainPage from "@/components/MainPage";
 import Statistics from "@/components/GlobalDashboardPage";
@@ -14,7 +14,9 @@ const routes = [
 	{
 		path: '/',
 		name: 'MainPage',
-		component: MainPage,
+		components: {
+			default: MainPage,
+		},
 		meta: {
 			requiresAuth: true
 		},
@@ -34,23 +36,33 @@ const routes = [
 	},
 	{
 		path: '/statistics',
-		component: Statistics
+		components: {
+			default: Statistics,
+		}
 	},
 	{
 		path: '/dashboard',
-		component: Dashboard
+		components: {
+			default: Dashboard,
+		}
 	},
 	{
 		path: '/about',
-		component: About
+		components: {
+			default: About,
+		}
 	},
 	{
 		path: '/comments',
-		component: DashboardComment
+		components: {
+			default: DashboardComment,
+		}
 	},
 	{
 		path: '/pinned',
-		component: PinnedCountry
+		components: {
+			default: PinnedCountry,
+		}
 	}
 ]
 

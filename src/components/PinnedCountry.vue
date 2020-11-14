@@ -5,7 +5,7 @@
                 Last Refreshed: {{date}}
             </h6>
             <section class = "controls">
-                <md-autocomplete v-model = "selectedOption" :md-options = "country_options_dropdown">
+                <md-autocomplete :md-options = "country_options_dropdown" v-model = "selectedOption">
                     <label>Country</label>
                 </md-autocomplete>
                 <md-button @click = "updateData(selectedOption)" class = "md-raised md-primary"
@@ -17,16 +17,16 @@
             <p>
                 Using shortcut search with PINNED country list by clicking in the country tag</p>
             <b-form-group>
-                <md-chip class = "md-accent" v-for = "chip in userProfile.country_interested" :key = "chip"
+                <md-chip :key = "chip" @click = "selectedOption = chip; updateData(selectedOption)" class = "md-accent"
                          md-clickable style = "padding-bottom:8px; margin-right: 5px"
-                         @click = "selectedOption = chip; updateData(selectedOption)">
+                         v-for = "chip in userProfile.country_interested">
                     {{chip}}
                 </md-chip>
             </b-form-group>
             <div v-if = "this.alertStatus === 0">
                 <b-alert show variant = "secondary">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
-                        <img src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;" alt = "flight">
+                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
                     </div>
                     <h5 class = "alert-heading" style = "display:inline-block">
                         No advisories found!
@@ -39,7 +39,7 @@
             <div v-if = "this.alertStatus === 1">
                 <b-alert show variant = "success">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
-                        <img src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;" alt = "flight">
+                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
                     </div>
                     <h5 class = "alert-heading" style = "display:inline-block">
                         Level 1 - Safe to travel; Exercise Normal Precautions
@@ -52,7 +52,7 @@
             <div v-if = "this.alertStatus === 2">
                 <b-alert show variant = "warning">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
-                        <img src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;" alt = "flight">
+                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
                     </div>
                     <h5 class = "alert-heading" style = "display:inline-block">
                         Level 2 - Exercise Increased Caution!
@@ -65,7 +65,7 @@
             <div v-if = "this.alertStatus === 3">
                 <b-alert show variant = "danger">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
-                        <img src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;" alt = "flight">
+                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
                     </div>
                     <h5 class = "alert-heading" style = "display:inline-block">
                         Level 3 - Not recommended to travel!
@@ -82,7 +82,7 @@
                 <div class = "column">
                     <div class = "card" style = "background-color: #6699CC">
                         <h3><b>{{regionDeaths}}</b></h3>
-                        <p id="total">Total Deaths in {{region}}</p>
+                        <p id = "total">Total Deaths in {{region}}</p>
                     </div>
                 </div>
                 <div class = "column">
@@ -119,7 +119,7 @@
 	export default {
 		components: {
 			PinACountry
-        },
+		},
 		data() {
 			return {
 				date: 'today',
@@ -160,7 +160,7 @@
 				this.myChart.update()
 				//let date = this.date
 				const link = "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/" +
-                    this.prev_date() + "/" + this.date_function()
+					this.prev_date() + "/" + this.date_function()
 				axios.get(link).then(response => {
 					// push data for the past 20 days
 					for (let day in response.data.data) {

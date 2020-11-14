@@ -1,5 +1,5 @@
 <template>
-    <div id = "login" style="max-height: 100vh">
+    <div id = "login" style = "max-height: 100vh">
         <PasswordReset @close = "togglePasswordReset()" v-if = "showPasswordReset"></PasswordReset>
         <section>
             <div class = "col1">
@@ -13,9 +13,7 @@
             </div>
             <div :class = "{ 'signup-form': !showLoginForm }" class = "col2" style = "overflow-y: auto">
                 <form @submit.prevent v-if = "showLoginForm">
-                    <div class = "logo">
-                        <img alt = "logo" src = "../../public/logo.svg" style = "height:300px;width:430px;padding-bottom:5px">
-                    </div>
+                    <img alt = "logo" class = "logo" src = "../../public/logo.svg">
                     <div>
                         <label for = "email1">Email</label>
                         <input id = "email1" placeholder = "you@email.com" type = "text" v-model.trim = "loginForm.email"/>
@@ -35,10 +33,9 @@
                         <a @click = "toggleForm()">Create an Account</a>
                     </div>
                 </form>
-                <form @submit.prevent v-else style = "padding-top: 5vh">
+                <form @submit.prevent style = "padding-top: 5vh" v-else>
                     <div>
-                        <b-form-group label="Name">
-<!--                            <label for = "name">Name</label>-->
+                        <b-form-group label = "Name">
                             <label>
                                 <input placeholder = "Full Name" type = "text" v-model.trim = "signupForm.name"/>
                             </label>
@@ -46,35 +43,35 @@
                     </div>
                     <div>
                         <b-form-group label = "Nationality" style = "margin: 0; padding: 0">
-                            <b-form-tags v-model = "signupForm.nationality" no-outer-focus class = "mb-2">
+                            <b-form-tags class = "mb-2" no-outer-focus v-model = "signupForm.nationality">
                                 <template v-slot = "{ tags, disabled}">
-                                    <ul v-if = "signupForm.nationality.length > 0" class = "list-inline d-inline-block mb-2">
+                                    <ul class = "list-inline d-inline-block mb-2" v-if = "signupForm.nationality.length > 0">
                                         <li>
-                                            <b-form-tag :disabled = "disabled" class = "list-inline-item" variant = "info"
-                                                        @remove = "removeTagNationality()">
+                                            <b-form-tag :disabled = "disabled" @remove = "removeTagNationality()" class = "list-inline-item"
+                                                        variant = "info">
                                                 {{signupForm.nationality[0]}}
                                             </b-form-tag>
                                         </li>
                                     </ul>
-                                    <b-dropdown size = "sm" variant = "outline-info" block menu-class = "w-100"
-                                                class = "my-scrolling-class">
+                                    <b-dropdown block class = "my-scrolling-class" menu-class = "w-100" size = "sm"
+                                                variant = "outline-info">
                                         <template #button-content>
                                             <b-icon icon = "tag-fill"></b-icon>
                                             Choose countries
                                         </template>
                                         <b-dropdown-form @submit.stop.prevent = "() => {}">
-                                            <b-form-group label-for = "tag-search-input-nationality" label = "Search countries"
-                                                          label-cols-md = "auto" class = "mb-0"
-                                                          label-size = "sm" :description = "searchDescNationality" :disabled = "disabled">
-                                                <b-form-input v-model = "searchNationality" id = "tag-search-input-nationality" type = "search"
-                                                              size = "sm" autocomplete = "on"></b-form-input>
+                                            <b-form-group :description = "searchDescNationality" :disabled = "disabled"
+                                                          class = "mb-0" label = "Search countries"
+                                                          label-cols-md = "auto" label-for = "tag-search-input-nationality" label-size = "sm">
+                                                <b-form-input autocomplete = "on" id = "tag-search-input-nationality" size = "sm"
+                                                              type = "search" v-model = "searchNationality"></b-form-input>
                                             </b-form-group>
                                         </b-dropdown-form>
                                         <b-dropdown-divider></b-dropdown-divider>
                                         <b-dropdown-item-button
-                                                v-for = "option in availableOptionsNationality"
                                                 :key = "option"
-                                                @click = "onOptionClickNationality({option})">
+                                                @click = "onOptionClickNationality({option})"
+                                                v-for = "option in availableOptionsNationality">
                                             {{ option }}
                                         </b-dropdown-item-button>
                                         <b-dropdown-text v-if = "availableOptionsNationality.length === 0">
@@ -88,41 +85,41 @@
                     <div>
                         <b-form-group label = "Do you have any interest in any particular country? Feel free to make customized countries list"
                                       style = "margin: 0; padding: 0">
-                            <b-form-tags v-model = "value" no-outer-focus class = "mb-2">
+                            <b-form-tags class = "mb-2" no-outer-focus v-model = "value">
                                 <template v-slot = "{ tags, disabled, addTag, removeTag }">
-                                    <p v-if = "value.length === 0" style="text-align: center">
+                                    <p style = "text-align: center" v-if = "value.length === 0">
                                         There should be at least 1 pinned country in your profile
                                     </p>
-                                    <ul v-if = "tags.length > 0" class = "list-inline d-inline-block mb-2">
-                                        <li v-for = "tag in tags" :key = "tag" class = "list-inline-item">
+                                    <ul class = "list-inline d-inline-block mb-2" v-if = "tags.length > 0">
+                                        <li :key = "tag" class = "list-inline-item" v-for = "tag in tags">
                                             <b-form-tag
-                                                    @remove = "removeTag(tag)"
-                                                    :title = "tag"
                                                     :disabled = "disabled"
+                                                    :title = "tag"
+                                                    @remove = "removeTag(tag)"
                                                     variant = "info"
                                             >{{ tag }}
                                             </b-form-tag>
                                         </li>
                                     </ul>
-                                    <b-dropdown size = "sm" variant = "outline-info" block menu-class = "w-100"
-                                                class = "my-scrolling-class">
+                                    <b-dropdown block class = "my-scrolling-class" menu-class = "w-100" size = "sm"
+                                                variant = "outline-info">
                                         <template #button-content>
                                             <b-icon icon = "tag-fill"></b-icon>
                                             Choose countries
                                         </template>
                                         <b-dropdown-form @submit.stop.prevent = "() => {}">
-                                            <b-form-group label-for = "tag-search-input" label = "Search countries"
-                                                          label-cols-md = "auto" class = "mb-0"
-                                                          label-size = "sm" :description = "searchDesc" :disabled = "disabled">
-                                                <b-form-input v-model = "search" id = "tag-search-input" type = "search"
-                                                              size = "sm" autocomplete = "on"></b-form-input>
+                                            <b-form-group :description = "searchDesc" :disabled = "disabled"
+                                                          class = "mb-0" label = "Search countries"
+                                                          label-cols-md = "auto" label-for = "tag-search-input" label-size = "sm">
+                                                <b-form-input autocomplete = "on" id = "tag-search-input" size = "sm"
+                                                              type = "search" v-model = "search"></b-form-input>
                                             </b-form-group>
                                         </b-dropdown-form>
                                         <b-dropdown-divider></b-dropdown-divider>
                                         <b-dropdown-item-button
-                                                v-for = "option in availableOptions"
                                                 :key = "option"
-                                                @click = "onOptionClick({ option, addTag })">
+                                                @click = "onOptionClick({ option, addTag })"
+                                                v-for = "option in availableOptions">
                                             {{ option }}
                                         </b-dropdown-item-button>
                                         <b-dropdown-text v-if = "availableOptions.length === 0">
@@ -146,13 +143,13 @@
                         <div class = "col3">
                             <md-field>
                                 <label>Password</label>
-                                <md-input @input = "checkPasswordRegister" v-model = "signupForm.password"
-                                          style = "padding: 0" type = "password"></md-input>
+                                <md-input @input = "checkPasswordRegister" style = "padding: 0"
+                                          type = "password" v-model = "signupForm.password"></md-input>
                             </md-field>
                             <md-field>
                                 <label>Confirm password</label>
-                                <md-input @input = "checkPasswordConfirm" v-model = "signupForm.confirm_password"
-                                          style = "padding: 0" type = "password"></md-input>
+                                <md-input @input = "checkPasswordConfirm" style = "padding: 0"
+                                          type = "password" v-model = "signupForm.confirm_password"></md-input>
                             </md-field>
                             <p style = "text-align: center"
                                v-if = "!signupForm.confirm_password_match && signupForm.password.length > 0">
@@ -160,15 +157,15 @@
                         </div>
                     </section>
                     <md-button
-                            v-if = "!signupForm.contains_six_characters || signupForm.name === '' ||
+                            class = "md-raised md-primary"
+                            disabled v-if = "!signupForm.contains_six_characters || signupForm.name === '' ||
                             signupForm.nationality === '' || signupForm.email === '' || !signupForm.confirm_password_match ||
-                            value.length === 0"
-                            class = "md-raised md-primary" disabled>
+                            value.length === 0">
                         Submit
                     </md-button>
                     <md-button
-                            v-else
-                            @click = "signup()" class = "md-raised md-primary"> Submit
+                            @click = "signup()"
+                            class = "md-raised md-primary" v-else> Submit
                     </md-button>
                     <md-button
                             @click = "resetForm()" class = "md-raised md-accent"> Reset Form

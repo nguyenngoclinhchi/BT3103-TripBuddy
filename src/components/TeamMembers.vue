@@ -1,5 +1,5 @@
 <template>
-    <section id = "team" class = "pb-5">
+    <section class = "pb-5" id = "team">
         <div class = "container">
             <div class = "row">
                 <!-- Team member -->
@@ -7,7 +7,7 @@
                     <div class = "card">
                         <div class = "card-body text-center">
                             <p>
-                                <img class = " img-fluid" src = "https://cdn1.vectorstock.com/i/thumb-large/77/30/default-avatar-profile-icon-grey-photo-placeholder-vector-17317730.jpg" alt = "card image">
+                                <img alt = "card image" class = " img-fluid" src = "https://cdn1.vectorstock.com/i/thumb-large/77/30/default-avatar-profile-icon-grey-photo-placeholder-vector-17317730.jpg">
                             </p>
                             <h4 class = "card-title">Bryan<br> Koh</h4>
                             <p class = "card-text">This is basic card with image on top, title, description and
@@ -19,7 +19,7 @@
                     <div class = "card">
                         <div class = "card-body text-center">
                             <p>
-                                <img class = " img-fluid" src = "https://cdn1.vectorstock.com/i/thumb-large/77/30/default-avatar-profile-icon-grey-photo-placeholder-vector-17317730.jpg" alt = "card image">
+                                <img alt = "card image" class = " img-fluid" src = "https://cdn1.vectorstock.com/i/thumb-large/77/30/default-avatar-profile-icon-grey-photo-placeholder-vector-17317730.jpg">
                             </p>
                             <h4 class = "card-title">Ho Ying <br>Rong</h4>
                             <p class = "card-text">This is basic card with image on top, title, description and
@@ -31,7 +31,7 @@
                     <div class = "card">
                         <div class = "card-body text-center">
                             <p>
-                                <img class = " img-fluid" src = "https://cdn1.vectorstock.com/i/thumb-large/77/30/default-avatar-profile-icon-grey-photo-placeholder-vector-17317730.jpg" alt = "card image">
+                                <img alt = "card image" class = " img-fluid" src = "https://cdn1.vectorstock.com/i/thumb-large/77/30/default-avatar-profile-icon-grey-photo-placeholder-vector-17317730.jpg">
                             </p>
                             <h4 class = "card-title">Lim <br>Jermaine</h4>
                             <p class = "card-text">This is basic card with image on top, title, description and
@@ -43,7 +43,7 @@
                     <div class = "card">
                         <div class = "card-body text-center">
                             <p>
-                                <img class = " img-fluid" src = "https://cdn1.vectorstock.com/i/thumb-large/77/30/default-avatar-profile-icon-grey-photo-placeholder-vector-17317730.jpg" alt = "card image">
+                                <img alt = "card image" class = " img-fluid" src = "https://cdn1.vectorstock.com/i/thumb-large/77/30/default-avatar-profile-icon-grey-photo-placeholder-vector-17317730.jpg">
                             </p>
                             <h4 class = "card-title">Nguyen Ngoc Linh Chi</h4>
                             <p class = "card-text">This is basic card with image on top, title, description and
@@ -54,7 +54,6 @@
             </div>
         </div>
     </section>
-    <!-- Team -->
 </template>
 
 <script>

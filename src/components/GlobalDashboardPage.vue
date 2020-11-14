@@ -1,7 +1,7 @@
 <template>
-    <div id = "statistics_map" >
-        <div class="container">
-            <h4 style="text-align: center">{{title}}</h4>
+    <div id = "statistics_map">
+        <div class = "container">
+            <h4 style = "text-align: center">{{title}}</h4>
             <h6>Last Refreshed: {{date}}</h6>
             <p><br>
                 This is a composite measure based on nine response indicators including school closures, workplace
