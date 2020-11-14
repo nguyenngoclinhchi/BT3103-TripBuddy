@@ -35,9 +35,6 @@
                                 <b-dropdown-item @click = "current_page = detect_current_page()" style = "margin-right: 4px">
                                     <router-link to = "/comments">Experience Dashboard</router-link>
                                 </b-dropdown-item>
-                                <b-dropdown-item @click = "current_page = detect_current_page()">
-                                    <router-link to = "/about">About our app</router-link>
-                                </b-dropdown-item>
                             </b-nav-item-dropdown>
                             <b-nav-item-dropdown right>
                                 <template #button-content>

@@ -1,5 +1,5 @@
 <template>
-    <div id = "mainContent">
+    <div id = "aboutContent">
         <div class = "container">
             <div class = "content-container">
                 <h3>What is COVID-19?</h3>

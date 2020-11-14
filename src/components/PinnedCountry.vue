@@ -18,7 +18,7 @@
                 Using shortcut search with PINNED country list by clicking in the country tag</p>
             <b-form-group>
                 <md-chip :key = "chip" @click = "selectedOption = chip; updateData(selectedOption)" class = "md-accent"
-                         md-clickable style = "padding-top: 5px; margin-right: 5px"
+                         md-clickable style = "padding-bottom:8px; margin-right: 5px"
                          v-for = "chip in userProfile.country_interested">
                     {{chip}}
                 </md-chip>
@@ -45,7 +45,8 @@
                         Level 1 - Safe to travel; Exercise Normal Precautions
                     </h5>
                     <p>
-                        Have a safe trip!
+                        No quarantine required upon arrival. Contact tracing is done to prevent the spread of COVID-19.
+                        <br>Have a safe trip!
                     </p>
                 </b-alert>
             </div>
@@ -58,7 +59,22 @@
                         Level 2 - Exercise Increased Caution!
                     </h5>
                     <p>
-                        Be aware of heightened risks to safety and security. Elderly & children to take extra care.
+                        Quarantine is required upon arrival - travel only if necessary.
+                        <br>Be aware of heightened risks to safety and security. Elderly & children to take extra care.
+                    </p>
+                </b-alert>
+            </div>
+            <div v-if = "this.alertStatus === 7">
+                <b-alert show variant = "warning">
+                    <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
+                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
+                    </div>
+                    <h5 class = "alert-heading" style = "display:inline-block">
+                        Level 2 - Exercise Increased Caution!
+                    </h5>
+                    <p>
+                        Please check  the list of country/region entry restrictions at <a href="https://www.trip.com/travel-restrictions-covid-19/">COVID-19 Travel Restrictions</a>.
+                        <br>Be aware of heightened risks to safety and security. Elderly & children to take extra care.
                     </p>
                 </b-alert>
             </div>
@@ -71,7 +87,49 @@
                         Level 3 - Not recommended to travel!
                     </h5>
                     <p>
-                        Avoid travel due to serious risks to safety and security.
+                        Arrival is banned for some/all regions in the country.
+                        <br>Avoid travel due to serious risks to safety and security.
+                    </p>
+                </b-alert>
+            </div>
+            <div v-if = "this.alertStatus === 4">
+                <b-alert show variant = "danger">
+                    <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
+                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
+                    </div>
+                    <h5 class = "alert-heading" style = "display:inline-block">
+                        Level 3 - Not recommended to travel!
+                    </h5>
+                    <p>
+                        No proper contact tracing is done to prevent the spread of COVID-19. High risks to children and elderly.
+                        <br>Avoid travel due to serious risks to safety and security.
+                    </p>
+                </b-alert>
+            </div>
+            <div v-if = "this.alertStatus === 5">
+                <b-alert show variant = "danger">
+                    <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
+                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
+                    </div>
+                    <h5 class = "alert-heading" style = "display:inline-block">
+                        Level 3 - Not recommended to travel!
+                    </h5>
+                    <p>
+                        Level of strictness of government policies is high to contain the spread of COVID-19.
+                        <br>Avoid travel due to serious risks to safety and security.
+                    </p>
+                </b-alert>
+            </div>
+            <div v-if = "this.alertStatus === 6">
+                <b-alert show variant = "secondary">
+                    <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
+                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
+                    </div>
+                    <h5 class = "alert-heading" style = "display:inline-block">
+                        No data on COVID-19 government policies can be found.
+                    </h5>
+                    <p>
+                    
                     </p>
                 </b-alert>
             </div>
@@ -80,19 +138,19 @@
             <br>
             <section>
                 <div class = "column">
-                    <div class = "card" style = "background-color: #6699CC">
+                    <div class = "cardPinnedCountries" style = "background-color: #6699CC">
                         <h3><b>{{regionDeaths}}</b></h3>
                         <p id = "total">Total Deaths in {{region}}</p>
                     </div>
                 </div>
                 <div class = "column">
-                    <div class = "card" style = "background-color: #EF9D4C">
+                    <div class = "cardPinnedCountries" style = "background-color: #EF9D4C">
                         <h3><b>{{countryDeaths}}</b></h3>
                         <p>Total Deaths in {{country}}</p>
                     </div>
                 </div>
                 <div class = "column">
-                    <div class = "card" style = "background-color: #29D2A5">
+                    <div class = "cardPinnedCountries" style = "background-color: #29D2A5">
                         <h3><b>{{percentage}}</b></h3>
                         <p>of deaths in {{region}}</p>
                     </div>
@@ -208,28 +266,31 @@
 				const url = 'https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/actions/' + code + '/' + this.date_function();
 				axios.get(url).then(response => {
 					let SI = response.data.stringencyData.stringency
-					if (SI > 50) {
-						this.alertStatus = 3
+					if (SI > 70) {
+						this.alertStatus = 5
 					} else {
-						let indic1 = 0;
-						let indic2 = 0;
 						let indic3 = 0;
+						let indic4 = 0;
 						for (let record in response.data.policyActions) {
 							let polCode = response.data.policyActions[record].policy_type_code
-							if (polCode === "C7") {
-								indic1 = response.data.policyActions[record].policyvalue_actual
-							} else if (polCode === "C6") {
-								indic2 = response.data.policyActions[record].policyvalue_actual
-							} else if (polCode === "H3") {
+							if (polCode === "H3") {
 								indic3 = response.data.policyActions[record].policyvalue_actual
+							} else if (polCode == "C8") {
+								indic4 = response.data.policyActions[record].policyvalue_actual
 							}
 						}
-						// travel with care
-						if (indic1 > 2 || indic2 > 2 || indic3 > 2) {
-							this.alertStatus = 2
+						if (indic3 != 0 && (indic4 === 0 || indic4 === 1)) {
+							this.alertStatus = 1 //level 1
+						} else if (indic4 === 2) {
+							this.alertStatus = 2 //level 2
+						} else if (indic4 > 3) {
+							this.alertStatus = 3 //level 3
+						} else if (indic4 === 3) {
+							this.alertStatus = 7 //level 2
+						} else if (indic3 === 0) {
+							this.alertStatus = 4 //level 3
 						} else {
-							// safe to travel
-							this.alertStatus = 1
+							this.alertStatus = 6
 						}
 					}
 				})

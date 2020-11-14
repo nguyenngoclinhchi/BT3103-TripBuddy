@@ -294,6 +294,9 @@ form textarea {
     margin-bottom: 10px;
 }
 
+/******************************************************/
+/*Headers*/
+
 header {
     display: -webkit-box;
     display: -webkit-flex;
@@ -344,6 +347,130 @@ header ul li a {
     }
 }
 
+/*****************************************************/
+/*Footer section*/
+.generic-anchor {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.generic-anchor:hover {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.flex-rw {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.footer-social-section {
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    margin-top: 5px;
+}
+
+.footer-social-section::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    border-top: 1px solid #ccc;
+    width: 100%;
+}
+
+.footer-social-overlap {
+    position: relative;
+    z-index: 2;
+    padding: 0;
+}
+
+.footer-social-connect {
+    display: flex;
+    align-items: center;
+    font-size: 2.8rem;
+    color: #fff;
+}
+
+.footer-social-small {
+    font-size: 2rem;
+    padding: 0 20px;
+}
+
+.footer-social-overlap > a {
+    font-size: 2.8rem;
+}
+
+.footer-social-overlap > a:not(:first-child) {
+    margin-left: 12px;
+}
+
+.footer-bottom-section > div:first-child {
+    margin-right: auto;
+}
+
+@media only screen and (max-width: 768px) {
+    .footer-social-connect {
+        font-size: 2.5em;
+    }
+
+    .footer-social-overlap > a {
+        font-size: 2.24em;
+    }
+}
+
+@media only screen and (max-width: 568px) {
+    .footer-social-section {
+        justify-content: center;
+    }
+
+    .footer-social-section::after {
+        top: 25%;
+    }
+
+    .footer-social-connect {
+        margin-bottom: 10px;
+        padding: 0 10px;
+    }
+
+    .footer-social-overlap {
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer-social-icons-wrapper {
+        width: 100%;
+        padding: 0;
+    }
+
+    .footer-social-overlap > a:not(:first-child) {
+        margin-left: 20px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .footer-social-overlap > a {
+        margin: auto;
+    }
+
+    .footer-social-overlap > a:not(:first-child) {
+        margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .footer-social-connect {
+        font-size: 2.4em;
+    }
+
+    .footer-social-overlap > a {
+        font-size: 2.24em;
+    }
+}
+
 footer {
     width: 100%;
     margin-top: 70px;
@@ -362,6 +489,9 @@ footer p {
     color: #FFFFFF;
     margin: 20px 0 0 0;
 }
+
+/******************************************************/
+/*Login section*/
 
 #login {
     background: linear-gradient(to right, #0c5460 0%, #0c5460 50%, #fff 50%, #fff 100%);
@@ -448,6 +578,12 @@ footer p {
     margin-bottom: 2rem;
 }
 
+#login .countries_container {
+    overflow: auto; /* Optionally you can also use overflow: scroll; */
+}
+
+/************************************************************/
+/*Posts section in Experience Dashboard*/
 .modal {
     display: flex;
     position: fixed;
@@ -498,6 +634,9 @@ footer p {
 .modal .modal-content .button {
     width: 100%;
 }
+
+/******************************************************/
+/*Experience Dashboard*/
 
 #dashboard {
     padding: 10px;
@@ -714,6 +853,9 @@ footer p {
     margin: 0;
 }
 
+/***********************************************************************/
+/*Settings*/
+
 #settings {
     padding: 10px 0;
 }
@@ -739,23 +881,20 @@ footer p {
     margin-top: 0.8rem;
 }
 
-.scrolling-class {
-    max-height: 1000px;
-    overflow-y: auto;
-}
-
-#mainContent .name {
+/*********************************************************/
+/*About Page*/
+#aboutContent .name {
     font-weight: bold;
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
 }
 
-#mainContent .rowName {
+#aboutContent .rowName {
     padding: 0 100px 100px;
 }
 
-#mainContent .columnName {
+#aboutContent .columnName {
     float: left;
     width: 24%;
     margin: 5px;
@@ -768,24 +907,19 @@ footer p {
     }
 }
 
-#mainContent .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    background: white;
-}
-
-#mainContent .column p {
+#aboutContent .column p {
     padding-left: 10px;
     padding-right: 10px;
     height: 0;
 }
 
-#mainContent .container::after, .row::after {
+#aboutContent .container::after, .row::after {
     content: "";
     clear: both;
     display: table;
 }
 
-#mainContent .content-container {
+#aboutContent .content-container {
     align-content: center;
     width: 1000px;
     max-width: 100%;
@@ -794,6 +928,9 @@ footer p {
     margin: 80px auto 2rem;
     background-color: whitesmoke;
 }
+
+/*************************************************/
+/*Statistic Dashboard (Country Dashboard)*/
 
 #statistics_dashboard .chart {
     width: 60%;
@@ -817,16 +954,6 @@ footer p {
     float: left;
 }
 
-.body {
-    max-width: 100vh;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.text-danger {
-    color: salmon;
-}
-
 #statistics_dashboard table {
     margin-left: auto;
     margin-right: auto;
@@ -841,7 +968,6 @@ footer p {
     background: #000000;
     color: #FFF;
     padding: 8px;
-    /*min-width: 30px;*/
 }
 
 #statistics_dashboard table td {
@@ -857,6 +983,9 @@ footer p {
     background: #dddddc;
 }
 
+/******************************************************/
+/*Statistic Map (Global dashboard)*/
+
 #statistics_map .geo-map-section {
     align-content: center;
     width: 1000px;
@@ -865,11 +994,17 @@ footer p {
     margin: 8px auto 2rem;
 }
 
+/******************************************************/
+/*Statistical Table (Global Dashboard)*/
+
 #statistics_table {
     width: 1000px;
     margin-left: auto;
     margin-right: auto;
 }
+
+/******************************************************/
+/*Pinned Countries section*/
 
 #pinnedCountries .column {
     float: left;
@@ -881,7 +1016,7 @@ footer p {
     margin: 0 -5px;
 }
 
-#pinnedCountries .card {
+#pinnedCountries .cardPinnedCountries {
     padding: 12px;
     text-align: center;
     background-color: #f1f1f1;
@@ -896,11 +1031,8 @@ footer p {
     /*float: left;*/
 }
 
-
-#login .countries_container {
-    overflow: auto; /* Optionally you can also use overflow: scroll; */
-}
-
+/**************************************************************/
+/*Password Section*/
 #password *, *:before, *:after {
     box-sizing: inherit;
 }
@@ -998,6 +1130,8 @@ footer p {
     }
 }
 
+/*******************************************************************/
+/*Main Section*/
 #mainPage section {
     max-width: 1300px;
 }
@@ -1017,4 +1151,110 @@ footer p {
         margin-top: 20px;
         padding: 20px
     }
+}
+
+/******************************************************/
+/*TeamMember Section*/
+
+.card {
+    width: 450px;
+    height: 250px;
+    background: #fff linear-gradient(#f8f8f8, #fff);
+    box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    margin: 1.5rem;
+}
+.card h3 {
+    text-align: center;
+}
+.card .additional {
+    position: absolute;
+    width: 150px;
+    height: 100%;
+    background: linear-gradient(#ff5252, #ffc107);
+    transition: width 0.4s;
+    overflow: hidden;
+    z-index: 2;
+}
+.card.green .additional {
+    background: linear-gradient(#0c5460, #A2CCB6);
+}
+.card.blue .additional {
+    background: linear-gradient(#214a64, #80bdff);
+}
+.card.purple .additional {
+    background: linear-gradient(purple, #f5c6cb);
+}
+.card:hover .additional {
+    width: 100%;
+    border-radius: 0 5px 5px 0;
+}
+.card .additional .user-card {
+    width: 150px;
+    height: 100%;
+    position: relative;
+    float: left;
+}
+.card .additional .user-card::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 10%;
+    right: -2px;
+    height: 80%;
+    border-left: 2px solid rgba(0, 0, 0, 0.025);
+}
+.card .additional .more-info {
+    width: 300px;
+    float: left;
+    position: absolute;
+    left: 150px;
+    height: 100%;
+}
+.card .additional .more-info h3 {
+    color: #fff;
+    margin-bottom: 0;
+}
+.card .additional .coords {
+    margin: 0 1rem;
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+}
+.card .additional .coords span + span {
+    float: right;
+}
+.card .additional .stats {
+    font-size: 2rem;
+    display: flex;
+    margin-top: 30px;
+    color: #fff;
+}
+.card .additional .stats > div {
+    flex: 1;
+    max-width: 70px;
+    text-align: center;
+}
+.card .additional .stats a {
+    text-decoration: none;
+    display: block;
+}
+.card .general {
+    width: 300px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    box-sizing: border-box;
+    padding: 0 1rem 1rem;
+}
+.card .general .more {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 0.8em;
+    color: #525f7f;
 }
