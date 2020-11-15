@@ -5,7 +5,7 @@
             <div class = "col1">
                 <div>
                     <img alt = "logo" src = "../assets/logo1.png"
-                         style = "width: 300px; display: block; padding-top: 20px">
+                         style = "width: 250px; display: block; padding-top: 20px">
                 </div>
                 <h1>tripBuddy</h1>
                 <p>

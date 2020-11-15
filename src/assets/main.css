@@ -9,7 +9,7 @@
 html {
     -webkit-text-size-adjust: auto;
     text-size-adjust: auto;
-    font-size: 70%;
+    font-size: 68%;
     scroll-behavior: smooth
 }
 
@@ -126,7 +126,7 @@ form textarea {
 
 .slogan {
     color: #138295;
-    padding: 10px;
+    padding: 20px 10px 40px;
     font-family: 'Tillana', cursive;
     font-size: 8rem;
     line-height: 1.2;
@@ -429,11 +429,11 @@ header ul li a {
 
 @media only screen and (max-width: 768px) {
     .footer-social-connect {
-        font-size: 2.5em;
+        font-size: 2.3em;
     }
 
     .footer-social-overlap > a {
-        font-size: 2.24em;
+        font-size: 2.3em;
     }
 }
 
@@ -490,7 +490,7 @@ footer {
     width: 100%;
     margin-top: 70px;
     min-height: 50px;
-    padding: 20px 0 20px 0;
+    padding: 12px 0 12px 0;
     /*background: #e55d87;*/
     /*background: -moz-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);*/
     /*background: -webkit-linear-gradient(-45deg, #e55d87 0%, #5fc3e4 100%);*/

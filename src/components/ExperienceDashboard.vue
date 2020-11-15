@@ -89,15 +89,15 @@
                     <div>
                         <div :key = "post.id" class = "post" v-for = "post in getCountryUpdatedPostsList">
                             <section class = "controls rating" style = "width: 270px;">
-                                <label for = "rating-inline" style = "padding: 0; font-size: 14px; margin: 0px;">Overall
-                                                                                                                 Satisfaction</label>
+                                <label for = "rating-inline" style = "padding: 0; font-size: 14px; margin: 0">
+                                    Overall Satisfaction</label>
                                 <b-form-rating :value = "post.rating_value_5"
                                                id = "rating-inline"
                                                inline no-border readonly
                                                style = "padding: 10px"
                                                variant = "info"></b-form-rating>
                             </section>
-                            <h5>{{ post.userName }}</h5>
+                            <h5 style="padding-top: 20px">{{ post.userName }}</h5>
                             <b-form-group>
                                 <md-chip class = "md-info" md-static size = "sm" style = "margin: 5px">
                                     <em><u>Email</u></em> {{post.userEmail}}
@@ -143,7 +143,7 @@
                                                style = "padding: 10px"
                                                variant = "info"></b-form-rating>
                             </section>
-                            <h5>{{ fullPost.userName }}</h5>
+                            <h5 style="padding-top: 20px">{{ fullPost.userName }}</h5>
                             <b-form-group>
                                 <md-chip class = "md-info" md-static size = "sm" style = "margin: 5px">
                                     <em><u>Email</u></em> {{fullPost.userEmail}}
