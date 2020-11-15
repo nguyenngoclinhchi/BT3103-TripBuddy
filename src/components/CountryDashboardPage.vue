@@ -179,14 +179,6 @@
 					if (CI === 0.0 && GI === 0.0 && SI === 0.0) {
 						this.H_indicators = [];
 						this.C_indicators = [];
-						const empty = {
-							code: '-',
-							descr: '-',
-							value: '-',
-							policy: '-'
-						}
-						this.H_indicators.push(empty);
-						this.C_indicators.push(empty);
 						alert('No data available for ' + name)
 					} else {
 						// fetch data for indicators table

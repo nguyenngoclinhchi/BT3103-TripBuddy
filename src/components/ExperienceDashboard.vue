@@ -4,6 +4,7 @@
             <CommentModal :post = "selectedPost" @close = "toggleCommentModal()"
                           v-if = "showCommentModal"></CommentModal>
         </transition>
+        
         <div class = "container" style="margin-top: 20px">
             <section>
                 <div class = "col1">
@@ -22,7 +23,7 @@
                     </div>
                     <div class = "accordion" role = "tablist">
                         <b-card class = "mb-1" no-body>
-                            <b-card-header class = "p-1" role = "tab">
+                            <b-card-header header-tag="header" class = "p-1" role = "tab">
                                 <b-button block v-b-toggle.accordion-1 variant = "info">
                                     SHORTCUT FILTER posts with PINNED COUNTRY list
                                 </b-button>
@@ -32,7 +33,7 @@
                                     Choose only posts with ONLY specific country in the PINNED list</p>
                                 <b-form-group style = "padding: 0 8px">
                                     <md-chip :key = "chip" @click = "selectedCountryOption = chip" class = "md-accent"
-                                             md-clickable style = "padding: 5px; margin-right: 5px" v-for = "chip in updateInterestCountry">
+                                             md-clickable style = "padding: 5px; margin: 5px" v-for = "chip in updateInterestCountry">
                                         {{chip}}
                                     </md-chip>
                                     <md-chip @click = "selectedCountryOption = ''" class = "md-info" md-clickable
@@ -43,7 +44,7 @@
                             </b-collapse>
                         </b-card>
                         <b-card class = "mb-1" no-body>
-                            <b-card-header class = "p-1" role = "tab">
+                            <b-card-header header-tag="header" class = "p-1" role = "tab">
                                 <b-button block v-b-toggle.accordion-2 variant = "info">
                                     FILTER and SEARCH
                                 </b-button>
@@ -244,7 +245,7 @@
 			CommentModal,
 			PinACountry,
 			ExperienceForm,
-			ProgressBar
+			ProgressBar,
 		},
 		data() {
 			return {

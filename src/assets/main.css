@@ -13,7 +13,6 @@ html {
 }
 
 body {
-    margin: 0;
     color: #34495E;
     background: #E6ECF0;
 }
@@ -55,11 +54,11 @@ h5 {
 }
 
 h6 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
 }
 
 em p li label pre blockquote dl figure table ul ol form input textarea select fieldset ul ol ul ul, ul ol, ol ol, ol ul {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
 }
 
 a {
@@ -117,6 +116,10 @@ form textarea {
 
 /* Global Classes
 ********************************************************************* */
+
+.inline-tags {
+    font-size: 1.2rem;
+}
 
 .my-scrolling-class .dropdown-menu {
     max-height: 300px;
@@ -237,8 +240,9 @@ form textarea {
 
 .container {
     max-width: 1100px;
-    margin: auto;
-    padding-top: 25px
+    padding-top: 25px;
+    margin-top: 1px;
+    margin-bottom: 1px;
 }
 
 /* For devices larger than 400px */
@@ -857,7 +861,6 @@ footer p {
 
 #settings .col1 {
     max-width: 750px;
-    min-height: auto;
     margin: 0 auto 0;
     background: #fff;
     padding: 0.5rem;
@@ -941,11 +944,12 @@ footer p {
 #statistics_dashboard .indicControls {
     width: 400px;
 }
-#statistics_dashboard .indicControls h5{
+
+#statistics_dashboard .indicControls h5 {
     font-size: 16px;
 }
 
-#statistics_dashboard .indicControls p{
+#statistics_dashboard .indicControls p {
     font-size: 13px;
 }
 
@@ -1020,10 +1024,11 @@ footer p {
 /******************************************************/
 /*Pinned Countries section*/
 
-#pinnedCountries .advisory p{
+#pinnedCountries .advisory p {
     padding-left: 10px;
     padding-right: 10px;
 }
+
 #pinnedCountries .column {
     float: left;
     width: 33%;
@@ -1178,18 +1183,23 @@ footer p {
 /*TeamMember Section*/
 
 .card {
-    width: 450px;
-    height: 250px;
     background: #fff linear-gradient(#f8f8f8, #fff);
+}
+
+.card-height {
     box-shadow: 0 8px 16px -8px rgba(0, 0, 0, 0.4);
     border-radius: 6px;
     overflow: hidden;
     position: relative;
     margin: 1.5rem;
+    height: 250px;
+    width: 450px;
 }
+
 .card h3 {
     text-align: center;
 }
+
 .card .additional {
     position: absolute;
     width: 150px;
@@ -1199,25 +1209,31 @@ footer p {
     overflow: hidden;
     z-index: 2;
 }
+
 .card.green .additional {
     background: linear-gradient(#92bCa6, #A2CCB6);
 }
+
 .card.blue .additional {
     background: linear-gradient(#92bCa6, #A2CCB6);
 }
+
 .card.purple .additional {
     background: linear-gradient(#dE685E, #EE786E);
 }
+
 .card:hover .additional {
     width: 100%;
     border-radius: 0 5px 5px 0;
 }
+
 .card .additional .user-card {
     width: 150px;
     height: 100%;
     position: relative;
     float: left;
 }
+
 .card .additional .user-card::after {
     content: "";
     display: block;
@@ -1227,6 +1243,7 @@ footer p {
     height: 80%;
     border-left: 2px solid rgba(0, 0, 0, 0.025);
 }
+
 .card .additional .more-info {
     width: 300px;
     float: left;
@@ -1234,34 +1251,41 @@ footer p {
     left: 150px;
     height: 100%;
 }
+
 .card .additional .more-info h3 {
     color: #fff;
     margin-bottom: 0;
 }
+
 .card .additional .coords {
     margin: 0 1rem;
     color: #fff;
     font-size: 1rem;
     text-align: center;
 }
+
 .card .additional .coords span + span {
     float: right;
 }
+
 .card .additional .stats {
     font-size: 2rem;
     display: flex;
     margin-top: 30px;
     color: #fff;
 }
+
 .card .additional .stats > div {
     flex: 1;
     max-width: 70px;
     text-align: center;
 }
+
 .card .additional .stats a {
     text-decoration: none;
     display: block;
 }
+
 .card .general {
     width: 300px;
     height: 100%;
@@ -1272,6 +1296,7 @@ footer p {
     box-sizing: border-box;
     padding: 0 1rem 1rem;
 }
+
 .card .general .more {
     position: absolute;
     bottom: 1rem;

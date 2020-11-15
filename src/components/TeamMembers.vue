@@ -1,7 +1,7 @@
 <template>
     <div id = "teamMembers">
         <section>
-            <div class = "card">
+            <div class = "card card-height">
                 <div class = "additional">
                     <div class = "user-card controls">
                         <img src = "../assets/chi.jpg" alt = "Linh Chi"/>
@@ -43,7 +43,7 @@
                     <span class = "more">Mouse over the card for more info</span>
                 </div>
             </div>
-            <div class = "card green">
+            <div class = "card card-height green">
                 <div class = "additional">
                     <div class = "user-card controls">
                         <img src = "../assets/yingrong.jpg" alt = "Ying Rong"/>
@@ -78,7 +78,7 @@
             </div>
         </section>
         <section>
-            <div class = "card blue">
+            <div class = "card card-height blue">
                 <div class = "additional">
                     <div class = "user-card controls">
                         <img src = "../assets/bryan.jpg" alt = "Bryan"/>
@@ -116,7 +116,7 @@
                     <span class = "more">Mouse over the card for more info</span>
                 </div>
             </div>
-            <div class = "card purple">
+            <div class = "card card-height purple">
                 <div class = "additional">
                     <div class = "user-card controls">
                         <img src = "../assets/jermaine.jpg" alt = "Jermaine"/>
