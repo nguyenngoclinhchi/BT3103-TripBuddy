@@ -3,23 +3,23 @@
         <PasswordReset @close = "togglePasswordReset()" v-if = "showPasswordReset"></PasswordReset>
         <section>
             <div class = "col1">
-                <galaxy></galaxy>
+                <div>
+                    <img alt = "logo" src = "../assets/logo1.png"
+                         style = "width: 300px; display: block; padding-top: 20px">
+                </div>
                 <h1>tripBuddy</h1>
-                <p style = "font-size: 13px;">tripBuddy is a travel advisory application that provides potential
-                                              travellers with all the necessary
-                                              and latest information needed to plan for their travels during the
-                                              COVID-19 pandemic following the
-                                              gradual lifting of travel restrictions in some countries. Through a
-                                              thorough assessment of government
-                                              policy responses based on the context of each country, the web application
-                                              aims to give
-                                              recommendations to users depending on the safety of the destination
-                                              country and the user profile.</p>
+                <p>
+                    tripBuddy is a travel advisory application that provides potential travellers with all the necessary
+                    and latest information needed to plan for their travels during the COVID-19 pandemic following the
+                    gradual lifting of travel restrictions in some countries. Through a thorough assessment of
+                    government
+                    policy responses based on the context of each country, the web application aims to give
+                    recommendations to users depending on the safety of the destination country and the user
+                    profile.</p>
             </div>
             <div :class = "{ 'signup-form': !showLoginForm }" class = "col2" style = "overflow-y: auto">
-                <form @submit.prevent v-if = "showLoginForm">
-                    <img alt = "logo" class = "logo" src = "../../public/logo.svg" style = "display: block; margin-left: auto; margin-right: auto;">
-                    <div>
+                <form @submit.prevent v-if = "showLoginForm" style = "margin-top: 20px">
+                    <div style="padding-top: 350px">
                         <label for = "email1">Email</label>
                         <input id = "email1" placeholder = "you@email.com" type = "text" v-model.trim = "loginForm.email"/>
                     </div>
@@ -187,13 +187,13 @@
 	import PasswordReset from '@/components/PasswordReset'
 	import Password from "@/components/Password";
 	import {mapState} from 'vuex'
-	import Galaxy from "@/components/Galaxy";
+	// import Galaxy from "@/components/Galaxy";
 	
 	export default {
 		components: {
 			Password,
 			PasswordReset,
-			Galaxy
+			// Galaxy
 		},
 		data() {
 			return {
