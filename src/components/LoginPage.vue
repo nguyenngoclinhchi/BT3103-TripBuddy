@@ -19,7 +19,10 @@
             </div>
             <div :class = "{ 'signup-form': !showLoginForm }" class = "col2" style = "overflow-y: auto">
                 <form @submit.prevent v-if = "showLoginForm" style = "margin-top: 20px">
-                    <div style="padding-top: 350px">
+                    <p class="slogan">
+                        Travel safe, Worry less
+                    </p>
+                    <div>
                         <label for = "email1">Email</label>
                         <input id = "email1" placeholder = "you@email.com" type = "text" v-model.trim = "loginForm.email"/>
                     </div>
