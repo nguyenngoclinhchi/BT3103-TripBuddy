@@ -25,7 +25,7 @@
                         </b-button>
                     </b-card-header>
                     <b-collapse accordion = "my-accordion" id = "accordion-2" role = "tabpanel">
-                        <b-card-body style = "height: 370px">
+                        <b-card-body style = "height: 400px">
                             <b-form-group style = "margin: 0; padding: 0">
                                 <b-form-tags class = "mb-2" no-outer-focus v-model = "nationality">
                                     <template v-slot = "{ disabled}">
@@ -77,47 +77,53 @@
                         </b-button>
                     </b-card-header>
                     <b-collapse accordion = "my-accordion" id = "accordion-3" role = "tabpanel">
-                        <b-card-body style = "min-height: 450px">
+                        <b-card-body style = "min-height: 400px">
                             <b-form-group style = "margin: 0; padding: 0">
                                 <b-form-tags class = "mb-2" no-outer-focus v-model = "value">
                                     <template v-slot = "{ tags, disabled, addTag, removeTag }">
                                         <p v-if = "value.length === 0">
                                             There should be at least 1 pinned country in your profile
                                         </p>
-                                        <ul class = "list-inline d-inline-block mb-2" v-if = "tags.length > 0">
-                                            <li :key = "tag" class = "list-inline-item" v-for = "tag in tags">
-                                                <b-form-tag :disabled = "disabled"
-                                                            :title = "tag"
-                                                            @remove = "removeTag(tag)"
-                                                            variant = "info" style="font-size: 1.1rem; margin-bottom: 5px;">
-                                                    {{ tag }}
-                                                </b-form-tag>
-                                            </li>
-                                        </ul>
-                                        <b-dropdown block class = "my-scrolling-class" menu-class = "w-100" size = "sm"
-                                                    variant = "outline-info">
-                                            <template #button-content>
-                                                <b-icon icon = "tag-fill"></b-icon>
-                                                Choose countries
-                                            </template>
-                                            <b-dropdown-form @submit.stop.prevent = "() => {}">
-                                                <b-form-group :description = "searchDesc" :disabled = "disabled"
-                                                              class = "mb-0" label = "Search countries"
-                                                              label-cols-md = "auto" label-for = "tag-search-input" label-size = "sm">
-                                                    <b-form-input autocomplete = "on" id = "tag-search-input" size = "sm"
-                                                                  type = "search" v-model = "search"></b-form-input>
-                                                </b-form-group>
-                                            </b-dropdown-form>
-                                            <b-dropdown-divider></b-dropdown-divider>
-                                            <b-dropdown-item-button :key = "option"
-                                                                    @click = "onOptionClick({ option, addTag })"
-                                                                    v-for = "option in availableOptions">
-                                                {{ option }}
-                                            </b-dropdown-item-button>
-                                            <b-dropdown-text v-if = "availableOptions.length === 0">
-                                                There are no countries available to select
-                                            </b-dropdown-text>
-                                        </b-dropdown>
+                                        <section>
+                                            <div style="max-width: 400px">
+                                                <ul class = "list-inline d-inline-block mb-2" v-if = "tags.length > 0">
+                                                    <li :key = "tag" class = "list-inline-item" v-for = "tag in tags">
+                                                        <b-form-tag :disabled = "disabled"
+                                                                    :title = "tag"
+                                                                    @remove = "removeTag(tag)"
+                                                                    variant = "info" style="font-size: 0.9rem; margin-bottom: 5px;">
+                                                            {{ tag }}
+                                                        </b-form-tag>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <b-dropdown block class = "my-scrolling-class" menu-class = "w-100" size = "sm"
+                                                            variant = "outline-info" style="min-width: 300px">
+                                                    <template #button-content>
+                                                        <b-icon icon = "tag-fill"></b-icon>
+                                                        Choose countries
+                                                    </template>
+                                                    <b-dropdown-form @submit.stop.prevent = "() => {}">
+                                                        <b-form-group :description = "searchDesc" :disabled = "disabled"
+                                                                      class = "mb-0" label = "Search countries"
+                                                                      label-cols-md = "auto" label-for = "tag-search-input" label-size = "sm">
+                                                            <b-form-input autocomplete = "on" id = "tag-search-input" size = "sm"
+                                                                          type = "search" v-model = "search"></b-form-input>
+                                                        </b-form-group>
+                                                    </b-dropdown-form>
+                                                    <b-dropdown-divider></b-dropdown-divider>
+                                                    <b-dropdown-item-button :key = "option"
+                                                                            @click = "onOptionClick({ option, addTag })"
+                                                                            v-for = "option in availableOptions">
+                                                        {{ option }}
+                                                    </b-dropdown-item-button>
+                                                    <b-dropdown-text v-if = "availableOptions.length === 0">
+                                                        There are no countries available to select
+                                                    </b-dropdown-text>
+                                                </b-dropdown>
+                                            </div>
+                                        </section>
                                     </template>
                                 </b-form-tags>
                             </b-form-group>
