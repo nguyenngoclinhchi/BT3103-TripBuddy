@@ -44,7 +44,7 @@
                                     <router-link to = "/settings">Profile Settings</router-link>
                                 </b-dropdown-item>
                                 <b-dropdown-item @click = "logout()" style = "margin-right: 4px">
-                                    Sign Out
+                                    <a>Sign Out</a>
                                 </b-dropdown-item>
                             </b-nav-item-dropdown>
                         </b-navbar-nav>

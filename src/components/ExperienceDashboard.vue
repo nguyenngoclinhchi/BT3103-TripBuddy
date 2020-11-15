@@ -120,9 +120,9 @@
                             <br>
                             <p>{{ post.content | trimLength }}</p>
                             <ul>
-                                <li><a @click = "toggleCommentModal(post)">comments {{ post.comments }}</a></li>
-                                <li><a @click = "likePost(post.id, post.likes)">likes {{ post.likes }}</a></li>
-                                <li><a @click = "viewPost(post)">view full post</a></li>
+                                <li><a @click = "toggleCommentModal(post)" class="red-link">comments {{ post.comments }}</a></li>
+                                <li><a @click = "likePost(post.id, post.likes)" class="red-link">likes {{ post.likes }}</a></li>
+                                <li><a @click = "viewPost(post)" class="red-link">view full post</a></li>
                             </ul>
                         </div>
                     </div>
@@ -213,8 +213,8 @@
                             <br>
                             <p><strong>{{ fullPost.content}}</strong></p>
                             <ul>
-                                <li><a>comments {{ fullPost.comments }}</a></li>
-                                <li><a>likes {{ fullPost.likes }}</a></li>
+                                <li><a class="red-link">comments {{ fullPost.comments }}</a></li>
+                                <li><a class="red-link">likes {{ fullPost.likes }}</a></li>
                             </ul>
                         </div>
                         <div class = "comments" v-show = "postComments.length">

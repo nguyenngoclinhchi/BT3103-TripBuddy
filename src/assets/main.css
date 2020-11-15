@@ -69,6 +69,11 @@ a {
     cursor: pointer;
 }
 
+.red-link {
+    font-weight: bold;
+    text-decoration: #ff5252;
+}
+
 a:hover {
     color: #17A2B8;
     text-decoration: #17a2b8;

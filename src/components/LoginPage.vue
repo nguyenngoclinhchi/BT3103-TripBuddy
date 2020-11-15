@@ -37,8 +37,8 @@
                             @click = "login()" class = "md-raised md-primary">Log In
                     </md-button>
                     <div class = "extras">
-                        <a @click = "togglePasswordReset()">Forgot Password</a>
-                        <a @click = "toggleForm()">Create an Account</a>
+                        <a @click = "togglePasswordReset()" class="red-link">Forgot Password</a>
+                        <a @click = "toggleForm()" class="red-link">Create an Account</a>
                     </div>
                 </form>
                 <form @submit.prevent style = "padding-top: 5vh" v-else>
