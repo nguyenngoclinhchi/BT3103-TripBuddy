@@ -48,7 +48,7 @@
                                     <ul class = "list-inline d-inline-block mb-2" v-if = "signupForm.nationality.length > 0">
                                         <li>
                                             <b-form-tag :disabled = "disabled" @remove = "removeTagNationality()"
-                                                        class = "list-inline-item" style="font-size: 1.1rem"
+                                                        class = "list-inline-item" style="font-size: 0.9rem"
                                                         variant = "info">
                                                 {{signupForm.nationality[0]}}
                                             </b-form-tag>
@@ -95,7 +95,7 @@
                                         <li :key = "tag" class = "list-inline-item" v-for = "tag in tags">
                                             <b-form-tag
                                                     :disabled = "disabled" :title = "tag" @remove = "removeTag(tag)"
-                                                    variant = "info" style="font-size: 1.1rem; margin-bottom: 5px;"
+                                                    variant = "info" style="font-size: 0.9rem; margin-bottom: 5px;"
                                             >{{ tag }}
                                             </b-form-tag>
                                         </li>

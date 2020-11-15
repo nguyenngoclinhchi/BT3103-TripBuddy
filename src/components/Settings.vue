@@ -32,7 +32,7 @@
                                         <ul class = "list-inline d-inline-block mb-2" v-if = "nationality != null && nationality.length > 0">
                                             <li>
                                                 <b-form-tag :disabled = "disabled" @remove = "removeTagNationality()"
-                                                            class = "list-inline-item" style="font-size: 1.1rem"
+                                                            class = "list-inline-item" style="font-size: 0.9rem"
                                                             variant = "info">
                                                     {{nationality[0]}}
                                                 </b-form-tag>
