@@ -5,11 +5,16 @@
             <div class = "col1">
                 <galaxy></galaxy>
                 <h1>tripBuddy</h1>
-                <p style = "font-size: 13px;">tripBuddy is a travel advisory application that provides potential travellers with all the necessary
-                   and latest information needed to plan for their travels during the COVID-19 pandemic following the
-                   gradual lifting of travel restrictions in some countries. Through a thorough assessment of government
-                   policy responses based on the context of each country, the web application aims to give
-                   recommendations to users depending on the safety of the destination country and the user profile.</p>
+                <p style = "font-size: 13px;">tripBuddy is a travel advisory application that provides potential
+                                              travellers with all the necessary
+                                              and latest information needed to plan for their travels during the
+                                              COVID-19 pandemic following the
+                                              gradual lifting of travel restrictions in some countries. Through a
+                                              thorough assessment of government
+                                              policy responses based on the context of each country, the web application
+                                              aims to give
+                                              recommendations to users depending on the safety of the destination
+                                              country and the user profile.</p>
             </div>
             <div :class = "{ 'signup-form': !showLoginForm }" class = "col2" style = "overflow-y: auto">
                 <form @submit.prevent v-if = "showLoginForm">
@@ -48,7 +53,7 @@
                                     <ul class = "list-inline d-inline-block mb-2" v-if = "signupForm.nationality.length > 0">
                                         <li>
                                             <b-form-tag :disabled = "disabled" @remove = "removeTagNationality()"
-                                                        class = "list-inline-item" style="font-size: 0.9rem"
+                                                        class = "list-inline-item" style = "font-size: 0.9rem"
                                                         variant = "info">
                                                 {{signupForm.nationality[0]}}
                                             </b-form-tag>
@@ -95,7 +100,7 @@
                                         <li :key = "tag" class = "list-inline-item" v-for = "tag in tags">
                                             <b-form-tag
                                                     :disabled = "disabled" :title = "tag" @remove = "removeTag(tag)"
-                                                    variant = "info" style="font-size: 0.9rem; margin-bottom: 5px;"
+                                                    style = "font-size: 0.9rem; margin-bottom: 5px;" variant = "info"
                                             >{{ tag }}
                                             </b-form-tag>
                                         </li>

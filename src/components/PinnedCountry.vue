@@ -5,7 +5,7 @@
                 Last Refreshed: {{date}}
             </h6>
             <section class = "controls">
-                <md-autocomplete :md-options = "country_options_dropdown" v-model = "selectedOption">
+                <md-autocomplete :md-options = "country_options_dropdown" @input = "checkSelectionOption" v-model = "selectedOption">
                     <label>Country</label>
                 </md-autocomplete>
                 <md-button @click = "updateData(selectedOption)" class = "md-raised md-primary"
@@ -18,7 +18,7 @@
                 Using shortcut search with PINNED country list by clicking in the country tag</p>
             <b-form-group>
                 <md-chip :key = "chip" @click = "selectedOption = chip; updateData(selectedOption)" class = "md-accent"
-                         md-clickable style = "padding-top: 5px; margin-right: 5px"
+                         md-clickable style = "padding: 5px; margin-top: 5px; margin-right: 5px"
                          v-for = "chip in userProfile.country_interested">
                     {{chip}}
                 </md-chip>
@@ -36,7 +36,7 @@
                     </p>
                 </b-alert>
             </div>
-            <div  class = "advisory" v-if = "this.alertStatus === 1">
+            <div class = "advisory" v-if = "this.alertStatus === 1">
                 <b-alert show variant = "success">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
                         <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
@@ -46,12 +46,13 @@
                     </h5>
                     <p>
                         No quarantine required upon arrival. Contact tracing is done to prevent the spread of COVID-19.
-                        Older adults, those with underlying medical conditions and others at increased risk for severe illness are recommended to talk to their healthcare providers before travelling.
+                        Older adults, those with underlying medical conditions and others at increased risk for severe
+                        illness are recommended to talk to their healthcare providers before travelling.
                         <br><b>Have a safe trip!</b>
                     </p>
                 </b-alert>
             </div>
-            <div  class = "advisory" v-if = "this.alertStatus === 2">
+            <div class = "advisory" v-if = "this.alertStatus === 2">
                 <b-alert show variant = "warning">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
                         <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
@@ -60,13 +61,14 @@
                         Level 2 - Exercise Increased Caution!
                     </h5>
                     <p>
-                        Quarantine is required upon arrival. 
-                        Older adults, those with underlying medical conditions and others at increased risk for severe illness are recommended to postpone all non-essential travel.
+                        Quarantine is required upon arrival.
+                        Older adults, those with underlying medical conditions and others at increased risk for severe
+                        illness are recommended to postpone all non-essential travel.
                         <br><b>Be aware of heightened risks to safety and security.</b>
                     </p>
                 </b-alert>
             </div>
-            <div  class = "advisory" v-if = "this.alertStatus === 7">
+            <div class = "advisory" v-if = "this.alertStatus === 7">
                 <b-alert show variant = "warning">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
                         <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
@@ -75,12 +77,14 @@
                         Level 2 - Exercise Increased Caution!
                     </h5>
                     <p>
-                        Check out the list of country/region entry restrictions at <a href="https://www.trip.com/travel-restrictions-covid-19/">COVID-19 Travel Restrictions</a>.
-                        <br><b>Be aware of heightened risks to safety and security. Elderly & children to take extra care.</b>
+                        Check out the list of country/region entry restrictions at
+                        <a href = "https://www.trip.com/travel-restrictions-covid-19/">COVID-19 Travel Restrictions</a>.
+                        <br><b>Be aware of heightened risks to safety and security. Elderly & children to take extra
+                               care.</b>
                     </p>
                 </b-alert>
             </div>
-            <div  class = "advisory" v-if = "this.alertStatus === 3">
+            <div class = "advisory" v-if = "this.alertStatus === 3">
                 <b-alert show variant = "danger">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
                         <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
@@ -103,12 +107,13 @@
                         Level 3 - Not recommended to travel!
                     </h5>
                     <p>
-                        No proper contact tracing is done to prevent the spread of COVID-19. High risks to children and elderly.
+                        No proper contact tracing is done to prevent the spread of COVID-19. High risks to children and
+                        elderly.
                         <br><b>Avoid travel due to serious risks to safety and security.</b>
                     </p>
                 </b-alert>
             </div>
-            <div  class = "advisory" v-if = "this.alertStatus === 5">
+            <div class = "advisory" v-if = "this.alertStatus === 5">
                 <b-alert show variant = "danger">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
                         <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
@@ -321,6 +326,18 @@
 					if (worldCode[index]["alpha-3"] === alpha3) {
 						return worldCode[index]["region"]
 					}
+				}
+			},
+			checkSelectionOption() {
+				if (this.selectedOption === '') {
+					this.regionDeaths = null
+					this.countryDeaths = null
+					this.percentage = null
+					this.myChart.data.datasets[0].data = []
+					this.myChart.data.datasets[1].data = []
+					this.myChart.data.labels = []
+					this.myChart.update()
+					this.alertStatus = 0
 				}
 			}
 		},

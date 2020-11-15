@@ -5,7 +5,7 @@
                           v-if = "showCommentModal"></CommentModal>
         </transition>
         
-        <div class = "container" style="margin-top: 20px">
+        <div class = "container" style = "margin-top: 20px">
             <section>
                 <div class = "col1">
                     <div class = "profile">
@@ -23,7 +23,7 @@
                     </div>
                     <div class = "accordion" role = "tablist">
                         <b-card class = "mb-1" no-body>
-                            <b-card-header header-tag="header" class = "p-1" role = "tab">
+                            <b-card-header class = "p-1" header-tag = "header" role = "tab">
                                 <b-button block v-b-toggle.accordion-1 variant = "info">
                                     SHORTCUT FILTER posts with PINNED COUNTRY list
                                 </b-button>
@@ -44,7 +44,7 @@
                             </b-collapse>
                         </b-card>
                         <b-card class = "mb-1" no-body>
-                            <b-card-header header-tag="header" class = "p-1" role = "tab">
+                            <b-card-header class = "p-1" header-tag = "header" role = "tab">
                                 <b-button block v-b-toggle.accordion-2 variant = "info">
                                     FILTER and SEARCH
                                 </b-button>
@@ -90,7 +90,7 @@
                         <div :key = "post.id" class = "post" v-for = "post in getCountryUpdatedPostsList">
                             <section class = "controls rating" style = "width: 270px;">
                                 <label for = "rating-inline" style = "padding: 0; font-size: 14px; margin: 0px;">Overall
-                                                                                                Satisfaction</label>
+                                                                                                                 Satisfaction</label>
                                 <b-form-rating :value = "post.rating_value_5"
                                                id = "rating-inline"
                                                inline no-border readonly

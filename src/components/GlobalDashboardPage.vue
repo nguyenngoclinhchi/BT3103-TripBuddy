@@ -9,14 +9,15 @@
                             :settings = "{ packages: ['geochart'] }"
                             type = "GeoChart"/>
                 </div>
-                <div style = "max-width: 400px; padding: 40px" class="controls">
+                <div class = "controls" style = "max-width: 400px; padding: 40px">
                     <div>
                         <h3> Go anywhere </h3>
                         <div class = "block"></div>
                         <p>
                             It's your world and we'll help you explore it - responsibly. As our flight paths reopen post
                             COVID-19, we seek to provide users with information to travel safely through the
-                            <b>Government Response Stringency Index</b>, a composite measure of indicators including school
+                            <b>Government Response Stringency Index</b>, a composite measure of indicators including
+                            school
                             and workplace closures, travel bans and more.
                         </p>
                     </div>

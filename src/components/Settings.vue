@@ -1,6 +1,6 @@
 <template>
     <div id = "settings" style = "overflow-y: auto; padding-top: 25px" v-if = "showNav">
-        <div class="container">
+        <div class = "container">
             <div class = "accordion col1" role = "tablist">
                 <b-card class = "mb-1" no-body>
                     <b-card-header class = "p-1" role = "tab">
@@ -17,7 +17,7 @@
                     </b-collapse>
                 </b-card>
                 <b-card class = "mb-1" no-body>
-                    <b-card-header class = "p-1"  role = "tab">
+                    <b-card-header class = "p-1" role = "tab">
                         <b-button @click = "
                               nationality = (nationality != null)? nationality : userProfile.nationality"
                                   block v-b-toggle.accordion-2 variant = "info">
@@ -32,7 +32,7 @@
                                         <ul class = "list-inline d-inline-block mb-2" v-if = "nationality != null && nationality.length > 0">
                                             <li>
                                                 <b-form-tag :disabled = "disabled" @remove = "removeTagNationality()"
-                                                            class = "list-inline-item" style="font-size: 0.9rem"
+                                                            class = "list-inline-item" style = "font-size: 0.9rem"
                                                             variant = "info">
                                                     {{nationality[0]}}
                                                 </b-form-tag>
@@ -70,7 +70,7 @@
                     </b-collapse>
                 </b-card>
                 <b-card class = "mb-1" no-body>
-                    <b-card-header class = "p-1"  role = "tab">
+                    <b-card-header class = "p-1" role = "tab">
                         <b-button @click = "value = (value != null)? value : userProfile.country_interested" block v-b-toggle.accordion-3
                                   variant = "info">
                             Update customized pinned interesting countries
@@ -85,13 +85,13 @@
                                             There should be at least 1 pinned country in your profile
                                         </p>
                                         <section>
-                                            <div style="max-width: 400px">
+                                            <div style = "max-width: 400px">
                                                 <ul class = "list-inline d-inline-block mb-2" v-if = "tags.length > 0">
                                                     <li :key = "tag" class = "list-inline-item" v-for = "tag in tags">
                                                         <b-form-tag :disabled = "disabled"
                                                                     :title = "tag"
                                                                     @remove = "removeTag(tag)"
-                                                                    variant = "info" style="font-size: 0.9rem; margin-bottom: 5px;">
+                                                                    style = "font-size: 0.9rem; margin-bottom: 5px;" variant = "info">
                                                             {{ tag }}
                                                         </b-form-tag>
                                                     </li>
@@ -99,7 +99,7 @@
                                             </div>
                                             <div>
                                                 <b-dropdown block class = "my-scrolling-class" menu-class = "w-100" size = "sm"
-                                                            variant = "outline-info" style="min-width: 300px">
+                                                            style = "min-width: 300px" variant = "outline-info">
                                                     <template #button-content>
                                                         <b-icon icon = "tag-fill"></b-icon>
                                                         Choose countries
@@ -131,7 +131,8 @@
                     </b-collapse>
                 </b-card>
                 <b-button @click = "updateProfile(); $bvToast.show('my-toast')"
-                          style = "padding: 8px; width: 100%; height: 100%; display: block; overflow: hidden">Update Profile
+                          style = "padding: 8px; width: 100%; height: 100%; display: block; overflow: hidden">Update
+                                                                                                              Profile
                 </b-button>
                 <b-toast id = "my-toast" solid variant = "warning">
                     <template #toast-title>

@@ -6,10 +6,10 @@
         <router-view></router-view>
         <nav v-if = "showNav && !($router.currentRoute.path === '/settings')">
             <a @click = "scrollTop" id = "butt">
-                <img alt = "goTop" src = "../public/GoTop.svg" class = "goTop">
+                <img alt = "goTop" class = "goTop" src = "../public/GoTop.svg">
             </a>
         </nav>
-        <div  v-if = "showNav && !($router.currentRoute.path === '/settings')">
+        <div v-if = "showNav && !($router.currentRoute.path === '/settings')">
             <footer-page></footer-page>
         </div>
     </div>
@@ -22,7 +22,7 @@
 	export default {
 		components: {
 			FooterPage,
-        },
+		},
 		computed: {
 			...mapState(['userProfile', 'country_options_dropdown']),
 			showNav() {
@@ -41,8 +41,8 @@
 				let butt = document.getElementById('butt');
 				butt.onclick = function () {
 					window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
+						top: 0,
+						behavior: 'smooth'
 					});
 				}
 			}

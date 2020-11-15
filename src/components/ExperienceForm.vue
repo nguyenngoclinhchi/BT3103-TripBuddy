@@ -259,7 +259,7 @@
 				this.post.rating_value_2 = null
 				this.post.rating_value_3 = null
 				this.post.rating_value_4 = null
-                this.post.rating_value_5 = null
+				this.post.rating_value_5 = null
 				this.post.countryTravelled = null
 			},
 		},

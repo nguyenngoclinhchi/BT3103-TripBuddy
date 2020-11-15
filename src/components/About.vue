@@ -30,7 +30,7 @@
                     to the COVID-19 outbreak. <br><br>Using several policy indicators of government responses
                     like containment and restrictions/closure policies, as well as their health system
                     policies, we help you access the potential
-                    risks involved and provide a travel advisory tailored just for you. 
+                    risks involved and provide a travel advisory tailored just for you.
                 </p><br>
                 <h3>Meet our team</h3>
                 <div class = "block"></div>

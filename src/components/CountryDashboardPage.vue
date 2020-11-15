@@ -17,7 +17,7 @@
                     Using shortcut search with PINNED country list by clicking in the country tag</p>
                 <b-form-group>
                     <md-chip :key = "chip" @click = "selectedOption = chip; updateData(selectedOption)" class = "md-accent"
-                             md-clickable style = "padding-top: 5px; margin-right: 5px"
+                             md-clickable style = "padding: 5px; margin-top: 5px; margin-right: 5px"
                              v-for = "chip in userProfile.country_interested">
                         {{chip}}
                     </md-chip>
@@ -50,7 +50,8 @@
                         <p style = "text-align: center">The Health System policies is not available for the country.</p>
                     </div>
                     <div class = "H" v-else>
-                        <h6 style = "text-align: center; font-size:20px; margin-left: 30px;"><b> Health System Policies </b></h6>
+                        <h6 style = "text-align: center; font-size:20px; margin-left: 30px;"><b> Health System
+                                                                                                 Policies </b></h6>
                         <table id = "H_indicators">
                             <thead>
                             <tr>
@@ -75,7 +76,8 @@
                                                         country.</p>
                     </div>
                     <div class = "C" v-else>
-                        <h6 style = "text-align: center; font-size:20px; margin-left: 60px;"><b> Containment and Closure Policies </b></h6>
+                        <h6 style = "text-align: center; font-size:20px; margin-left: 60px;"><b> Containment and Closure
+                                                                                                 Policies </b></h6>
                         <table id = "C_indicators">
                             <thead>
                             <tr>

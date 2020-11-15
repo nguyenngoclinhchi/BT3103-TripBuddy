@@ -4,7 +4,7 @@
             <div class = "card card-height">
                 <div class = "additional">
                     <div class = "user-card controls">
-                        <img src = "../assets/chi.jpg" alt = "Linh Chi"/>
+                        <img alt = "Linh Chi" src = "../assets/chi.jpg"/>
                     </div>
                     <div class = "more-info">
                         <h3>Nguyen Ngoc<br> Linh Chi</h3>
@@ -46,7 +46,7 @@
             <div class = "card card-height green">
                 <div class = "additional">
                     <div class = "user-card controls">
-                        <img src = "../assets/yingrong.jpg" alt = "Ying Rong"/>
+                        <img alt = "Ying Rong" src = "../assets/yingrong.jpg"/>
                     </div>
                     <div class = "more-info">
                         <h3><br>Ho Ying Rong</h3>
@@ -81,7 +81,7 @@
             <div class = "card card-height blue">
                 <div class = "additional">
                     <div class = "user-card controls">
-                        <img src = "../assets/bryan.jpg" alt = "Bryan"/>
+                        <img alt = "Bryan" src = "../assets/bryan.jpg"/>
                     </div>
                     <div class = "more-info">
                         <h3><br>Bryan Koh</h3>
@@ -90,7 +90,7 @@
                                 <h6>Connect with Bryan</h6>
                             </div>
                             <div class = "stats">
-                                <p style="padding: 22px"></p>
+                                <p style = "padding: 22px"></p>
                                 <div>
                                     <a href = "mailto:bryan.koh@u.nus.edu">
                                         <i class = "fas fa-envelope-open-text fa-lg generic-anchor"></i>
@@ -119,7 +119,7 @@
             <div class = "card card-height purple">
                 <div class = "additional">
                     <div class = "user-card controls">
-                        <img src = "../assets/jermaine.jpg" alt = "Jermaine"/>
+                        <img alt = "Jermaine" src = "../assets/jermaine.jpg"/>
                     </div>
                     <div class = "more-info">
                         <h3><br>Lim Jermaine</h3>
