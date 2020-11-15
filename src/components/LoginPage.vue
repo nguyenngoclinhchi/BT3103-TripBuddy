@@ -257,6 +257,8 @@
 					nationality: this.signupForm.nationality[0],
 					country_interested: this.value
 				})
+                this.resetForm()
+                this.toggleForm()
 			},
 			checkPasswordRegister() {
 				let password_length = this.signupForm.password.length;
