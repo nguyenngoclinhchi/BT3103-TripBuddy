@@ -14,8 +14,9 @@ import './assets/main.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
-import './assets/fontawesome/css/all.css'
+// import './assets/fontawesome/css/all.css'
 import KProgress from 'k-progress';
+import '@fortawesome/fontawesome-free/css/all.css'
 
 Vue.use(PortalVue)
 Vue.use(BootstrapVue)
