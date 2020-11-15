@@ -30,7 +30,7 @@
                                     <router-link to = "/dashboard">Country Indices</router-link>
                                 </b-dropdown-item>
                                 <b-dropdown-item @click = "current_page = detect_current_page()" style = "margin-right: 4px">
-                                    <router-link to = "/pinned">My Pinned Countries</router-link>
+                                    <router-link to = "/advisory">Personalized Advisory</router-link>
                                 </b-dropdown-item>
                                 <b-dropdown-item @click = "current_page = detect_current_page()" style = "margin-right: 4px">
                                     <router-link to = "/comments">Travel Experiences</router-link>
@@ -84,8 +84,8 @@
 					return "Travel Experiences"
 				} else if (router.currentRoute.path === '/settings') {
 					return "Profile Settings"
-				} else if (router.currentRoute.path === '/pinned') {
-					return "My Pinned Countries"
+				} else if (router.currentRoute.path === '/advisory') {
+					return "Personalized Advisory"
 				}
 				return null
 			}

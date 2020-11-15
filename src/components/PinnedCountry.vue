@@ -93,7 +93,8 @@
                         Level 3 - Not recommended to travel!
                     </h5>
                     <p>
-                        Arrival is banned for some/all regions in the country.
+                        Arrival is banned for some/all regions in the country. Check out the list of country/region entry restrictions at
+                        <a href = "https://www.trip.com/travel-restrictions-covid-19/">COVID-19 Travel Restrictions</a>.
                         <br><b>Avoid travel due to serious risks to safety and security.</b>
                     </p>
                 </b-alert>

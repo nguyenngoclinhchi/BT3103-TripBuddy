@@ -30,8 +30,6 @@
 					bubble: {opacity: 0.7},
 					sortBubblesBySize: false,
 					height: 650,
-					//backgroundColor: '#e6ecf0',
-					//chartArea: {backgroundColor: '#e6ecf0'},
 					legend: {position: 'none'},
 					title: 'Stringency Index vs Cases Fataility Rate in Each Country',
 					hAxis: {scaleType: 'log', title: 'Cases Fatality Rate (Logarithmic Scaling)'},
@@ -46,12 +44,8 @@
 		methods: {
 			date_function: function () {
 				var currentDate = new Date();
-				//console.log(currentDate);
-				
 				currentDate.setDate(currentDate.getDate() - 1);
-				
 				var formatted_date = currentDate.toJSON().slice(0, 10);
-				//console.log(formatted_date);
 				return formatted_date;
 				
 			},
