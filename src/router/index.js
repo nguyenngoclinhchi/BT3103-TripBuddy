@@ -52,7 +52,7 @@ const routes = [
 		}
 	},
 	{
-		path: '/pinned',
+		path: '/advisory',
 		components: {
 			default: PinnedCountry,
 		}
