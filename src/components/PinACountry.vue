@@ -1,7 +1,8 @@
 <template>
     <div id = "statistics_form">
         <section>
-            <md-button @click = "pinACountry(); $bvToast.show('my-toast')" class = "md-raised md-accent md-button-custom">
+            <md-button @click = "pinACountry(); $bvToast.show('my-toast')" class = "md-raised md-accent"
+                       style="padding: 8px; width: 100%; height: 100%; display: block; overflow: hidden; margin: 0">
                 Pin a country!
             </md-button>
             <b-toast @click = "validPinnedCountry = false" id = "my-toast" solid variant = "warning">

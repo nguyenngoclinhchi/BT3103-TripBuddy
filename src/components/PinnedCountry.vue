@@ -9,7 +9,7 @@
                     <label>Country</label>
                 </md-autocomplete>
                 <md-button @click = "updateData(selectedOption)" class = "md-raised md-primary"
-                           style = "padding: 9px; display: block; overflow: hidden">
+                           style="padding: 8px; height: 100%; display: block; margin-left: 5px">
                     Search
                 </md-button>
                 <pin-a-country :selected-country = "selectedOption"></pin-a-country>
@@ -26,7 +26,8 @@
             <div class = "advisory" v-if = "this.alertStatus === 0">
                 <b-alert show variant = "secondary">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
-                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
+                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png"
+                             style = "width:30px;height:30px;">
                     </div>
                     <h5 class = "alert-heading" style = "display:inline-block">
                         No advisories found!
@@ -39,7 +40,8 @@
             <div class = "advisory" v-if = "this.alertStatus === 1">
                 <b-alert show variant = "success">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
-                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
+                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png"
+                             style = "width:30px;height:30px;">
                     </div>
                     <h5 class = "alert-heading" style = "display:inline-block">
                         Level 1 - Safe to travel; Exercise Normal Precautions
@@ -55,7 +57,8 @@
             <div class = "advisory" v-if = "this.alertStatus === 2">
                 <b-alert show variant = "warning">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
-                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
+                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png"
+                             style = "width:30px;height:30px;">
                     </div>
                     <h5 class = "alert-heading" style = "display:inline-block">
                         Level 2 - Exercise Increased Caution!
@@ -71,7 +74,8 @@
             <div class = "advisory" v-if = "this.alertStatus === 7">
                 <b-alert show variant = "warning">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
-                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
+                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png"
+                             style = "width:30px;height:30px;">
                     </div>
                     <h5 class = "alert-heading" style = "display:inline-block">
                         Level 2 - Exercise Increased Caution!
@@ -87,7 +91,8 @@
             <div class = "advisory" v-if = "this.alertStatus === 3">
                 <b-alert show variant = "danger">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
-                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
+                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png"
+                             style = "width:30px;height:30px;">
                     </div>
                     <h5 class = "alert-heading" style = "display:inline-block">
                         Level 3 - Not recommended to travel!
@@ -102,7 +107,8 @@
             <div class = "advisory" v-if = "this.alertStatus === 4">
                 <b-alert show variant = "danger">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
-                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
+                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png"
+                             style = "width:30px;height:30px;">
                     </div>
                     <h5 class = "alert-heading" style = "display:inline-block">
                         Level 3 - Not recommended to travel!
@@ -117,7 +123,8 @@
             <div class = "advisory" v-if = "this.alertStatus === 5">
                 <b-alert show variant = "danger">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
-                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
+                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png"
+                             style = "width:30px;height:30px;">
                     </div>
                     <h5 class = "alert-heading" style = "display:inline-block">
                         Level 3 - Not recommended to travel!
@@ -131,7 +138,8 @@
             <div class = "advisory" v-if = "this.alertStatus === 6">
                 <b-alert show variant = "secondary">
                     <div class = "alert-heading" style = "display:inline-block;vertical-align:top;padding:10px">
-                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png" style = "width:30px;height:30px;">
+                        <img alt = "flight" src = "https://i.pinimg.com/originals/f4/60/7f/f4607f44077947f21ffdcdb34c4cd850.png"
+                             style = "width:30px;height:30px;">
                     </div>
                     <h5 class = "alert-heading" style = "display:inline-block">
                         No data on COVID-19 government policies can be found.
@@ -244,8 +252,10 @@
 				document.getElementById("title").innerHTML = "Monitoring " + country + "'s COVID-19 situation";
 				
 				// retrieve statistics for number of deaths
-				document.getElementById("deaths").innerHTML = "Cases of death in " + country + " VS. others in the same region";
-				const link2 = "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/" + this.date_function() + "/" + this.date_function()
+				document.getElementById("deaths").innerHTML = "Cases of death in " + country +
+                    " VS. others in the same region";
+				const link2 = "https://covidtrackerapi.bsg.ox.ac.uk/api/v2/stringency/date-range/" +
+                    this.date_function() + "/" + this.date_function()
 				let region = this.findRegion(code);
 				let deaths = 0;
 				let regiondeaths = 0;
@@ -283,11 +293,11 @@
 							let polCode = response.data.policyActions[record].policy_type_code
 							if (polCode === "H3") {
 								indic3 = response.data.policyActions[record].policyvalue_actual
-							} else if (polCode == "C8") {
+							} else if (polCode === "C8") {
 								indic4 = response.data.policyActions[record].policyvalue_actual
 							}
 						}
-						if (indic3 != 0 && (indic4 === 0 || indic4 === 1)) {
+						if (indic3 !== 0 && (indic4 === 0 || indic4 === 1)) {
 							this.alertStatus = 1 //level 1
 						} else if (indic4 === 2) {
 							this.alertStatus = 2 //level 2
@@ -306,7 +316,6 @@
 					console.log("Starting creating mixedChart")
 					this.createChart("mixedChart", this.mixedChartData);
 					console.log("Starting creating doughnutChart")
-					this.createChart2("doughnutChart", this.doughnutChartData);
 					this.date = this.date_function()
 				} catch (e) {
 					console.log(e.message)

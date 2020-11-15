@@ -8,7 +8,7 @@
                         <label>Country</label>
                     </md-autocomplete>
                     <md-button @click = "updateData(selectedOption)" class = "md-raised md-primary"
-                               style = "padding: 9px; display: block; overflow: hidden">
+                               style="padding: 8px; height: 100%; display: block; margin-left: 5px">
                         Search
                     </md-button>
                     <pin-a-country :selected-country = "selectedOption"></pin-a-country>

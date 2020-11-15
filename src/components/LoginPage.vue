@@ -34,7 +34,7 @@
                         </label>
                     </div>
                     <md-button
-                            @click = "login()" class = "md-raised md-primary">Log In
+                            @click = "login()" class = "md-raised md-primary" style="margin: 0">Log In
                     </md-button>
                     <div class = "extras">
                         <a @click = "togglePasswordReset()" class="red-link">Forgot Password</a>
@@ -103,8 +103,8 @@
                                         <li :key = "tag" class = "list-inline-item" v-for = "tag in tags">
                                             <b-form-tag
                                                     :disabled = "disabled" :title = "tag" @remove = "removeTag(tag)"
-                                                    style = "font-size: 0.9rem; margin-bottom: 5px;" variant = "info"
-                                            >{{ tag }}
+                                                    style = "font-size: 0.9rem; margin-bottom: 5px;" variant = "info">
+                                                {{ tag }}
                                             </b-form-tag>
                                         </li>
                                     </ul>
@@ -167,7 +167,7 @@
                             class = "md-raised md-primary"
                             disabled v-if = "!signupForm.contains_six_characters || signupForm.name === '' ||
                             signupForm.nationality === '' || signupForm.email === '' || !signupForm.confirm_password_match ||
-                            value.length === 0">
+                            value.length === 0" style="margin-left: 0">
                         Submit
                     </md-button>
                     <md-button

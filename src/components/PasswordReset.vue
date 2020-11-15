@@ -11,7 +11,10 @@
                     </label>
                 </form>
                 <p class = "error" v-if = "errorMsg !== ''">{{ errorMsg }}</p>
-                <button @click = "resetPassword()" class = "button">Reset</button>
+                <md-button @click = "resetPassword()" class = "md-raised md-accent"
+                           style="padding: 8px; width: 100%; height: 100%; display: block; overflow: hidden; margin: 0">
+                    Reset
+                </md-button>
             </div>
             <p v-else>Success! Check your email for a reset link.</p>
         </div>

@@ -131,8 +131,8 @@
                     </b-collapse>
                 </b-card>
                 <b-button @click = "updateProfile(); $bvToast.show('my-toast')"
-                          style = "padding: 8px; width: 100%; height: 100%; display: block; overflow: hidden">Update
-                                                                                                              Profile
+                          style = "padding: 8px; width: 100%; height: 100%; display: block; overflow: hidden">
+                    Update Profile
                 </b-button>
                 <b-toast id = "my-toast" solid variant = "warning">
                     <template #toast-title>

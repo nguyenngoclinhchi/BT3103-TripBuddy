@@ -135,8 +135,8 @@
                         <a @click = "closePostModal()" class = "close">close</a>
                         <div class = "post" style = "margin-bottom: 0">
                             <section class = "controls rating">
-                                <label for = "rating-inline" style = "padding: 0; margin: 10px">Overall
-                                                                                                Satisfaction</label>
+                                <label for = "rating-inline" style = "padding: 0; margin: 10px">
+                                    Overall Satisfaction</label>
                                 <b-form-rating :value = "fullPost.rating_value_5"
                                                id = "rating-inline"
                                                inline no-border readonly
