@@ -24,6 +24,9 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Deployed Sites: 
+
+Account Email: **admin@gmail.com** with password: **admin123**
+
 This web page is deployed by multiple tools: 
 - Github: https://nguyenngoclinhchi.github.io/BT3103-TripBuddy/
 - Firebase: https://tripbuddy-ac05a.firebaseapp.com/
